@@ -1,0 +1,224 @@
+.hero-component {
+  position: relative;
+}
+
+.hero {
+  background-image: url(../hero/img/Rectangle\ 2.png);
+  width: 100%;
+  height: 556px;
+  overflow: hidden;
+  margin: 0rem;
+}
+.hero_heading{
+  font-weight: bold;
+  font-size: 35px;
+  color: #183639;
+  margin-bottom: 0.7rem;
+
+}
+
+.hero_sub_heading{
+  color: #183639;
+  font-size: 20px;
+}
+.hero-description {
+  margin-left: 10rem;
+  margin-top: 8rem;
+}
+.searchspan {
+  width: 18.6rem;
+  height: 2.4rem;
+  background-color: white;
+  border-radius: 15px;
+  padding-right: 1rem;
+}
+.search {
+  outline: none;
+  padding: 0 10px 0.2rem 15px;
+  background: transparent;
+  border: none;
+  height: 1.7rem;
+  width: 14rem;
+}
+.searchicon {
+  height: 1.1rem;
+  width: 1.1rem;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+
+  /* right:2rem; */
+}
+.checked {
+  color: #000000;
+}
+
+.hero-section {
+  margin: 0 3rem;
+  padding: 0.2rem 1rem;
+  background-color: #A7C6CB;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  /* top: 17.5rem; */
+  bottom: 4rem;
+  left: 4.5rem;
+  width: 50.8rem;
+  height: 6rem;
+}
+.customer {
+  padding: 0 2rem;
+}
+.rating {
+  margin-right: 2rem;
+}
+.rating-description,
+.rating {
+  display: flex;
+  align-items: center;
+}
+.card-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 29.1rem;
+  align-items: center;
+}
+.card-1,
+.card-2 {
+  border: 2px solid black;
+  width: 19rem;
+  height: 20.1rem;
+  margin: 0 2rem;
+  border: 1px solid #eee5e5;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 38px;
+  overflow: hidden;
+}
+.card-description{
+    padding: 2rem 3rem 0 3rem;
+    height: 15.75rem;
+    font-size: 14px;
+    font-weight: 100;
+    text-align: center;
+    background-image: url(./img/card_bg.png);
+}
+.card-description> h2{
+  font-size: 20px;
+  font-weight: bold;
+  color: #183639;
+}
+.card-description> h4{
+  font-size: 13px;
+  opacity: 0.5;
+  /* width: 173px; */
+    /* padding-top: 1rem; */
+    /* padding:1rem 1.5rem ; */
+}
+.card-bottom{
+    /* margin-top: 5rem; */
+    background-color: #A7C6CB;
+    height:5rem;
+    display: flex;
+    align-items: center;
+    opacity: 0.7;
+}
+.btndiv{
+    width: 13.9rem;
+  background-color: white;
+  border-radius: 10px;
+  margin: 1rem 4rem;
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  color: #183639;
+  display: flex;
+  justify-content: space-around;
+
+}
+.btns{
+    width:14rem;
+    all:unset;
+    padding-top: .25rem;
+    /* padding-left: 2rem; */
+    font-size: 14px;
+    font-weight: bold;
+}
+.btnplus{
+    /* padding-left:4.25rem; */
+    font-weight: bold;
+}
+.hero-section-2{
+  padding:0rem 4rem;
+  padding-bottom: 2rem;
+  /* background-color: gray; */
+  height: 25.9rem;
+  background-image: url(./img/hero-2-banner.png);
+}
+.title-hero-section-2{
+  margin:0rem 30vw;
+  margin-top: 2rem !important;
+  color: #183639;
+  font-size: 21px;
+  font-weight: bold;
+}
+.hero-section-2-card{
+  margin:2rem;
+  display: flex;
+  color: #23656C;
+}
+.hero-section-2-card > .card > h5{
+  font-size: 20px;
+  font-weight: bold;
+}
+.hero-section-2-card > .card{
+  all: unset;
+  border-radius: 10px;
+  margin:0 2rem;
+  padding:.6rem 2rem 2.5rem 2rem;
+  width: 13.8rem;
+  height: 14.5rem;
+  background-color: #ffffff;
+  border-radius: 25px;
+}
+
+.hero-section-2-card > .card >span{
+  font-size: 10px;
+}
+.file{
+  width:5rem;
+  height:5rem;
+  margin:1rem 1rem 1rem 3rem;
+}
+
+.hero-section-3{
+  height: 39.75rem;
+
+}
+.title-hero-section-3{
+  margin:1rem 30vw;
+  /* margin-bottom: 1rem; */
+}
+.hero-section-3-card-section{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* padding:1rem 5rem 1rem 9rem; */
+  width: 100%;
+}
+.hero-section-3-card{
+  /* background-image: url(../hero/img/index.jpg); */
+  width:17rem;
+  height: 17rem;  
+  margin: 1rem 3rem;
+  border-radius: 10px;
+}
+.title-hero-section-3-card{
+  margin-left:5rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: white;
+  position: relative;
+  top: 13%;
+}
