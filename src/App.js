@@ -8,7 +8,7 @@ import Registration from './Registration/Registration';
 import Footer from './footer/footer'
 import Login from './Login/login';
 
-
+//new
 function App() {
   return (
     <>
