@@ -7,6 +7,11 @@ import Hero from './hero/Hero';
 import Registration from './Registration/Registration';
 import Footer from './footer/footer'
 import Login from './Login/login';
+import Forget from './Forget/Forget';
+import CreateOwnerAccount from './createOwnerAccount/createOwnerAccount'
+import CreateTenantAccount from './createTenantAccount/createTenantAccount';
+import FindRoom from './findroom/FindRoom';
+import FindTenant from './findtenant/findTenant'
 
 //new
 function App() {
@@ -19,7 +24,11 @@ function App() {
       <Route path="/" element={<Hero />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/login" element={<Login />} />
-
+      <Route path="/forget" element={<Forget />}/>
+      <Route path="/createOwnerAccount" element={<CreateOwnerAccount />}/>
+      <Route path="/createTenantAccount" element={<CreateTenantAccount />}/>
+      <Route path="/findRoom" element={<FindRoom/>}/>
+      <Route path="/findTenant" element={<FindTenant/>}/>
     </Routes>
     </BrowserRouter>
   

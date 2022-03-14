@@ -16,6 +16,12 @@ function NavBar() {
             <li><Link to={`/rent`}>Rent</Link></li>
             <li><Link to={`/login`}>Login</Link></li>
             <li><Link to={`/register`}>Register</Link></li>
+            <li><Link to={'/forget'}>Forget Password</Link></li>
+            <li><Link to={'/createOwnerAccount'}>Create Owner Account</Link></li>
+            <li><Link to={'/createTenantAccount'}>Create Tenant Account</Link></li>
+            <li><Link to={'/findRoom'}>Find Room</Link></li>
+            <li><Link to={'/findTenant'}>Find Tenant</Link></li>
+            
         </ul>
     </nav>
     

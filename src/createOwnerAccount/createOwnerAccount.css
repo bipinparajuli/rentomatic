@@ -1,0 +1,243 @@
+body {
+  overflow-x: hidden;
+}
+.user-account{
+  padding: 0;
+  margin: 0;
+}
+.image-area {
+  background: url(./img/house.png) no-repeat;
+  width: 100vw;
+  height: 387px;
+  margin-top: -.1rem;
+}
+.user-account .image-area-text {
+  width: 398px;
+  height: 44px;
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 44px;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  margin-left: 50rem;
+  color: #183639;
+}
+.user-account .image-area-text h2 {
+  margin-left: 18rem;
+  margin-top: -1rem;
+}
+
+.image-area-text div {
+  width: 374px;
+  height: 96px;
+  margin-left: 20rem;
+  margin-right: 25rem;
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 24px;
+  text-align: center;
+  color: #183639;
+}
+.user-account .user-details input,
+.user-account .user-details select {
+  /* all: unset; */
+  width: 360px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #23656c;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+input[type="checkbox"] {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #23656c;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  height: 25px !important;
+  width: 27px !important;
+}
+
+.profile-title span {
+  margin-left: 2rem;
+}
+.room-address-title span {
+  margin-left: 2rem;
+}
+.room-address-title .seperater {
+  width: 85% !important;
+}
+.title-description-title span {
+  margin-left: 2rem;
+  font-size: 20px;
+  font-weight: bold;
+}
+.title-description-title .seperater {
+  width: 75% !important;
+}
+.seperater {
+  margin-top: 0.85rem;
+  width: 88%;
+  display: inline-block;
+  border: 1px solid rgba(35, 101, 108, 0.34);
+}
+.user-details-title .seperater {
+  width: 83%;
+}
+.right {
+  margin-left: 2rem;
+}
+.user-account .room-details input,
+.user-account .room-details select {
+  width: 233px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #23656c;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+.user-account label {
+  font-size: 20px;
+}
+.user-account > .room-address > input,
+.user-account > .room-address > select {
+  width: 360px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #23656c;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+.title-and-description-content {
+  display: flex;
+}
+.title-and-description-text {
+  margin-left: 5rem;
+  text-align: right;
+  margin-right: 10rem;
+}
+.title-and-description-text input {
+  width: 327px;
+  height: 40px;
+}
+.title-and-description-text textarea {
+  all: unset;
+  width: 328px;
+  height: 118px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #23656c;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+.title-and-description-text input,
+.title-and-description-text textarea {
+  margin-bottom: 2rem;
+}
+.title-and-description-image {
+  width: 270px;
+  height: 177px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #23656c;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.user-details {
+  margin: 1rem;
+  text-align: right;
+}
+.room-details {
+  margin: 1rem;
+}
+.room-address {
+  margin: 1rem;
+  text-align: right;
+}
+.room-address input,
+.room-address select {
+  margin-bottom: 1rem;
+  margin-right: 45%;
+}
+.user-account .user-details input,
+.user-account .user-details select {
+  margin-bottom: 1rem;
+  margin-right: 45%;
+}
+input[type="file"] {
+  all: unset !important;
+}
+.user-details-image {
+  position: absolute;
+  width: 270px;
+  height: 229px;
+  left: 760px;
+  top: 659px;
+
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #23656c;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.room-details {
+  margin: 1rem 1rem 1rem 3rem;
+}
+.user-details-title span {
+  font-size: large;
+}
+
+.room-details-content {
+  text-align: center;
+}
+.room-details-content > input,
+.room-details-content select {
+  margin-right: 5rem;
+  margin-bottom: 1rem;
+}
+.rooms-checkbox {
+  text-align: left !important;
+  margin-left: 10rem;
+  margin-top: 2rem;
+}
+.rooms-checkbox input {
+  margin-left: 3rem;
+  margin-right: 0.2rem;
+  margin-bottom: 2rem;
+}
+.room-address-title {
+  margin-bottom: 2rem;
+}
+
+.re {
+  margin-left: 25rem;
+  margin-bottom: 2rem;
+}
+.terms {
+  margin-left: 20rem;
+  margin-bottom: 2rem;
+}
+.create{
+  margin-left: 25rem;
+  margin-bottom: 2rem;
+}
+.create button{
+  all:unset;
+  padding-left: 2rem;
+  width: 308px;
+  height: 63px;
+  background: #aac8cd;
+  border: 1px solid #23656c;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
