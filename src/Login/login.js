@@ -31,7 +31,7 @@ function Login() {
  <input type="text" className='email' />
  <br/>
  <br />
- <label for="password">Password</label><br/>
+ <label for="password" >Password</label><br/>
  <div className='password-div'><input type={values.showPassword ? "text" : "password"}
  
  className='password' /><br/><i class="eye fa-solid fa-eye-slash"></i></div>

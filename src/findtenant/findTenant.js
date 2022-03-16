@@ -76,36 +76,36 @@ function FindRoom() {
               <h3>Filters</h3>
             </div>
             <div className="filter-content">
-              <div>
                 <p>What are you looking for?</p>
+                <div>
                 <button className="tenant-btn">Tenant</button>
                 <button className="room-btn">Room</button>
               </div>
-              <div>
                 <p>Sort By</p>
+                <div>
                 <button className="recent-btn">Recent</button>
                 <button className="cheapest-btn">Cheapest</button>
                 <button className="expensive">Expensive</button>
               </div>
+              <p>Location</p>
               <div>
-                <p>Location</p>
                 <button className="kathmandu-btn">Kathmandu</button>
                 <button className="lalitpur-btn">Lalitpur</button>
                 <button className="bhaktapur-btn">Bhaktapur</button>
               </div>
+              <p>Room for</p>
               <div>
-                <p>Room for</p>
                 <button className="male-btn">Male</button>
                 <button className="female-btn">Female</button>
                 <button className="family">Family</button>
               </div>
+              <p>Stay Duration:</p>
               <div>
-                <p>Stay Duration:</p>
                 <button className="shortTerm-btn">Short Term</button>
                 <button className="longTerm-btn">Long Term</button>
               </div>
+              <p>Rent/month</p>
               <div>
-                <p>Rent/month</p>
                 <div className="slider">
                   <input
                     type="range"

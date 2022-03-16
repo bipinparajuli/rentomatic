@@ -141,17 +141,8 @@ input[type="checkbox"] {
 .title-and-description-text textarea {
   margin-bottom: 2rem;
 }
-.title-and-description-image {
-  width: 270px;
-  height: 177px;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid #23656c;
-  box-sizing: border-box;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-}
 
-.user-details {
+.user-account .user-details {
   margin: 1rem;
   text-align: right;
 }
@@ -172,8 +163,13 @@ input[type="checkbox"] {
   margin-bottom: 1rem;
   margin-right: 45%;
 }
-input[type="file"] {
+.user-account input[type="file"] {
   all: unset !important;
+}
+.user-account .user-details-container{
+  width:100vw;
+  height:280px;
+  display: flex;
 }
 .user-details-image {
   position: absolute;
@@ -181,7 +177,6 @@ input[type="file"] {
   height: 229px;
   left: 760px;
   top: 659px;
-
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid #23656c;
   box-sizing: border-box;
@@ -222,13 +217,13 @@ input[type="file"] {
   margin-left: 25rem;
   margin-bottom: 2rem;
 }
-.terms {
+.user-account .terms {
   margin-left: 20rem;
   margin-bottom: 2rem;
 }
 .create{
   margin-left: 25rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 .create button{
   all:unset;
