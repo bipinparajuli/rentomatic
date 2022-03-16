@@ -35,8 +35,9 @@ function Login() {
  <div className='password-div'><input type={values.showPassword ? "text" : "password"}
  
  className='password' /><br/><i class="eye fa-solid fa-eye-slash"></i></div>
- <span><a href='#'>Reset password ?</a></span><br/>
+ <span><a href='/forget'>Reset password ?</a></span><br/>
  {/* <div className="recaptcha"> */}
+
  <ReCAPTCHA
     sitekey="I'm not a robot"
     onChange={onChange}

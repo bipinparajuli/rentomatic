@@ -12,12 +12,21 @@ function Registration() {
             <h2>Register Now</h2>
             <i className="x  fa-solid fa-x"></i>
           </div>
+          <Link to={'/createOwnerAccount'}>
+
+          
           <button className="btn">Registration as owner</button>
+          </Link>
+          
           <br />
           <i className="info fa fa-circle-info" />
           <span>You can add room</span>
           <br />
+
+          <Link to={'/createTenantAccount'}>
           <button className="btn">Registration as Tenant</button>
+          </Link>
+
           <br />
           <i className="info fa fa-circle-info" />
           <span>You can find room</span>

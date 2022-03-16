@@ -27,6 +27,7 @@
   font-weight: bold;
   color:#4a7174;
   margin-left:10px; 
+  cursor: pointer;
 }
 .registration-container p {
   margin-top: 70px;
