@@ -12,7 +12,7 @@ import CreateOwnerAccount from './createOwnerAccount/createOwnerAccount'
 import CreateTenantAccount from './createTenantAccount/createTenantAccount';
 import FindRoom from './findroom/FindRoom';
 import FindTenant from './findtenant/findTenant'
-
+import Listing from './listing/Listing';
 //new
 function App() {
   return (
@@ -29,6 +29,7 @@ function App() {
       <Route path="/createTenantAccount" element={<CreateTenantAccount />}/>
       <Route path="/findRoom" element={<FindRoom/>}/>
       <Route path="/findTenant" element={<FindTenant/>}/>
+      <Route path="/listing" element={<Listing/>}/>
     </Routes>
     </BrowserRouter>
   

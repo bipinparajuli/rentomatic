@@ -1,0 +1,53 @@
+.container{
+    background-color: rgba(163, 159, 159, 0.507);
+    padding-top: 5rem;
+}
+
+.listing-container{
+    width:70vw;
+    margin:0rem 1rem 0rem 10rem;
+    display: flex;
+    padding:1.5rem 1rem 2rem 3rem;
+    background-color: aliceblue;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(121, 86, 86, 0.25);;
+}
+
+.listing-container-image img{
+    width:35vw;
+    margin-right: 7rem;
+
+}
+
+.listing-container-content{
+    width:25vw;
+}
+.listing-container .content-description{
+    display: flex;
+}
+.listing-container .content-description-type ul{
+  margin-left: -3rem;
+}
+.listing-container .content-description-map{
+    background-color: gray;
+    height: 5rem;
+}
+.listing-container .content-description-content{
+    text-align: right;
+    margin-right: -2rem;
+}
+.container .input{
+    padding:1rem 0;
+    margin-left:20vw;
+    margin-bottom: 2rem;
+}
+.container .input input, .input button{
+    height:35px;
+    width: 350px;
+}
+.input input{
+    margin-right: 2rem;
+}
+.input button{
+    margin-left: 2rem;
+}

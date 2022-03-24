@@ -1,6 +1,7 @@
 import React from "react";
 import "./findTenant.css";
 import { useState, useEffect } from "react";
+import tenant from './img/1.png'
 
 function FindRoom() {
   const [value, onChange] = useState(1);
@@ -12,14 +13,14 @@ function FindRoom() {
   });
   return (
     <>
-      <div className="findroom-main-section">
+      <div className="findTenant-main-section">
         <div className="title-main-section">
           <h2>Find Your Preferred Room</h2>
         </div>
         <div className="main-section-hero">
           <div className="example">
             <div className="example-card">
-              <div className="image"></div>
+              <div className="image"><img src={tenant}></img></div>
               <div className="image-description">
                 <span className="image-description-title">
                   Single room for rent
@@ -32,7 +33,7 @@ function FindRoom() {
               </div>
             </div>
             <div className="example-card">
-              <div className="image"></div>
+              <div className="image"><img src={tenant}></img></div>
               <div className="image-description">
                 <span className="image-description-title">
                   Single room for rent
@@ -45,7 +46,7 @@ function FindRoom() {
               </div>
             </div>
             <div className="example-card">
-              <div className="image"></div>
+              <div className="image"><img src={tenant}></img></div>
               <div className="image-description">
                 <span className="image-description-title">
                   Single room for rent
@@ -58,7 +59,7 @@ function FindRoom() {
               </div>
             </div>
             <div className="example-card">
-              <div className="image"></div>
+              <div className="image"><img src={tenant}></img></div>
               <div className="image-description">
                 <span className="image-description-title">
                   Single room for rent

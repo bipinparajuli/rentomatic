@@ -4,12 +4,11 @@
   position: relative;
   display: flex;
 }
-.image {
-  width: 284px;
+.findroom-main-section img {
+  width: 295px;
   height: 218px;
-  border-radius: 47px 47px 0px 0px;
-  background-image: url(./img/1.png);
 }
+
 .title-main-section {
   margin: 2rem 0;
   display: flex;

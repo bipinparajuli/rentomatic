@@ -1,6 +1,7 @@
 import React from "react";
 import "./FindRoom.css";
 import { useState, useEffect } from "react";
+import room from "./img/1.png";
 
 function FindRoom() {
   const [value, onChange] = useState(1);
@@ -19,7 +20,7 @@ function FindRoom() {
         <div className="main-section-hero">
           <div className="example">
             <div className="example-card">
-              <div className="image"></div>
+              <div className="image"><img src={room}></img></div>
               <div className="image-description">
                 <span className="image-description-title">
                   Single room for rent
@@ -32,7 +33,7 @@ function FindRoom() {
               </div>
             </div>
             <div className="example-card">
-              <div className="image"></div>
+              <div className="image"><img src={room}></img></div>
               <div className="image-description">
                 <span className="image-description-title">
                   Single room for rent
@@ -45,7 +46,7 @@ function FindRoom() {
               </div>
             </div>
             <div className="example-card">
-              <div className="image"></div>
+              <div className="image"><img src={room}></img></div>
               <div className="image-description">
                 <span className="image-description-title">
                   Single room for rent
@@ -58,7 +59,7 @@ function FindRoom() {
               </div>
             </div>
             <div className="example-card">
-              <div className="image"></div>
+              <div className="image"><img src={room}></img></div>
               <div className="image-description">
                 <span className="image-description-title">
                   Single room for rent
@@ -92,7 +93,9 @@ function FindRoom() {
               <span>Location:</span>
               <br />
               <div>
-                <button className="kathmandu-btn selected-btn">Kathmandu</button>
+                <button className="kathmandu-btn selected-btn">
+                  Kathmandu
+                </button>
                 <button className="lalitpur-btn">Lalitpur</button>
                 <button className="bhaktapur-btn">Bhaktapur</button>
               </div>
@@ -116,15 +119,15 @@ function FindRoom() {
               <div className="slider">
                 <div className="min">1</div>
                 <div className="slider-main">
-                <input
-                  type="range"
-                  min="1"
-                  max="500"
-                  value={value}
-                  onChange={({ target: { value: radius } }) => {
-                    onChange(radius);
-                  }}
-                />
+                  <input
+                    type="range"
+                    min="1"
+                    max="500"
+                    value={value}
+                    onChange={({ target: { value: radius } }) => {
+                      onChange(radius);
+                    }}
+                  />
                 </div>
                 <div className="slider-mechanism">{value}</div>
                 <div className="slider-mechanism">500</div>
