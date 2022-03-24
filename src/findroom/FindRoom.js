@@ -27,7 +27,7 @@ function FindRoom() {
                   <i className="heart fa-solid fa-heart"></i>
                   <br />
                 </span>
-                <span>Baneshwor</span>
+                <span>Baneshwor</span><button>More</button>
                 <br />
                 <span>Rs.6000 per Month</span>
               </div>
@@ -40,7 +40,7 @@ function FindRoom() {
                   <i className="heart fa-solid fa-heart"></i>
                   <br />
                 </span>
-                <span>Baneshwor</span>
+                <span>Baneshwor</span><button>More</button>
                 <br />
                 <span>Rs.6000 per Month</span>
               </div>
@@ -53,7 +53,7 @@ function FindRoom() {
                   <i className="heart fa-solid fa-heart"></i>
                   <br />
                 </span>
-                <span>Baneshwor</span>
+                <span>Baneshwor</span><button>More</button>
                 <br />
                 <span>Rs.6000 per Month</span>
               </div>
@@ -66,7 +66,7 @@ function FindRoom() {
                   <i className="heart fa-solid fa-heart"></i>
                   <br />
                 </span>
-                <span>Baneshwor</span>
+                <span>Baneshwor</span><button>More</button>
                 <br />
                 <span>Rs.6000 per Month</span>
               </div>

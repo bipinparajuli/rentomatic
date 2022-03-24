@@ -27,11 +27,11 @@ const Listing = () => {
               <div className="content-description-content">
                 <ul>
                   <li>
-                    98m<spr>2</spr>
+                    98m<sup>2</sup>
                   </li>
                   <li>1 Bedroom</li>
                   <li>Studio</li>
-                  <li>YEes</li>
+                  <li>Yes</li>
                   <li>80202</li>
                 </ul>
               </div>
@@ -41,7 +41,7 @@ const Listing = () => {
         </div>
       </div>
       <div className="input">
-          <input type="text"></input>
+         <div><i class="fa-2x fa-solid fa-envelope"></i><input type="text"></input></div>
           <button>Contact Landlord</button>
         </div>
     </div>
