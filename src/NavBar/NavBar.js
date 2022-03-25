@@ -12,13 +12,10 @@ function NavBar() {
       </Link>
 
         <ul>
-            <li><Link to={`/tenent`}>Tenant</Link></li>
-            <li><Link to={`/rent`}>Rent</Link></li>
+            <li><Link to={`/findTenant`}>Tenant</Link></li>
+            <li><Link to={`/findRoom`}>Rent</Link></li>
             <li><Link to={`/login`}>Login</Link></li>
-            <li><Link to={`/register`}>Register</Link></li>
-            <li><Link to={'/findRoom'}>Find Room</Link></li>
-            <li><Link to={'/findTenant'}>Find Tenant</Link></li>
-            
+            <li><Link to={`/register`}>Register</Link></li>            
         </ul>
     </nav>
     

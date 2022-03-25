@@ -59,9 +59,8 @@ function createUserAccount() {
         <div className="room-details-content">
         <label for="room-types">Room types:</label>{" "}
         <select className="xyz">
-          <option></option>
-          <option></option>
-          <option></option>
+          <option>Single</option>
+          <option>Double</option>
         </select>
         <label for="available">Available From:</label> <input type="date" />
         <br />
@@ -93,7 +92,10 @@ function createUserAccount() {
         </div>
         <label for="district">District:</label>
         <select>
-          <option></option>
+          <option>Kathmandu</option>
+          <option>Bhaktapur</option>
+          <option>Lalitpur</option>
+
         </select>
         <br />
         <label for="area">Area:</label>

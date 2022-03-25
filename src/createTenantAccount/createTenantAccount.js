@@ -75,7 +75,10 @@ function createTenantAccount() {
             </select>
             <label>Occupation:</label>
             <select>
-              <option></option>
+              <option>Student</option>
+              <option>Employeed</option>
+              <option>Retired</option>
+              <option>Other</option>
             </select>
             <br />
             <label>Profile Description:</label>
@@ -107,7 +110,9 @@ function createTenantAccount() {
           <div className="preferences-content-right">
           <label>Room Type:</label>
           <select>
-            <option></option>
+            <option>Single</option>
+            <option>Double</option>
+            
           </select>
           <br />
           <label>Rent per Month:</label>
