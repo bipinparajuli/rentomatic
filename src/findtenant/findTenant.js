@@ -1,20 +1,42 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
+
+
 import "./findTenant.css";
-import { useState, useEffect } from "react";
-import tenant from './img/1.png'
+import ImageHelper from "../helper/ImageHelper";
+import { getAllTenant } from "../helper/ApiHelper";
+import { Link } from "react-router-dom";
+
 
 function FindRoom() {
+  const [value, onChange] = useState(1);
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState(false);
+const api = "https://cors-anywhere.herokuapp.com/localhost:5000/api/v1/users/getphoto/623c5932f9ab201e74deb3dc"
+  const preloadProducts = async ()  => {
+    await  getAllTenant().then((data) => {
+      console.log(data);
 
+      if (data.err) {
+        setError(data.err);
+      } else {
+        setProducts(data);
+      }
+    });
+  };
+
+  useEffect(() => {
+    preloadProducts();
+  }, []);
     
 
 
-  const [value, onChange] = useState(1);
-  useEffect(() => {
-    const ele = document.querySelector(".slider-mechanism");
-    if (ele) {
-      ele.style.left = `${Number(value)}px`;
-    }
-  });
+  // const [value, onChange] = useState(1);
+  // useEffect(() => {
+  //   const ele = document.querySelector(".slider-mechanism");
+  //   if (ele) {
+  //     ele.style.left = `${Number(value)}px`;
+  //   }
+  // });
   return (
     <>
       <div className="findTenant-main-section">
@@ -23,7 +45,30 @@ function FindRoom() {
         </div>
         <div className="main-section-hero">
           <div className="example">
+          {products.map((product)=>{
+              console.log(product);
+              return (<>
             <div className="example-card">
+              <div className="image">
+                <ImageHelper />
+              </div>
+              <div className="image-description">
+                <span className="image-description-title">
+                  Single room for rent
+                
+                <i className="heart fa-solid fa-heart"></i><br/>
+                </span>
+                <span>{product.tenant.profileDescription !== undefined ?product.tenant.profileDescription.bio :"hi" }</span>
+               <Link to={`/tenantprofile/${product.tenant._id}`}>
+                <button>See Profile</button>
+               </Link>
+
+                <br />
+                <span>Rs.6000 per Month</span>
+              </div>
+            </div>
+            </>)})}
+            {/* <div className="example-card">
               <div className="image"><img src={tenant}></img></div>
               <div className="image-description">
                 <span className="image-description-title">
@@ -61,20 +106,7 @@ function FindRoom() {
                 <br />
                 <span>Rs.6000 per Month</span>
               </div>
-            </div>
-            <div className="example-card">
-              <div className="image"><img src={tenant}></img></div>
-              <div className="image-description">
-                <span className="image-description-title">
-                  Single room for rent
-                
-                <i className="heart fa-solid fa-heart"></i><br/>
-                </span>
-                <span>Baneshwor</span><button>More</button>
-                <br />
-                <span>Rs.6000 per Month</span>
-              </div>
-            </div>
+            </div> */}
           </div>
           <div className="filters">
             <div className="filters-title">

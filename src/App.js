@@ -14,6 +14,8 @@ import CreateTenantAccount from './createTenantAccount/createTenantAccount';
 import FindRoom from './findroom/FindRoom';
 import FindTenant from './findtenant/findTenant'
 import Listing from './listing/Listing';
+import TenantProfile from './listing/TenantProfile';
+
 //new
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
       <Route path="/findRoom" element={<FindRoom/>}/>
       <Route path="/findTenant" element={<FindTenant/>}/>
       <Route path="/room/:id" element={<Listing/>}/>
+      <Route path="/tenantprofile/:id" element={<TenantProfile/>}/>
+
   
     </Routes>
     </NotificationsProvider>

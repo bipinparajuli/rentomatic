@@ -40,9 +40,32 @@ export const signup = (user) => {
       .catch((err) => console.log(err));
   };
 
+  export const getAllTenant = () => {
+    return fetch(`${API}/getalltenant`, {
+      method: "GET",
+    })
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .catch((err) => console.log(err));
+  };
+
+
   export const getRoomById = (productId) => {
     console.log(productId);
     return fetch(`${API}/hello/${productId}`, {
+      method: "GET",
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  export const getTenantById = (productId) => {
+    console.log(productId);
+    return fetch(`${API}/gettenantbyid/${productId}`, {
       method: "GET",
     })
       .then((response) => {
