@@ -111,7 +111,7 @@ const Listing = () => {
                 className="content-description-map"
                 style={{ }}
               >
-                <div style={{ height: "50vh" }}>
+                <div  style={{ height: "20vh" ,overflow:"scroll"}}>
                   <GoogleMapReact
                     bootstrapURLKeys={{
                       key: "AIzaSyA0EZwSE1rQCNi2k2enIApfYpQwbONKVEQ",
