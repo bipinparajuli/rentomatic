@@ -105,8 +105,8 @@ input[type="checkbox"] {
 .user-account label {
   font-size: 20px;
 }
-.user-account > .room-address > input,
-.user-account > .room-address > select {
+.user-account  .room-address > input,
+.user-account  .room-address > select {
   width: 360px;
   height: 40px;
   background: rgba(255, 255, 255, 0.88);

@@ -3,22 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mantine/core": "^4.0.8",
+    "@mantine/notifications": "^4.0.8",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "formik": "^2.2.9",
+    "google-map-react": "^2.1.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-google-recaptcha": "^2.1.0",
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
     "react-simple-captcha": "^8.2.6",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "proxy": "https://cors-anywhere.herokuapp.com/"
   },
   "eslintConfig": {
     "extends": [

@@ -1,4 +1,5 @@
 import {Route,Routes,BrowserRouter} from 'react-router-dom'
+import { NotificationsProvider } from '@mantine/notifications';
 
 
 import './App.css';
@@ -8,17 +9,19 @@ import Registration from './Registration/Registration';
 import Footer from './footer/footer'
 import Login from './Login/login';
 import Forget from './Forget/Forget';
-import CreateOwnerAccount from './createOwnerAccount/createOwnerAccount'
+import CreateOwnerAccount from './createOwnerAccount/CreateOwnerAccount'
 import CreateTenantAccount from './createTenantAccount/createTenantAccount';
 import FindRoom from './findroom/FindRoom';
 import FindTenant from './findtenant/findTenant'
-
+import Listing from './listing/Listing';
 //new
 function App() {
   return (
-    <>
+    <>      
     <BrowserRouter>
     <NavBar />
+    <NotificationsProvider>
+
     <Routes>
       
       <Route path="/" element={<Hero />} />
@@ -29,7 +32,11 @@ function App() {
       <Route path="/createTenantAccount" element={<CreateTenantAccount />}/>
       <Route path="/findRoom" element={<FindRoom/>}/>
       <Route path="/findTenant" element={<FindTenant/>}/>
+      <Route path="/room/:id" element={<Listing/>}/>
+  
     </Routes>
+    </NotificationsProvider>
+
     </BrowserRouter>
   
     <Footer />

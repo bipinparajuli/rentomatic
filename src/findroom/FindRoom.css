@@ -1,15 +1,12 @@
-
-
 .slider {
   position: relative;
   display: flex;
 }
-.image {
-  width: 284px;
+.findroom-main-section img {
+  width: 295px;
   height: 218px;
-  border-radius: 47px 47px 0px 0px;
-  background-image: url(./img/1.png);
 }
+
 .title-main-section {
   margin: 2rem 0;
   display: flex;
@@ -59,6 +56,15 @@
   line-height: 25px;
   margin: 0.15rem 0;
 }
+.image-description button {
+  cursor: pointer;
+  background-color: #c3d8d9;
+  border-radius: 7px;
+  margin-left: 6rem;
+  width: 4rem;
+  height: 2.1rem;
+  border: 2px solid #23656c;
+}
 .image-description-title {
   display: block;
   width: 274px;
@@ -81,31 +87,29 @@
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
   border-radius: 47px;
 }
-.filters .filter-content div{
-  width:320px;
+.filters .filter-content div {
+  width: 320px;
   height: 3rem;
   display: flex;
   flex-direction: row;
-  background: #AAC8CD;
-border: 1px solid #23656C;
-box-sizing: border-box;
-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-border-radius: 10px;
+  background: #aac8cd;
+  border: 1px solid #23656c;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 }
-.filters .filter-content div button{
+.filters .filter-content div button {
   flex-grow: 1;
 }
-.slider-div{
+.slider-div {
   width: 320px;
 }
-.slider-main{
+.slider-main {
   margin: 0 0rem 0 2rem;
 }
-.slider-mechanism{
+.slider-mechanism {
   margin-right: 1rem;
 }
-.selected-btn{
-  background: #AAC8CD;
+.selected-btn {
+  background: #aac8cd;
 }
-
-
