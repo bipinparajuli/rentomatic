@@ -32,7 +32,7 @@ function App() {
       <Route path="/createTenantAccount" element={<CreateTenantAccount />}/>
       <Route path="/findRoom" element={<FindRoom/>}/>
       <Route path="/findTenant" element={<FindTenant/>}/>
-      <Route path="/room/:id" element={<Listing/>}/>
+      <Route path="/listing" element={<Listing/>}/>
   
     </Routes>
     </NotificationsProvider>
