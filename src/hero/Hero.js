@@ -1,8 +1,21 @@
-import React from "react";
+import React,{useState} from "react";
+import {useNavigate,useParams} from 'react-router-dom'
+import { searchRoom } from "../helper/ApiHelper";
 import "./Hero.css";
 import Bouddha from './img/bouddha.png'
 
 function Hero() {
+
+  const [search,setSearch] = useState();
+  let navigate = useNavigate();
+let params = useParams();
+
+
+  function handleSearch(){
+
+navigate(`/findroom/?location=${search}`)
+}
+
   return (
     <>
       
@@ -17,6 +30,12 @@ function Hero() {
               type="text"
               className="search"
               placeholder="Enter an address , city or area"
+              onChange={e=>setSearch(e.target.value)}
+              onKeyPress={event => {
+                if (event.key === 'Enter') {
+                  handleSearch()
+                }
+              }}
             ></input>
             <img className="searchicon" src={require("./img/searchicon.png")} />
           </div>

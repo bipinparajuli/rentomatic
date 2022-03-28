@@ -51,6 +51,16 @@ export const signup = (user) => {
       .catch((err) => console.log(err));
   };
 
+  export const searchRoom = (param) => {
+    return fetch(`${API}/searchrooms/?location=${param}`, {
+      method: "GET",
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .catch((err) => console.log(err));
+  };
+
 
   export const getRoomById = (productId) => {
     console.log(productId);

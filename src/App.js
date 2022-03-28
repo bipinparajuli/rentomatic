@@ -1,6 +1,6 @@
 import {Route,Routes,BrowserRouter} from 'react-router-dom'
 import { NotificationsProvider } from '@mantine/notifications';
-
+import ChatBot from 'react-simple-chatbot';
 
 import './App.css';
 import NavBar from './NavBar/NavBar';
@@ -18,6 +18,18 @@ import TenantProfile from './listing/TenantProfile';
 
 //new
 function App() {
+  const steps = [
+    {
+      id: '0',
+      message: 'Welcome to react chatbot!',
+      trigger: '1',
+    },
+    {
+      id: '1',
+      message: 'Bye!',
+      end: true,
+    },
+  ];
   return (
     <>      
     <BrowserRouter>
@@ -37,12 +49,13 @@ function App() {
       <Route path="/room/:id" element={<Listing/>}/>
       <Route path="/tenantprofile/:id" element={<TenantProfile/>}/>
 
+
   
     </Routes>
     </NotificationsProvider>
 
     </BrowserRouter>
-  
+    <ChatBot steps={steps} />
     <Footer />
     </>
   );

@@ -19,7 +19,7 @@ function NavBar() {
             <li><Link to={`/register`}>Register</Link></li>
             {/* <li><Link to={'/findRoom'}>Find Room</Link></li> */}
             {/* <li><Link to={'/findTenant'}>Find Tenant</Link></li> */}
-            <li><Link to={'/listing'}>Listing</Link></li>
+            {/* <li><Link to={'/listing'}>Listing</Link></li> */}
             
 
 

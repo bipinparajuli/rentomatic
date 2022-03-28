@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 import {useParams} from 'react-router-dom'
-import GoogleMapReact from 'google-map-react';
+// import GoogleMapReact from 'google-map-react';
 
 import { getTenantById } from "../helper/ApiHelper";
 import ImageHelper from '../helper/ImageHelper'
@@ -99,9 +99,9 @@ const TenantProfile = () => {
                 </ul>
                
               </div>
-              <div className="content-description-map" style={{width:"800px",height:"200px"}} >
-              <div style={{ height: '10vh', width: '100%' }}>
-        <GoogleMapReact
+              {/* <div className="content-description-map" style={{width:"800px",height:"200px"}} >
+              <div style={{ height: '10vh', width: '100%' }}> */}
+        {/* <GoogleMapReact
           bootstrapURLKeys={{ key:"AIzaSyA0EZwSE1rQCNi2k2enIApfYpQwbONKVEQ"}}
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
@@ -111,9 +111,9 @@ const TenantProfile = () => {
             lng={30.337844}
             text="My Marker"
           />
-        </GoogleMapReact>
-      </div>
-              </div>
+        </GoogleMapReact> */}
+      {/* </div>
+              </div> */}
             </div>
           </div>
         </div>

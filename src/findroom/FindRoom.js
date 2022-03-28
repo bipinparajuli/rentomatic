@@ -4,24 +4,41 @@ import { useState, useEffect } from "react";
 
 import room from "./img/1.png";
 import ImageHelper from '../helper/ImageHelper'
-import {getAllRooms} from '../helper/ApiHelper'
-import { Link } from "react-router-dom";
+import {getAllRooms, searchRoom} from '../helper/ApiHelper'
+import { Link,} from "react-router-dom";
 
 function FindRoom() {
   const [value, onChange] = useState(1);
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(false);
-const api = "https://cors-anywhere.herokuapp.com/localhost:5000/api/v1/users/getphoto/623c5932f9ab201e74deb3dc"
+  const queryParams = new URLSearchParams(window.location.search)
+  // const term = queryParams.get("term")
+  const location = queryParams.get("location")
+  // const api = "https://cors-anywhere.herokuapp.com/localhost:5000/api/v1/users/getphoto/623c5932f9ab201e74deb3dc"
+  
   const preloadProducts = async ()  => {
-    await  getAllRooms().then((data) => {
-      console.log(data);
-
-      if (data.err) {
-        setError(data.err);
-      } else {
-        setProducts(data);
-      }
-    });
+    if(location){
+      await  searchRoom(location).then((data) => {
+        console.log(data);
+  
+        if (data.err) {
+          setError(data.err);
+        } else {
+          setProducts(data);
+        }
+      });
+    }else{
+      await  getAllRooms().then((data) => {
+        console.log(data);
+  
+        if (data.err) {
+          setError(data.err);
+        } else {
+          setProducts(data);
+        }
+      });
+    }
+   
   };
 
   useEffect(() => {
@@ -48,7 +65,7 @@ const api = "https://cors-anywhere.herokuapp.com/localhost:5000/api/v1/users/get
                   <div key={room._id} className="example-card">
               <div className="image">
                 {/* <img src={api} /> */}
-                <ImageHelper productId={""} />
+                <ImageHelper productId={room._id} />
                 </div>
               <div className="image-description">
                 <span className="image-description-title">
