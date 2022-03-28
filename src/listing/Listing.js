@@ -121,6 +121,7 @@ console.log(state);
               {/* <div
                 className="content-description-map"
                 style={{ }}
+<<<<<<< HEAD
               > */}
                 {/* <div style={{ width:"200px",height: "50vh" }}> */}
                 {/* <LoadScript googleMapsApiKey="AIzaSyA0EZwSE1rQCNi2k2enIApfYpQwbONKVEQ" libraries={LIBRARIES}>
@@ -153,6 +154,7 @@ console.log(state);
                   
                 {/* </div> */}
             {/* </div> */}
+
           </div>
         </div>
       </div>
