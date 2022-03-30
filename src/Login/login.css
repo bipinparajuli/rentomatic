@@ -3,15 +3,15 @@
   justify-content: center;
   align-items: center;
   width: 370px;
-  height: 75vh;
+  /* height: 75vh; */
   margin: 3rem auto;
   border-radius: 47px;
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.25);
   border: 1px solid rgb(50, 99, 84);
 }
 .login-container #form {
-  margin-bottom: 3rem;
-  padding: 5rem 0 3rem 0;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
   left: 231px;
   top: 201px;
 }
@@ -83,8 +83,8 @@ a {
 }
 .password-div .eye {
   position: absolute;
-  top: 0.35rem;
-  right: 0.35rem;
+  top: 0.75rem;
+  right: 3.5rem;
 }
 .recaptcha {
   height: 2rem;
@@ -95,3 +95,4 @@ a {
   background-image: url(../Login/re.png);
   border-radius: 5px;
 }
+

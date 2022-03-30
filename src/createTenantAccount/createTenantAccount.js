@@ -2,6 +2,8 @@ import React from "react";
 import "./createTenantAccount.css";
 import ReCAPTCHA from "react-google-recaptcha";
 
+import image from  './img/house.png';
+
 function createTenantAccount() {
   function onChange(value) {
     console.log("Captcha value:", value);
@@ -10,6 +12,7 @@ function createTenantAccount() {
     <>
       <div className="tenant-account">
       <div className="image-area">
+        <img src={image}></img>
         <span className="image-area-text">
           <h2>Create an Tenant Account</h2>
           <div>
@@ -54,7 +57,7 @@ function createTenantAccount() {
           </div>
           <div className="user-details-content-right">
             <h4>Add your room Images:</h4>
-            <input type="file" />
+            <input type="file" className="file"/>
           </div>
           </div>
         </div>
@@ -123,14 +126,14 @@ function createTenantAccount() {
           </div>
           <br />
           <div className="selection-div">
-          <input type="checkbox" />
-          <label for="Internet">Internet</label>
-          <input type="checkbox" />
-          <label for="Pets">Pets Allowed</label>
-          <input type="checkbox" />
-          <label for="Parking">Parking</label>
-          <input type="checkbox" />
-          <label for="bathroom">Attached Bathroom</label>
+          <div><input type="checkbox" />
+          <label for="Internet">Internet</label></div>
+         <div> <input type="checkbox" />
+          <label for="Pets">Pets Allowed</label></div>
+         <div> <input type="checkbox" />
+          <label for="Parking">Parking</label></div>
+         <div> <input type="checkbox" />
+          <label for="bathroom">Attached Bathroom</label></div>
           <br />
 
           </div>

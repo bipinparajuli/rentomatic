@@ -9,12 +9,26 @@ import { Link,} from "react-router-dom";
 
 function FindRoom() {
   const [value, onChange] = useState(1);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([
+    // {
+    //   owner:{
+    //     description:"helper",
+    //     roomAddress:{
+    //       district:"kathmandu"
+    //     },
+    //     roomDetails:{
+    //       rentPerMonth:100
+    //     }
+    //   },
+    //   _id:1,
+
+    // }
+  ]);
   const [error, setError] = useState(false);
   const queryParams = new URLSearchParams(window.location.search)
   // const term = queryParams.get("term")
   const location = queryParams.get("location")
-  // const api = "https://cors-anywhere.herokuapp.com/localhost:5000/api/v1/users/getphoto/623c5932f9ab201e74deb3dc"
+  const api = "https://cors-anywhere.herokuapp.com/localhost:5000/api/v1/users/getphoto/623c5932f9ab201e74deb3dc"
   
   const preloadProducts = async ()  => {
     if(location){

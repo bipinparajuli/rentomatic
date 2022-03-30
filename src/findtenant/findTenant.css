@@ -30,7 +30,7 @@
 .example-card {
   width: 294px;
   height: 352px;
-
+  overflow: hidden;
   background: rgba(255, 255, 255, 0.88);
   border: 2px solid #23656c;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
@@ -39,6 +39,7 @@
 }
 .image-description {
   margin: 1rem 1rem;
+  position: relative;
 }
 
 .image-description span {
@@ -58,8 +59,9 @@
   border-radius: 7px;
   margin-left: 6rem;
   width: 4rem;
-  height: 2.1rem;
   border: 2px solid #23656c;
+  position: absolute;
+  right: 0;
 }
 
 .image-description-title {
@@ -109,4 +111,13 @@
 }
 .selected-btn {
   background: #aac8cd;
+}
+
+
+@media screen and (max-width:600px) {
+  
+
+  .example{
+      margin-left: 7rem;
+  }
 }

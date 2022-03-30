@@ -3,10 +3,17 @@
   margin: 0;
 }
 .image-area {
-  background: url(./img/house.png) no-repeat;
   width: 100vw;
   height: 387px;
   margin-top: -0.1rem;
+  position: relative;
+}
+
+.image-area img {
+  position: absolute;
+  width: 100vw;
+  max-height: 40vh;
+  z-index: -1;
 }
 .tenant-account .image-area-text {
   width: 398px;
@@ -27,10 +34,8 @@
 }
 
 .image-area-text div {
-  width: 374px;
-  height: 96px;
   margin-left: 20rem;
-  margin-right: 25rem;
+  margin-right: 2rem;
   font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: 400;
@@ -43,6 +48,7 @@
 .tenant-account .user-details select {
   /* all: unset; */
   width: 360px;
+  max-width: 80vw;
   height: 40px;
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid #23656c;
@@ -51,22 +57,25 @@
   border-radius: 5px;
   margin-bottom: 1rem;
 }
-.tenant-account .profile input,
+
+.tenant-account .user-details .tenant-account .profile input,
 .tenant-account .profile select {
-  width: 179px;
+  width: 279px;
   height: 40px;
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid #23656c;
   box-sizing: border-box;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  margin-right:2rem;
+  margin-right: 2rem;
   margin-bottom: 2rem;
   margin-left: 1rem;
 }
+
 .tenant-account .profile textarea {
   all: unset;
   width: 596px;
+  max-width: 80vw;
   height: 68px;
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid #23656c;
@@ -78,10 +87,13 @@
 .tenant-account .user-details-content {
   display: flex;
   flex: 1 1;
+  flex-wrap: wrap;
 }
 .tenant-account .user-details-content-left {
   text-align: right;
   flex: 1;
+  margin-right: 2rem;
+  margin-left: 2rem;
 }
 .tenant-account .user-details-content-right {
   flex: 1;
@@ -90,6 +102,7 @@
 .tenant-account .preferences input,
 .tenant-account .preferences select {
   width: 360px;
+  max-width: 80vw;
   height: 40px;
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid #23656c;
@@ -104,6 +117,7 @@
 .tenant-account .preference select,
 .preference select {
   width: 360px;
+  max-width: 80vw;
   height: 40px;
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid #23656c;
@@ -134,6 +148,7 @@
 }
 .preferences-content {
   display: flex;
+  flex-wrap: wrap;
 }
 .preferences-content-left,
 .preferences-content-right {
@@ -141,25 +156,77 @@
   text-align: right;
   margin-right: 5rem;
 }
-.tenant-account .selection-div{
-  width:90vw;
+.tenant-account .selection-div {
+  width: 90vw;
   margin-left: 10rem;
+  display: flex;
+  flex-wrap: wrap;
 }
-.tenant-account .selection-div input{
+.tenant-account .selection-div input {
   margin-left: 4rem;
-  margin-right: .3rem;
+  margin-right: 0.3rem;
 }
 
-.tenant-account .rec{
+.tenant-account .rec {
   width: 85vw;
   display: flex;
   justify-content: center;
-  margin:3rem 0 1rem 0;
+  margin: 3rem 0 1rem 0;
 }
-.tenant-account .terms{
+.tenant-account .terms {
   width: 80vw;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 3rem;
+}
+
+@media screen and (max-width: 700px) {
+  .tenant-account .image-area-text div {
+    margin-left: 5rem;
+  }
+  .tenant-account .image-area-text h2 {
+    margin-left: 5rem;
+  }
+  .tenant-account .user-details-content-left {
+    margin-right: 2rem;
+    margin-left: 2rem;
+  }
+
+  .file {
+    max-width: 80vw;
+    height: 80px !important;
+    margin: 0;
+  }
+  .profile {
+    margin-left: 1rem;
+  }
+  .tenant-account .profile textarea {
+    margin-left: 1rem;
+  }
+  .preferences-content {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 2rem;
+  }
+
+  .tenant-account .selection-div {
+    width: 100vw;
+    margin-left: 0rem;
+  }
+  .tenant-account .selection-div input {
+    margin-left: 3rem;
+    margin-right: 0.3rem;
+  }
+
+  .tenant-account .terms {
+    margin-left: 2rem;
+  }
+
+  .tenant-account .rec {
+    margin: 3rem 0 1rem 2rem;
+  }
+  .terms span{
+    margin-left: 1rem;
+  }
 }

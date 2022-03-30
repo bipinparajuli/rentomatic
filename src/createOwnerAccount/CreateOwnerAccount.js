@@ -9,6 +9,10 @@ import "./createOwnerAccount.css";
 import {signup} from '../helper/ApiHelper'
 
 
+
+import image from './img/house.png';
+
+
 function CreateUserAccount() {
  
   const [state, setState] = useState({

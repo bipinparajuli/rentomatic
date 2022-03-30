@@ -2,19 +2,39 @@ body{
     padding:0;
     margin:0;
   }
+
+  .hamburger{
+    display: none;
+  }
+  nav .line1, .line2, .line3 {
+    width: 35px;
+    height: 5px;
+    background-color: #0c696e;
+    margin: 6px 0;
+    position: relative;
+    transition: .2s;
+  }
+  .line1 .change{
+    transform: rotate(-45deg);
+  }
+  .line2 .change{
+    opacity:0;
+  } 
+  .line3 .change{
+    transform: rotate(45deg);
+  }
   nav{
     padding:10px;
     background-color: #C3D8D9;
     display: flex;
     justify-content: space-between;
     align-items:center;
-    height:130px;
     font-weight: 200;
-    width: 100%;
-    
+    max-width: 100vw;
   }
  nav ul{
     display:flex;
+    transition: all 2ms linear;
   }
   ul li{
     list-style: none;
@@ -30,3 +50,29 @@ body{
     font-weight: 700;
 
   }
+
+@media screen and (max-width:500px){
+  nav{
+    display: block;
+  }
+  .mobile{
+    display: block;
+  }
+  .notMobile{
+    display: none;
+  }
+  nav ul li{
+    padding:.5rem ;
+    /* width:2rem; */
+    margin-left: -1rem;
+  }
+
+  nav .hamburger{
+    display: block;
+    position:absolute;
+    left:85vw;
+    top:2rem;
+    cursor: pointer;
+  }
+  
+}
