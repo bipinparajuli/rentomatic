@@ -15,10 +15,11 @@ export const signup = (user) => {
   };
   
   export const signin = (user) => {
+    console.log(user);
     return fetch(`${API}/login`, {
       method: "POST",
       headers: {
-        // Accept: "application/json",
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
