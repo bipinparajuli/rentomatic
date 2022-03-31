@@ -88,7 +88,7 @@ function Login() {
    onChange={handleChange("password")}
     
  />
- <br/><i class="eye fa-solid fa-eye-slash"></i></div>
+ <i class="eye fa-solid fa-eye-slash"></i></div>
  <span><a href='/forget'>Reset password ?</a></span><br/>
  {/* <div className="recaptcha"> */}
 

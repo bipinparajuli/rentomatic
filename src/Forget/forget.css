@@ -1,6 +1,5 @@
 .forget-password-container  {
-  width: 483px;
-  height: 515px;
+  width:max-content;
   background: rgba(255, 255, 255, 0.88);
   border: 2px solid #23656c;
   box-sizing: border-box;
@@ -10,7 +9,7 @@
   margin-left: 30vw;
 }
 .forget-password-container #form{
-  padding-left: 3rem;
+  padding:0 3.5rem ;
 }
 
 .forget-password-container .form-title{
@@ -65,4 +64,13 @@ border-radius: 5px;
   margin-bottom: 0rem;
   font-size: 20px;
   font-weight: bold;
+}
+
+
+@media screen and (max-width:600px) {
+  .forget-password-container{
+    width: fit-content;
+    margin-left: 3rem !important;
+  }
+  
 }

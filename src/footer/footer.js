@@ -6,7 +6,7 @@ function Footer() {
     <footer>
         <ul>
             <li>AboutUs</li>
-            <li>our services</li>
+            <li>Our services</li>
             <li>contact us</li>
             <li>Faq</li>
             <li>Terms and condition</li>
