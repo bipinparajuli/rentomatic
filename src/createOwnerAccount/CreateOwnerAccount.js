@@ -76,7 +76,7 @@ if(data.error){
   return (
     <>
 
-    <div className="user-account">
+    <div className="owner-account">
     <Formik
             enableReinitialize
             initialValues={{
