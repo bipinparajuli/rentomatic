@@ -1,6 +1,7 @@
 import {Route,Routes,BrowserRouter} from 'react-router-dom'
 import { NotificationsProvider } from '@mantine/notifications';
 import ChatBot from 'react-simple-chatbot';
+import {FaFacebookMessenger} from 'react-icons/fa'
 
 import './App.css';
 import NavBar from './NavBar/NavBar';
@@ -15,21 +16,20 @@ import FindRoom from './findroom/FindRoom';
 import FindTenant from './findtenant/findTenant'
 import Listing from './listing/Listing';
 import TenantProfile from './listing/TenantProfile';
+import { useState } from 'react';
 
 //new
 function App() {
-  const steps = [
-    {
-      id: '0',
-      message: 'Welcome to react chatbot!',
-      trigger: '1',
-    },
-    {
-      id: '1',
-      message: 'Bye!',
-      end: true,
-    },
-  ];
+
+  const[showbot,setShowBot] = useState(false)
+
+
+//  let e=document.getElementsByClassName("rsc-header")
+//  console.log(e);
+
+//  e.style.color = "red"
+
+
   return (
     <>      
     <BrowserRouter>
@@ -55,7 +55,74 @@ function App() {
     </NotificationsProvider>
 
     </BrowserRouter>
-    <ChatBot steps={steps} />
+    <div
+    style={{position:'fixed',bottom:"32px",right:"12px"}}
+    >
+
+    {
+      showbot ? <ChatBot
+      // onClick={{}}
+    onClick={()=>setShowBot(!showbot)}
+
+      style={{
+        position: "-webkit-sticky !important",
+        position: "fixed !important",
+        bottom: "95px !important",
+        right: "30px !important"
+      }}
+       steps={[
+        {
+          id: '1',
+          message: 'Hi, how can i help you?',
+          trigger: '2',
+        },
+        {
+          id: '2',
+          user: true,
+          trigger: '3',
+        },
+        {
+          id: '3',
+          message: '{previousValue}, приятно познакомиться! Чем занимаешься?',
+          trigger: '4',
+        },
+  
+  
+  
+        {
+          id: '4',
+          user: true,
+          trigger: '5',
+        },
+        {
+          id: '5',
+          message: 'Я думал, ты обрабатываешь заказы или настраиваешь сервер.',
+          trigger: '6',
+        },
+        {
+          id: '6',
+          user: true,
+          trigger: '7',
+        },
+        {
+          id: '7',
+          message: 'А ты кем работаешь?',
+          end: true,
+        }]}
+    /> : 
+    <FaFacebookMessenger
+cursor="pointer"
+onClick={()=>setShowBot(!showbot)}
+    size={40}
+
+
+    />
+
+}
+</div>
+
+    
+   
     <Footer />
     </>
   );
