@@ -1,30 +1,34 @@
 import React,{useState} from 'react';
-import './login.css';
-
-
 import ReCAPTCHA from "react-google-recaptcha";
 import { Link } from 'react-router-dom';
+import { useNotifications } from '@mantine/notifications';
+import { Loader } from '@mantine/core';
+
 import { signin } from '../helper/ApiHelper';
+import './login.css';
  
 
 
 function Login() {
-  const [values, setValues] = React.useState({
+  const [hidepassword, setHidepassword] = React.useState({
     password: "",
     showPassword: false,
   });
+  const notifications = useNotifications();
+
 
   function onChange(value) {
     console.log("Captcha value:", value);
   }
 
-  const [value, setValue] = useState({
+  const [values, setValues] = useState({
     email: "",
     password: "",
     err: "",
     didRedirect: false,
     loading: false,
   });
+  const { showPassword } = hidepassword;
 
   const { email, password, err, didRedirect, loading } = values;
   // const { user } = isAuthenticated();
@@ -36,11 +40,16 @@ function Login() {
   const onSubmit = (event) => {
     console.log(email,password);
     event.preventDefault();
-    setValues({ ...values, err: false, loading: false });
+    setValues({ ...values, err: false, loading: true });
     signin({ email, password })
       .then((data) => {
-        if (data.err) {
+        if (data.error) {
           setValues({ ...values, err: data.err, loading: false });
+          notifications.showNotification({
+            color:"red",
+            title: 'Error',
+            message: data.message,
+          }) 
         } else {
           // authenticate(data, () => {
           //   setValues({
@@ -53,7 +62,14 @@ function Login() {
           // });
         }
       })
-      .catch(console.log("Signin request failed!"));
+      .catch((e)=>{
+        console.log("Signin request failed!",);
+        notifications.showNotification({
+          color:"red",
+          title: 'Error',
+          message: "failed to register",
+        }) 
+      })
   };
 
   return (
@@ -81,14 +97,14 @@ function Login() {
  <label for="password" >Password</label><br/>
  <div className='password-div'>
    <input 
-   type={values.showPassword ? "text" : "password"}
+   type={hidepassword.showPassword ? "text" : "password"}
    className='password'
    id="password"
    value={password}
    onChange={handleChange("password")}
     
  />
- <i class="eye fa-solid fa-eye-slash"></i></div>
+ <i onClick={()=>setHidepassword({...hidepassword,showPassword:!showPassword})} class="eye fa-solid fa-eye-slash"></i></div>
  <span><a href='/forget'>Reset password ?</a></span><br/>
  {/* <div className="recaptcha"> */}
 
@@ -97,7 +113,10 @@ function Login() {
     onChange={onChange}
   />
  {/* </div> */}
-  <button class="loginbtn" onClick={onSubmit} >Log In</button><br/>
+  
+   <button class="loginbtn" onClick={onSubmit} >{loading ? <Loader /> :"Log In"}</button><br/>
+  
+  
   <div className='registerLink'>Don't have an account?<Link to={`/register`}>Register Now</Link></div>
  </div>
 
