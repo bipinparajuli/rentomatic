@@ -11,7 +11,7 @@ body {
   height: 387px;
   margin-top: -.1rem;
 }
-.user-account .image-area-text {
+.owner-account .image-area-text {
   width: 398px;
   height: 44px;
   font-family: "Source Sans Pro";
@@ -24,8 +24,8 @@ body {
   margin-left: 50rem;
   color: #183639;
 }
-.user-account .image-area-text h2 {
-  /* margin-left: 18rem; */
+.owner-account .image-area-text h2 {
+   margin-left: 18rem; 
   margin-top: -1rem;
 }
 
@@ -40,8 +40,8 @@ body {
   text-align: center;
   color: #183639;
 }
-.user-account .user-details input,
-.user-account .user-details select {
+.owner-account .user-details input,
+.owner-account .user-details select {
   /* all: unset; */
   width: 360px;
   height: 40px;
@@ -90,8 +90,8 @@ input[type="checkbox"] {
 .right {
   margin-left: 2rem;
 }
-.user-account .room-details input,
-.user-account .room-details select {
+.owner-account .room-details input,
+.owner-account .room-details select {
   width: 233px;
   height: 40px;
   background: rgba(255, 255, 255, 0.88);
@@ -100,11 +100,11 @@ input[type="checkbox"] {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 }
-.user-account label {
+.owner-account label {
   font-size: 20px;
 }
-.user-account  .room-address > input,
-.user-account  .room-address > select {
+.owner-account  .room-address > input,
+.owner-account  .room-address > select {
   width: 360px;
   height: 40px;
   background: rgba(255, 255, 255, 0.88);
@@ -140,7 +140,7 @@ input[type="checkbox"] {
   margin-bottom: 2rem;
 }
 
-.user-account .user-details {
+.owner-account .user-details {
   margin: 1rem;
   text-align: right;
 }
@@ -156,15 +156,15 @@ input[type="checkbox"] {
   margin-bottom: 1rem;
   margin-right: 45%;
 }
-.user-account .user-details input,
-.user-account .user-details select {
+.owner-account .user-details input,
+.owner-account .user-details select {
   margin-bottom: 1rem;
   margin-right: 45%;
 }
-.user-account input[type="file"] {
+.owner-account input[type="file"] {
   all: unset !important;
 }
-.user-account .user-details-container{
+.owner-account .user-details-container{
   width:100vw;
   height:280px;
   display: flex;
@@ -215,7 +215,7 @@ input[type="checkbox"] {
   margin-left: 25rem;
   margin-bottom: 2rem;
 }
-.user-account .terms {
+.owner-account .terms {
   margin-left: 20rem;
   margin-bottom: 2rem;
 }
