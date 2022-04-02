@@ -1,5 +1,6 @@
 import React,{useState} from "react";
-import {useNavigate,useParams} from 'react-router-dom'
+import {Link, useNavigate,useParams} from 'react-router-dom'
+import { Modal } from '@mantine/core';
 import { searchRoom } from "../helper/ApiHelper";
 import "./Hero.css";
 import Bouddha from './img/bouddha.png'
@@ -7,6 +8,7 @@ import Bouddha from './img/bouddha.png'
 function Hero() {
 
   const [search,setSearch] = useState();
+  const [opened, setOpened] = useState(false);
   let navigate = useNavigate();
 let params = useParams();
 
@@ -56,7 +58,166 @@ navigate(`/findroom/?location=${search}`)
           <span>4</span>/<span>5</span>
         </div>
       </div>
+      <Modal
+      overflow="inside"
+        opened={opened}
+        onClose={() => setOpened(false)}
+        title="Publish your add!"
+      >
+          <div className="room-details">
+      <div className="room-details-title">
+          <span>Room Details:</span>
+          <hr className="seperater right"></hr>
+        </div>
+        <div className="room-details-content">
+        <label for="room-types">Room types:</label>{" "}
+        <select className="xyz"
+        // value={formValues.owner.roomDetails.roomType}
+        // onChange={(e) =>
+                      // renderProps.setFieldValue("owner.roomDetails.roomType", e.target.value)
+                  // }
+                  >
+          <option value="Single">Single</option>
+          <option value="Double">Double</option>
+        </select><br />
+        <label for="available">Available From:</label> 
+        <input
+         type="date"
+        //  value={formValues.owner.roomDetails.roomType}
+        //  onChange={(e) =>
+        //                renderProps.setFieldValue("owner.roomDetails.roomType", e.target.value)
+        //            }
+         />
+        <br />
+        <label for="rent-duration">Rent Duration:</label> 
 
+        <select 
+        className="xyz"
+        // value={formValues.owner.roomDetails.rentDuration}
+        // onChange={(e) =>
+                      // renderProps.setFieldValue("owner.roomDetails.rentDuration", e.target.value)
+                  // }
+        >
+          <option value="Under 6 months">Under 6 months</option>
+          <option value="More than 6 months" >More than 6 months</option>
+          <option value="Unlimited">Unlimited</option>
+
+        </select>
+        <label for="rent-per-month">Rent per Month:</label>{" "}
+        <input type="text"
+        // value={formValues.owner.roomDetails.rentPerMonth}
+        // onChange={(e) =>
+                      // renderProps.setFieldValue("owner.roomDetails.rentPerMonth", e.target.value)
+                  // }
+        />
+        <br />
+        <label for="work-preference">Tenant preference:</label>{" "}
+        <select 
+        className="xyz"
+        // value={formValues.owner.tenantPreference}
+        // onChange={(e) =>
+                      // renderProps.setFieldValue("owner.tenantPreference", e.target.value)
+                  // }
+        >
+          <option value="Male" >Male</option>
+          <option value="Female">Female</option>
+          <option value="Couple">Couple</option>
+          <option value="Others">Others</option>
+        </select>
+        <label for="work-preference">Work preference:</label>{" "}
+        <select 
+        className="xyz"
+        // value={formValues.owner.workPreference}
+        // onChange={(e) =>
+                      // renderProps.setFieldValue("owner.workPreference", e.target.value)
+                  // }
+        >
+          <option value="Student">Student</option>
+          <option value="Employeed">Employeed</option>
+          <option value="Retired">Retired</option>
+          <option value="Other">Other</option>
+
+        </select>
+        <br />
+        {/* <div className="rooms-checkbox">
+        <input type="checkbox" />
+        <span>Internet</span>
+        <input type="checkbox" />
+        <span>Pets Allowed</span>
+        <input type="checkbox" />
+        <span>Parking</span>
+        <input type="checkbox" />
+        <span>Attached Bathroom</span>
+        </div> */}
+        </div>
+      </div>
+      <div className="room-address">
+      <div className="room-address-title">
+          <span>Room Address:</span>
+          <hr className="seperater right"></hr>
+        </div>
+        <label for="district">District:</label>
+        <select
+        className="xyz"
+          // value={formValues.owner.roomAddress.district}
+          // onChange={(e) =>
+          //               renderProps.setFieldValue("owner.roomAddress.district", e.target.value)
+          //           }
+        >
+          <option value="Kathmandu" >Kathmandu</option>
+          <option value="Bhaktapur">Bhaktapur</option>
+          <option value="Lalitpur">Lalitpur</option>
+
+        </select>
+        <br />
+        <label for="area">Area:</label>
+        <input
+        type="text"
+        // value={formValues.owner.roomAddress.area}
+        // onChange={(e) =>
+        //               renderProps.setFieldValue("owner.roomAddress.area", e.target.value)
+        //           }
+        />
+        <br />
+      </div>
+      <div className="title-and-description">
+      <div className="title-description-title">
+          <span>Title and Description:</span>
+          <hr className="seperater right"></hr>
+        </div>
+        <div className="title-and-description-content">
+        <div className="title-and-description-text">
+          <label for="ad-title">Ad Title:</label>
+          <input 
+              type="text"
+            //  value={formValues.owner.title}
+            //  onChange={(e) =>
+            //                renderProps.setFieldValue("owner.title", e.target.value)
+            //            }
+          />
+          <br />
+          <label for="ad-description">Ad Description:</label>
+          <textarea
+            //  value={formValues.owner.description}
+            //  onChange={(e) =>
+            //                renderProps.setFieldValue("owner.description", e.target.value)
+            //            }
+          />
+          <br />
+        </div>
+        <div className="title-and-description-image">
+          <h4>Add your room Images:</h4>
+          <input 
+          type="file"
+          // value={formValues.owner.images}
+          //    onChange={(e) =>
+          //                  renderProps.setFieldValue("owner.images", e.target.value)
+          //              }
+          />
+        </div>
+        </div>
+      </div>
+      </Modal>
       <div className="card-section">
         <div className="card-1">
           <div className="card-description">
@@ -68,7 +229,9 @@ navigate(`/findroom/?location=${search}`)
           </div>
           <div className="card-bottom">
             <div className="btndiv">
-              <button className="btns">List Your Rooms</button>
+              <button
+              onClick={() => setOpened(true)}
+              className="btns">List Your Rooms</button>
               <span className="btnplus fa-solid fa-plus"></span>
             </div>
           </div>
@@ -83,7 +246,13 @@ navigate(`/findroom/?location=${search}`)
           </div>
           <div className="card-bottom">
             <div className="btndiv">
-              <button className="btns">Find Your Room</button>
+              <Link
+              to={'/findroom'}
+              >
+              <button
+              className="btns">Find Your Room</button>
+              </Link>
+             
               <span className="btnplus fa-solid fa-home"></span>
             </div>
           </div>
