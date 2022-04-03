@@ -3,6 +3,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { Link } from 'react-router-dom';
 import { useNotifications } from '@mantine/notifications';
 import { Loader } from '@mantine/core';
+import {useNavigate} from 'react-router-dom'
 
 import { signin } from '../helper/ApiHelper';
 import './login.css';
@@ -14,6 +15,7 @@ function Login() {
     password: "",
     showPassword: false,
   });
+  let navigate = useNavigate();
   const notifications = useNotifications();
 
 
@@ -51,6 +53,16 @@ function Login() {
             message: data.message,
           }) 
         } else {
+          notifications.showNotification({
+            color:"green",
+            title: 'Success',
+            message: "Successfully login",
+          })
+          setTimeout(()=>{
+            navigate("/")
+          },1000)
+
+
           // authenticate(data, () => {
           //   setValues({
           //     email: "",

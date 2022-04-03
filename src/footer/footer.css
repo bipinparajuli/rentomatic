@@ -24,7 +24,7 @@ footer {
   background-color: #c3d8d9;
   height: 70px;
   position: relative;
-  bottom: 0;
+  bottom: 0px;
   width: 98.5vw;
   display: flex;
   flex-wrap: wrap;

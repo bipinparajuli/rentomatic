@@ -43,13 +43,17 @@ function createTenantAccount() {
             <br />
             <label for="gender">Gender:</label>{" "}
             <select>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Other</option>
+            <option>Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
             </select>
             <br />
             <label for="email">Email:</label>
-            <input type="email" />
+            <input 
+            type="email" 
+            
+            />
             <br />
             <label for="password">Password:</label>
             <input type="password" />
@@ -70,18 +74,22 @@ function createTenantAccount() {
           <div className="profile-content">
             <label>I am:</label>
             <select>
-              <option></option>
+              <option >Select</option>
+
+              <option value="Student">Student</option>
+              <option value="Employeed">Employeed</option>
+              <option value="Retired">Retired</option>
+              <option value="Other">Other</option>
+
             </select>
             <label>Age:</label>
-            <select>
-              <option></option>
-            </select>
+            <input type="number" />
             <label>Occupation:</label>
             <select>
-              <option>Student</option>
-              <option>Employeed</option>
-              <option>Retired</option>
-              <option>Other</option>
+              <option value="Student">Student</option>
+              <option value="Employeed">Employeed</option>
+              <option value="Retired">Retired</option>
+              <option value="Other">Other</option>
             </select>
             <br />
             <label>Profile Description:</label>
@@ -97,31 +105,38 @@ function createTenantAccount() {
           <div className="preferences-content-left">
           <label>Room Location:</label>
           <select>
-            <option></option>
+          {/* enum: ['Kathmandu', 'Bhaktapur', 'Lalitpur'], */}
+          <option>Select</option>
+            <option>Kathmandu</option>
+            <option>Bhaktapur</option>
+            <option>Lalitpur</option>
+
           </select>
           <br/>
           <label>Rent Duration:</label>
           <select>
-            <option></option>
+        {/* enum: ['Under 6 months', 'More than 6 months', 'Unlimited'], */}
+        <option>Select</option>
+            <option>Under 6 months</option>
+            <option>More than 6 months</option>
+            <option>Unlimited</option>
+
           </select>
           <br />
           <label>Available Within:</label>
-          <select>
-            <option></option>
-          </select>
+          <input type="date" />
           </div>
           <div className="preferences-content-right">
           <label>Room Type:</label>
           <select>
+            <option>Select</option>
             <option>Single</option>
             <option>Double</option>
             
           </select>
           <br />
           <label>Rent per Month:</label>
-          <select>
-            <option></option>
-          </select>
+            <input type="text" />
           </div>
           </div>
           <br />

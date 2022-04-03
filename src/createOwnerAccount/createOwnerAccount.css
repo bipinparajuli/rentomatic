@@ -6,8 +6,10 @@ body {
   margin: 0;
 }
 .image-area {
-  /* background: url(./img/house.png) no-repeat; */
-  width: 100vw;
+  background: url(./img/house.png);
+  background-repeat: "no-repeat" !important;
+   object-fit: cover;
+  width: 100hw;
   height: 387px;
   margin-top: -.1rem;
 }

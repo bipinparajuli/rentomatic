@@ -1,6 +1,6 @@
 import {Route,Routes,BrowserRouter} from 'react-router-dom'
 import { NotificationsProvider } from '@mantine/notifications';
-import ChatBot from 'react-simple-chatbot';
+import ChatBot from 'react-simple-chatbot'; //chat bot lib
 import {FaFacebookMessenger} from 'react-icons/fa'
 
 import './App.css';
@@ -73,6 +73,7 @@ function App() {
        steps={[
         {
           id: '1',
+          //chat bot messege
           message: 'Hi, how can i help you?',
           trigger: '2',
         },
@@ -83,7 +84,7 @@ function App() {
         },
         {
           id: '3',
-          message: '{previousValue}, приятно познакомиться! Чем занимаешься?',
+          message: 'messege',
           trigger: '4',
         },
   
@@ -96,7 +97,7 @@ function App() {
         },
         {
           id: '5',
-          message: 'Я думал, ты обрабатываешь заказы или настраиваешь сервер.',
+          message: 'helo',
           trigger: '6',
         },
         {
@@ -106,7 +107,7 @@ function App() {
         },
         {
           id: '7',
-          message: 'А ты кем работаешь?',
+          message: ',.......?',
           end: true,
         }]}
     /> : 
