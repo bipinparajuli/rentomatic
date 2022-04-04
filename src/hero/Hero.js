@@ -4,6 +4,13 @@ import { Modal } from '@mantine/core';
 import { searchRoom } from "../helper/ApiHelper";
 import "./Hero.css";
 import Bouddha from './img/bouddha.png'
+import Patan from './img/patan.png'
+import Bhaktapur from './img/bhaktapur.png'
+import Baneshor from './img/baneshor.png'
+import Pepsicola from './img/pepsicola.png'
+import Kritipur from './img/kritipur.png'
+
+
 
 function Hero() {
 
@@ -43,6 +50,7 @@ navigate(`/findroom/?location=${search}`)
           </div>
         </div>
       </div>
+    <div className="hero-section-wrapper">
 
       <div className="hero-section">
         <h4 className="customer"> Customer rating</h4>
@@ -58,6 +66,8 @@ navigate(`/findroom/?location=${search}`)
           <span>4</span>/<span>5</span>
         </div>
       </div>
+      </div>
+
       <Modal
       overflow="inside"
         opened={opened}
@@ -294,37 +304,37 @@ navigate(`/findroom/?location=${search}`)
         </div>
         <div className="hero-section-3-card">
         <div className="title-hero-section-3-card">
-         Boudha
+         Patan
         </div>
-        <img src={Bouddha} />
+        <img src={Patan} />
 
         </div>
         <div className="hero-section-3-card">
         <div className="title-hero-section-3-card">
-         Boudha
+         Bhaktapur
         </div>
-        <img src={Bouddha} />
+        <img src={Bhaktapur} />
 
         </div>
         <div className="hero-section-3-card">
         <div className="title-hero-section-3-card">
-         Boudha
+         Baneshor
         </div>
-        <img src={Bouddha} />
+        <img src={Baneshor} />
 
         </div>
         <div className="hero-section-3-card">
         <div className="title-hero-section-3-card">
-         Boudha
+         Pepsicola
         </div>
-        <img src={Bouddha} />
+        <img src={Pepsicola} />
 
         </div>
         <div className="hero-section-3-card">
         <div className="title-hero-section-3-card">
-         Boudha
+         Kritipur
         </div>
-        <img src={Bouddha} />
+        <img src={Kritipur} />
 
         </div>
         </div>
