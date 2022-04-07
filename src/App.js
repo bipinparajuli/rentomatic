@@ -11,7 +11,7 @@ import Footer from './footer/footer'
 import Login from './Login/login';
 import Forget from './Forget/Forget';
 import CreateOwnerAccount from './createOwnerAccount/CreateOwnerAccount'
-import CreateTenantAccount from './createTenantAccount/createTenantAccount';
+import CreateTenantAccount from './createTenantAccount/CreateTenantAccount';
 import FindRoom from './findroom/FindRoom';
 import FindTenant from './findtenant/findTenant'
 import Listing from './listing/Listing';

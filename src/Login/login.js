@@ -86,6 +86,10 @@ function Login() {
 
   return (
     <>
+    <div
+    style={{height:"100vh",display:"flex",justifyContent:"center",alignItems:"center"}}
+    >
+
     <div className="login-container">
 
 <div id="form">
@@ -132,6 +136,7 @@ function Login() {
   <div className='registerLink'>Don't have an account?<Link to={`/register`}>Register Now</Link></div>
  </div>
 
+    </div>
     </div>
     
     </>

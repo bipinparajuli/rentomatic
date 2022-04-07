@@ -166,6 +166,7 @@
 .hero-section-2-card {
   margin: 2rem;
   display: flex;
+  justify-content: center;
   color: #23656c;
 }
 .hero-section-2-card > .card > h5 {
@@ -205,10 +206,11 @@
 }
 .hero-section-3-card {
   /* background-image: url(../hero/img/index.jpg); */
-  width: 17rem;
+  width: 25%;
   height: 17rem;
   margin: 1rem 3rem;
   border-radius: 10px;
+  cursor: pointer;
 }
 .title-hero-section-3-card {
   margin-left: 5rem;
@@ -274,6 +276,7 @@
   .hero-section-2-card {
     margin: 1rem -1rem;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
   }
   .hero-section-2-card > .card {

@@ -83,3 +83,18 @@ export const signup = (user) => {
       })
       .catch((err) => console.log(err));
   };
+
+  export const updateOwner = (user) => {
+    return fetch(`${API}/update`, {
+      method: "PUT",
+      headers: {
+        // Accept: "application/json",
+        // "Content-Type": "multipart/form-data",
+      },
+      body: user,
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .catch((err) => console.log(err));
+  };

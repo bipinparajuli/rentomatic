@@ -1,6 +1,11 @@
 import React,{useState} from "react";
 import {Link, useNavigate,useParams} from 'react-router-dom'
 import { Modal } from '@mantine/core';
+import * as Yup from "yup";
+import {Formik,Form,ErrorMessage} from 'formik'
+import { useNotifications } from '@mantine/notifications';
+import {updateOwner} from '../helper/ApiHelper'
+
 import { searchRoom } from "../helper/ApiHelper";
 import "./Hero.css";
 import Bouddha from './img/bouddha.png'
@@ -19,10 +24,45 @@ function Hero() {
   let navigate = useNavigate();
 let params = useParams();
 
+const notifications = useNotifications();
 
   function handleSearch(){
 
 navigate(`/findroom/?location=${search}`)
+}
+
+function handleFormSubmit(values,{resetForm}){
+  let formData = new FormData()
+  for (let value in values) {
+    if(value == "owner" ){
+      formData.append(value, JSON.stringify(values[value]));
+
+      // console.log(JSON.stringify(values[value]));
+      // formData.append(value,JSON.stringify(values[value]));
+    }else{
+
+    formData.append(value, values[value]);
+    }
+  }
+  console.log(formData.getAll("gender"));
+  updateOwner(formData).then(data=>{
+console.log(data);
+if(data.error){
+notifications.showNotification({
+  color:"red",
+  title: 'Error',
+  message: "failed to register",
+})
+}else{
+notifications.showNotification({
+  color:"green",
+  title: 'Success',
+  message: "Successfully registered",
+})
+resetForm()
+}
+  }).catch(err=>console.log(err))
+  // props.handleJobRequestAction(formData,user._id)
 }
 
   return (
@@ -74,6 +114,37 @@ navigate(`/findroom/?location=${search}`)
         onClose={() => setOpened(false)}
         title="Publish your add!"
       >
+        <Formik
+            enableReinitialize
+            initialValues={{
+              owner:{
+                roomDetails:{
+                  roomType:"",
+                  rentPerMonth:"",
+                  rentDuration:""
+                },
+                workPreference:"",
+                tenantPreference:"",
+                roomAddress:{
+                  district:"",
+                  area:"",
+                },
+                title:'',
+                description:"",
+                images:null
+
+              },
+            }}
+            onSubmit={handleFormSubmit}
+            // validationSchema={RegisterValidationSchema}
+          >
+            {(renderProps) => {
+              const { values: formValues, touched, errors,setFieldValue } = renderProps;
+              // console.log(formValues);
+              return (
+                <>
+                  <Form encType="multipart-formdata">
+
           <div className="room-details">
       <div className="room-details-title">
           <span>Room Details:</span>
@@ -82,10 +153,10 @@ navigate(`/findroom/?location=${search}`)
         <div className="room-details-content">
         <label for="room-types">Room types:</label>{" "}
         <select className="xyz"
-        // value={formValues.owner.roomDetails.roomType}
-        // onChange={(e) =>
-                      // renderProps.setFieldValue("owner.roomDetails.roomType", e.target.value)
-                  // }
+        value={formValues.owner.roomDetails.roomType}
+        onChange={(e) =>
+                      renderProps.setFieldValue("owner.roomDetails.roomType", e.target.value)
+                  }
                   >
           <option value="Single">Single</option>
           <option value="Double">Double</option>
@@ -96,17 +167,17 @@ navigate(`/findroom/?location=${search}`)
         //  value={formValues.owner.roomDetails.roomType}
         //  onChange={(e) =>
         //                renderProps.setFieldValue("owner.roomDetails.roomType", e.target.value)
-        //            }
+                  //  }
          />
         <br />
         <label for="rent-duration">Rent Duration:</label> 
 
         <select 
         className="xyz"
-        // value={formValues.owner.roomDetails.rentDuration}
-        // onChange={(e) =>
-                      // renderProps.setFieldValue("owner.roomDetails.rentDuration", e.target.value)
-                  // }
+        value={formValues.owner.roomDetails.rentDuration}
+        onChange={(e) =>
+                      renderProps.setFieldValue("owner.roomDetails.rentDuration", e.target.value)
+                  }
         >
           <option value="Under 6 months">Under 6 months</option>
           <option value="More than 6 months" >More than 6 months</option>
@@ -115,19 +186,19 @@ navigate(`/findroom/?location=${search}`)
         </select>
         <label for="rent-per-month">Rent per Month:</label>{" "}
         <input type="text"
-        // value={formValues.owner.roomDetails.rentPerMonth}
-        // onChange={(e) =>
-                      // renderProps.setFieldValue("owner.roomDetails.rentPerMonth", e.target.value)
-                  // }
+        value={formValues.owner.roomDetails.rentPerMonth}
+        onChange={(e) =>
+                      renderProps.setFieldValue("owner.roomDetails.rentPerMonth", e.target.value)
+                  }
         />
         <br />
         <label for="work-preference">Tenant preference:</label>{" "}
         <select 
         className="xyz"
-        // value={formValues.owner.tenantPreference}
-        // onChange={(e) =>
-                      // renderProps.setFieldValue("owner.tenantPreference", e.target.value)
-                  // }
+        value={formValues.owner.tenantPreference}
+        onChange={(e) =>
+                      renderProps.setFieldValue("owner.tenantPreference", e.target.value)
+                  }
         >
           <option value="Male" >Male</option>
           <option value="Female">Female</option>
@@ -137,10 +208,10 @@ navigate(`/findroom/?location=${search}`)
         <label for="work-preference">Work preference:</label>{" "}
         <select 
         className="xyz"
-        // value={formValues.owner.workPreference}
-        // onChange={(e) =>
-                      // renderProps.setFieldValue("owner.workPreference", e.target.value)
-                  // }
+        value={formValues.owner.workPreference}
+        onChange={(e) =>
+                      renderProps.setFieldValue("owner.workPreference", e.target.value)
+                  }
         >
           <option value="Student">Student</option>
           <option value="Employeed">Employeed</option>
@@ -169,10 +240,10 @@ navigate(`/findroom/?location=${search}`)
         <label for="district">District:</label>
         <select
         className="xyz"
-          // value={formValues.owner.roomAddress.district}
-          // onChange={(e) =>
-          //               renderProps.setFieldValue("owner.roomAddress.district", e.target.value)
-          //           }
+          value={formValues.owner.roomAddress.district}
+          onChange={(e) =>
+                        renderProps.setFieldValue("owner.roomAddress.district", e.target.value)
+                    }
         >
           <option value="Kathmandu" >Kathmandu</option>
           <option value="Bhaktapur">Bhaktapur</option>
@@ -183,10 +254,10 @@ navigate(`/findroom/?location=${search}`)
         <label for="area">Area:</label>
         <input
         type="text"
-        // value={formValues.owner.roomAddress.area}
-        // onChange={(e) =>
-        //               renderProps.setFieldValue("owner.roomAddress.area", e.target.value)
-        //           }
+        value={formValues.owner.roomAddress.area}
+        onChange={(e) =>
+                      renderProps.setFieldValue("owner.roomAddress.area", e.target.value)
+                  }
         />
         <br />
       </div>
@@ -200,18 +271,18 @@ navigate(`/findroom/?location=${search}`)
           <label for="ad-title">Ad Title:</label>
           <input 
               type="text"
-            //  value={formValues.owner.title}
-            //  onChange={(e) =>
-            //                renderProps.setFieldValue("owner.title", e.target.value)
-            //            }
+             value={formValues.owner.title}
+             onChange={(e) =>
+                           renderProps.setFieldValue("owner.title", e.target.value)
+                       }
           />
           <br />
           <label for="ad-description">Ad Description:</label>
           <textarea
-            //  value={formValues.owner.description}
-            //  onChange={(e) =>
-            //                renderProps.setFieldValue("owner.description", e.target.value)
-            //            }
+             value={formValues.owner.description}
+             onChange={(e) =>
+                           renderProps.setFieldValue("owner.description", e.target.value)
+                       }
           />
           <br />
         </div>
@@ -219,14 +290,24 @@ navigate(`/findroom/?location=${search}`)
           <h4>Add your room Images:</h4>
           <input 
           type="file"
-          // value={formValues.owner.images}
-          //    onChange={(e) =>
-          //                  renderProps.setFieldValue("owner.images", e.target.value)
-          //              }
+          value={formValues.owner.images}
+             onChange={(e) =>
+                           renderProps.setFieldValue("owner.images", e.target.value)
+                       }
           />
         </div>
         </div>
+        <div className="create">
+            <button type="submit">Create Owner Account with Ads</button>
+
+        </div>
       </div>
+      </Form>
+    </>
+              )
+            }
+            }
+            </Formik>
       </Modal>
       <div className="card-section">
         <div className="card-1">
@@ -295,42 +376,64 @@ navigate(`/findroom/?location=${search}`)
         <div className="title-hero-section-3">
           <h2>Explore rooms in popular Areas</h2>
         </div>
-        <div className="hero-section-3-card-section">
-        <div className="hero-section-3-card">
-        <div className="title-hero-section-3-card">
-         Boudha
-        </div>
-        <img src={Bouddha} />
-        </div>
-        <div className="hero-section-3-card">
+        <div 
+        className="hero-section-3-card-section"
+// onClick={
+//   navigate(`/findroom/?location=bouddha`)
+// }
+        >
+          <div className="hero-section-3-card"
+          onClick={()=> navigate(`/findroom/?location=bouddha`)}
+          >
+          <div className="title-hero-section-3-card">
+          Boudha
+          </div>
+          <img src={Bouddha} />
+          </div>
+        <div className="hero-section-3-card"
+          onClick={()=> navigate(`/findroom/?location=patan`)}
+        
+        >
         <div className="title-hero-section-3-card">
          Patan
         </div>
         <img src={Patan} />
 
         </div>
-        <div className="hero-section-3-card">
+        <div className="hero-section-3-card"
+          onClick={()=> navigate(`/findroom/?location=bhaktapur`)}
+        
+        >
         <div className="title-hero-section-3-card">
          Bhaktapur
         </div>
         <img src={Bhaktapur} />
 
         </div>
-        <div className="hero-section-3-card">
+        <div className="hero-section-3-card"
+          onClick={()=> navigate(`/findroom/?location=baneshor`)}
+        
+        >
         <div className="title-hero-section-3-card">
          Baneshor
         </div>
         <img src={Baneshor} />
 
         </div>
-        <div className="hero-section-3-card">
+        <div className="hero-section-3-card"
+          onClick={()=> navigate(`/findroom/?location=pepsicola`)}
+        
+        >
         <div className="title-hero-section-3-card">
          Pepsicola
         </div>
         <img src={Pepsicola} />
 
         </div>
-        <div className="hero-section-3-card">
+        <div className="hero-section-3-card"
+          onClick={()=> navigate(`/findroom/?location=kritipur`)}
+        
+        >
         <div className="title-hero-section-3-card">
          Kritipur
         </div>

@@ -177,9 +177,10 @@ if(data.error){
                        renderProps.setFieldValue("gender", e.target.value)
                    }
         >
-          <option value="male" >Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
+                      <option>Select</option>
+                      <option value="male" >Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Other</option>
         </select>
         <br />
         <label for="email">Email:</label>
@@ -215,6 +216,8 @@ if(data.error){
                       renderProps.setFieldValue("owner.roomDetails.roomType", e.target.value)
                   }
                   >
+                      <option>Select</option>
+
           <option value="Single">Single</option>
           <option value="Double">Double</option>
         </select>
@@ -236,6 +239,7 @@ if(data.error){
                       renderProps.setFieldValue("owner.roomDetails.rentDuration", e.target.value)
                   }
         >
+                      <option>Select</option>
           <option value="Under 6 months">Under 6 months</option>
           <option value="More than 6 months" >More than 6 months</option>
           <option value="Unlimited">Unlimited</option>
@@ -257,6 +261,8 @@ if(data.error){
                       renderProps.setFieldValue("owner.tenantPreference", e.target.value)
                   }
         >
+                      <option>Select</option>
+
           <option value="Male" >Male</option>
           <option value="Female">Female</option>
           <option value="Couple">Couple</option>
@@ -270,6 +276,8 @@ if(data.error){
                       renderProps.setFieldValue("owner.workPreference", e.target.value)
                   }
         >
+                      <option>Select</option>
+
           <option value="Student">Student</option>
           <option value="Employeed">Employeed</option>
           <option value="Retired">Retired</option>
@@ -302,6 +310,7 @@ if(data.error){
                         renderProps.setFieldValue("owner.roomAddress.district", e.target.value)
                     }
         >
+                      <option>Select</option>
           <option value="Kathmandu" >Kathmandu</option>
           <option value="Bhaktapur">Bhaktapur</option>
           <option value="Lalitpur">Lalitpur</option>
@@ -309,13 +318,21 @@ if(data.error){
         </select>
         <br />
         <label for="area">Area:</label>
-        <input
-        type="text"
+        <select
+        className="xyz"
         value={formValues.owner.roomAddress.area}
         onChange={(e) =>
                       renderProps.setFieldValue("owner.roomAddress.area", e.target.value)
-                  }
-        />
+                  }>
+                      <option>Select</option>
+                      <option value="Bouddha">Bouddha</option>
+                      <option value="Patan">Patan</option>
+                      <option value="Kritipur">Kritipur</option>
+                      <option value="Bhaktapur">Bhaktapur</option>
+                      <option value="Baneshor">Baneshor</option>
+                      <option value="Pepsicola">Pepsicola</option>
+
+                  </select>
         <br />
       </div>
       <div className="title-and-description">
