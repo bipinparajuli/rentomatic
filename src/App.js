@@ -9,6 +9,8 @@ import Hero from './hero/Hero';
 import Registration from './Registration/Registration';
 import Footer from './footer/footer'
 import Login from './Login/login';
+import Profile from './Profile/Profile';
+
 import Forget from './Forget/Forget';
 import CreateOwnerAccount from './createOwnerAccount/CreateOwnerAccount'
 import CreateTenantAccount from './createTenantAccount/CreateTenantAccount';
@@ -45,6 +47,7 @@ function App() {
       <Route path="/createOwnerAccount" element={<CreateOwnerAccount />}/>
       <Route path="/createTenantAccount" element={<CreateTenantAccount />}/>
       <Route path="/findRoom" element={<FindRoom/>}/>
+      <Route path="/profile" element={<Profile/>}/>
       <Route path="/findTenant" element={<FindTenant/>}/>
       <Route path="/room/:id" element={<Listing/>}/>
       <Route path="/tenantprofile/:id" element={<TenantProfile/>}/>

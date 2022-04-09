@@ -1,0 +1,41 @@
+.example-card {
+    width: 294px;
+    height: 352px;
+    background: rgba(255, 255, 255, 0.88);
+    border: 2px solid #23656c;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 47px;
+    margin: 2rem 1rem;
+  }
+
+  .image{
+      height: 235px;
+  }
+
+  .image-description {
+    margin: 1rem 1rem;
+  }
+  
+  .image-description span {
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    font-family: "Source Sans Pro";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    margin: 0.15rem 0;
+  }
+  
+  .image-description-title {
+    display: block;
+    width: 274px;
+    margin-bottom: 1rem;
+    margin-right: 10px;
+    position: relative;
+  }
+  .heart {
+    position: absolute;
+    right:2rem;
+  }

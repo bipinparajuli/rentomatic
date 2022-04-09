@@ -61,6 +61,7 @@ if(data.error){
               gender:"",
               email:"",
               password:"",
+              images:null,
               tenant:{
                 
                 preferredRooms:{
@@ -74,7 +75,6 @@ if(data.error){
                 
                 profileDescription:{
                   bio:"",
-                  images:null,
                 },
                occupation:""
 
@@ -181,7 +181,7 @@ if(data.error){
             //  value={formValues.tenant.profileDescription.images}
              onChange={(e) =>
               // console.log(e.currentTarget.files[0])
-                           renderProps.setFieldValue("tenant.profileDescription.images", e.currentTarget.files[0])
+                           renderProps.setFieldValue("images", e.currentTarget.files[0])
                        }
             className="file"/>
           </div>

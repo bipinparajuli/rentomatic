@@ -6,6 +6,7 @@ import room from "./img/1.png";
 import ImageHelper from '../helper/ImageHelper'
 import {getAllRooms, searchRoom} from '../helper/ApiHelper'
 import { Link,} from "react-router-dom";
+import { addItemToCart } from "../helper/CartHelper";
 
 function FindRoom() {
   const [value, onChange] = useState(1);
@@ -55,6 +56,10 @@ function FindRoom() {
    
   };
 
+  function handleBookMark(room){
+    addItemToCart(room)
+  }
+
   useEffect(() => {
     preloadProducts();
   }, []);
@@ -84,7 +89,9 @@ function FindRoom() {
               <div className="image-description">
                 <span className="image-description-title">
                   { room.owner !== undefined? room.owner.description : "wait . . . " }
-                  <i className="heart fa-solid fa-heart"></i>
+                  <i className="heart fa-solid fa-heart"
+                  onClick={()=>handleBookMark(room)}
+                  ></i>
                   <br />
                 </span>
                 <span> { room.owner !== undefined? room.owner.roomAddress.district : "wait . . . " }</span>

@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom'
 
 import { signin } from '../helper/ApiHelper';
 import './login.css';
+import { persistSession } from '../helper/session';
  
 
 
@@ -45,6 +46,7 @@ function Login() {
     setValues({ ...values, err: false, loading: true });
     signin({ email, password })
       .then((data) => {
+        console.log(data);
         if (data.error) {
           setValues({ ...values, err: data.err, loading: false });
           notifications.showNotification({
@@ -53,11 +55,14 @@ function Login() {
             message: data.message,
           }) 
         } else {
+
+          persistSession(data.data)
           notifications.showNotification({
             color:"green",
             title: 'Success',
             message: "Successfully login",
           })
+          window.location.reload()
           setTimeout(()=>{
             navigate("/")
           },1000)
