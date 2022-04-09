@@ -40,13 +40,13 @@ function CreateUserAccount() {
   });
 
   function handleFormSubmit(values,{resetForm}){
+    console.log(values);
     let formData = new FormData()
     for (let value in values) {
       if(value == "owner" ){
         formData.append(value, JSON.stringify(values[value]));
 
         // console.log(JSON.stringify(values[value]));
-        // formData.append(value,JSON.stringify(values[value]));
       }else{
 
       formData.append(value, values[value]);
@@ -366,7 +366,7 @@ if(data.error){
           type="file"
           value={formValues.owner.images}
              onChange={(e) =>
-                           renderProps.setFieldValue("owner.images", e.target.value)
+                           renderProps.setFieldValue("owner.images", e.target.files[0])
                        }
           />
         </div>

@@ -173,10 +173,15 @@ if(data.error){
           </div>
           <div className="user-details-content-right">
             <h4>Add your room Images:</h4>
-            <input type="file"
-             value={formValues.tenant.profileDescription.images}
+            <input 
+            id="images"
+             name="images"
+             accept='image/*'
+            type="file"
+            //  value={formValues.tenant.profileDescription.images}
              onChange={(e) =>
-                           renderProps.setFieldValue("tenant.profileDescription.images", e.target.value)
+              // console.log(e.currentTarget.files[0])
+                           renderProps.setFieldValue("tenant.profileDescription.images", e.currentTarget.files[0])
                        }
             className="file"/>
           </div>

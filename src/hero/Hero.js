@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import {Link, useNavigate,useParams} from 'react-router-dom'
 import { Modal } from '@mantine/core';
+import { FaStar } from "react-icons/fa";
 import * as Yup from "yup";
 import {Formik,Form,ErrorMessage} from 'formik'
 import { useNotifications } from '@mantine/notifications';
@@ -21,6 +22,7 @@ function Hero() {
 
   const [search,setSearch] = useState();
   const [opened, setOpened] = useState(false);
+  const [rate, setRate] = useState(0);
   let navigate = useNavigate();
 let params = useParams();
 
@@ -94,16 +96,38 @@ resetForm()
 
       <div className="hero-section">
         <h4 className="customer"> Customer rating</h4>
-        <div className="rating">
-          <span className="fa fa-star checked"></span>
-          <span className="fa fa-star checked"></span>
-          <span className="fa fa-star checked"></span>
-          <span className="fa fa-star"></span>
-          <span className="fa fa-star"></span>
-        </div>
+        {[...Array(5)].map((item, index) => {
+        const givenRating = index + 1;
+        return (
+          <label>
+            <input
+            style={{
+              display:"none"
+            }}
+              type="radio"
+              value={givenRating}
+              onClick={() => {
+                setRate(givenRating);
+                // alert(`Are you sure you want to give ${givenRating} stars ?`);
+              }}
+            />
+            <div
+            style={{cursor:"pointer"}}
+            >
+              <FaStar
+                color={
+                  givenRating < rate || givenRating === rate
+                    ? "000"
+                    : "rgb(192,192,192)"
+                }
+              />
+            </div>
+          </label>
+        );
+      })}
         <div className="rating-description">
           <span>Average rating</span>
-          <span>4</span>/<span>5</span>
+          <span>{rate}</span>/<span>5</span>
         </div>
       </div>
       </div>
