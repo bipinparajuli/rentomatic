@@ -16,6 +16,7 @@ import FindRoom from './findroom/FindRoom';
 import FindTenant from './findtenant/findTenant'
 import Listing from './listing/Listing';
 import TenantProfile from './listing/TenantProfile';
+import Profile from './profile/Profile';
 import { useState } from 'react';
 
 //new
@@ -48,6 +49,7 @@ function App() {
       <Route path="/findTenant" element={<FindTenant/>}/>
       <Route path="/room/:id" element={<Listing/>}/>
       <Route path="/tenantprofile/:id" element={<TenantProfile/>}/>
+      <Route path='/profile' element={<Profile/>}/>
 
 
   
