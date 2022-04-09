@@ -11,19 +11,19 @@ import { addItemToCart } from "../helper/CartHelper";
 function FindRoom() {
   const [value, onChange] = useState(1);
   const [products, setProducts] = useState([
-    {
-      owner:{
-        description:"helper",
-        roomAddress:{
-          district:"kathmandu"
-        },
-        roomDetails:{
-          rentPerMonth:100
-        }
-      },
-      _id:1,
+    // {
+    //   owner:{
+    //     description:"helper",
+    //     roomAddress:{
+    //       district:"kathmandu"
+    //     },
+    //     roomDetails:{
+    //       rentPerMonth:100
+    //     }
+    //   },
+    //   _id:1,
 
-    }
+    // }
   ]);
   const [error, setError] = useState(false);
   const queryParams = new URLSearchParams(window.location.search)

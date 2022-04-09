@@ -1,0 +1,11 @@
+.profile-main{
+    width:100vw;
+    display: flex;
+    /* flex-wrap: wrap; */
+
+}
+
+.profile-main img {
+    width: 295px;
+    height: 218px;
+  }
