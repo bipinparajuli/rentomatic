@@ -220,6 +220,134 @@
   position: relative;
   top: 13%;
 }
+.title-and-description{
+  display: flex;
+  flex-wrap: wrap;
+}
+.mantine-1abbsss{
+  width:60% !important;
+  max-width: 640px;
+  margin-inline: auto;
+  margin-left: 30vw;
+  margin-top: 10vh;
+}
+.hero-owner-account{
+  width:100%;
+  overflow-x: hidden;
+}
+.hero-owner-account .image-area-text {
+  width: 398px;
+  height: 44px;
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 44px;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  margin-left: 50rem;
+  color: #183639;
+}
+.hero-owner-account .user-details input,
+.hero-owner-account .user-details select {
+  /* all: unset; */
+  width: 360px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #23656c;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+.hero-owner-account .image-area-text h2 {
+  margin-left: 18rem; 
+ margin-top: -1rem;
+}
+.hero-owner-account .room-details input,
+.hero-owner-account .room-details select {
+  width: 233px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #23656c;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+.hero-owner-account label {
+  font-size: 20px;
+}
+.hero-owner-account  .room-address > input,
+.hero-owner-account  .room-address > select {
+  width: 360px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #23656c;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
+.create{
+  margin-left: 1rem;
+  margin-top: 2rem ;
+}
+
+.hero-owner-account .title-and-description-text{
+  margin-left: 0rem ;
+}
+.hero-owner-account .room-details input, .hero-owner-account .room-details select{
+  width:300px ;
+}
+.room-details-content {
+  text-align: left !important;
+}
+
+@media screen and  (min-width: 1200px){
+
+  .hero-owner-account .room-details input, .hero-owner-account .room-details select{
+    width:337px;
+  }
+  #tenantPreference{
+    width:330px ;
+  }
+  .room-address{
+    text-align: left !important;
+  }
+  .title-and-description-text{
+    text-align: left  !important;
+  }
+}
+@media screen and (min-width:1200px) {
+
+
+  
+  .card-1, .card-2 {
+  
+      height: 368px;
+      width: 319px;
+      margin: 0 4rem;
+      border: 2px solid hsla(0, 21%, 92%, 1);
+      box-sizing: border-box;
+      box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.25);
+      border-radius: 39px;
+      overflow: hidden;
+      
+  
+  }
+  .card-description > h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #183639;
+  }
+  .card-description > h4 {
+    font-size: 15px;
+    opacity: 0.5;
+  }
+  .card-bottom {
+    height: 85px;
+  }
+   
+}
 
 @media screen and (max-width: 600px) {
   .hero-description {

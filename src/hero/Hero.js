@@ -168,7 +168,7 @@ resetForm()
               return (
                 <>
                   <Form encType="multipart-formdata">
-
+      <div className="hero-owner-account">
           <div className="room-details">
       <div className="room-details-title">
           <span>Room Details:</span>
@@ -208,6 +208,7 @@ resetForm()
           <option value="Unlimited">Unlimited</option>
 
         </select>
+        <br/>
         <label for="rent-per-month">Rent per Month:</label>{" "}
         <input type="text"
         value={formValues.owner.roomDetails.rentPerMonth}
@@ -218,7 +219,7 @@ resetForm()
         <br />
         <label for="work-preference">Tenant preference:</label>{" "}
         <select 
-        className="xyz"
+        className="xyz" id="tenantPreference" 
         value={formValues.owner.tenantPreference}
         onChange={(e) =>
                       renderProps.setFieldValue("owner.tenantPreference", e.target.value)
@@ -229,6 +230,7 @@ resetForm()
           <option value="Couple">Couple</option>
           <option value="Others">Others</option>
         </select>
+        <br/>
         <label for="work-preference">Work preference:</label>{" "}
         <select 
         className="xyz"
@@ -293,6 +295,7 @@ resetForm()
         <div className="title-and-description-content">
         <div className="title-and-description-text">
           <label for="ad-title">Ad Title:</label>
+          
           <input 
               type="text"
              value={formValues.owner.title}
@@ -302,6 +305,7 @@ resetForm()
           />
           <br />
           <label for="ad-description">Ad Description:</label>
+          <br/>
           <textarea
              value={formValues.owner.description}
              onChange={(e) =>
@@ -325,6 +329,7 @@ resetForm()
             <button type="submit">Create Owner Account with Ads</button>
 
         </div>
+      </div>
       </div>
       </Form>
     </>
