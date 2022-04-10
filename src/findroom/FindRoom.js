@@ -5,10 +5,12 @@ import { useState, useEffect } from "react";
 import room from "./img/1.png";
 import ImageHelper from '../helper/ImageHelper'
 import {getAllRooms, searchRoom} from '../helper/ApiHelper'
-import { Link,} from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
 import { addItemToCart } from "../helper/CartHelper";
 
 function FindRoom() {
+  let navigate = useNavigate();
+
   const [value, onChange] = useState(1);
   const [products, setProducts] = useState([
     // {
@@ -33,7 +35,7 @@ function FindRoom() {
   
   const preloadProducts = async ()  => {
     if(location){
-      await  searchRoom(location).then((data) => {
+      await  searchRoom("location",location).then((data) => {
         console.log(data);
   
         if (data.err) {
@@ -154,8 +156,20 @@ function FindRoom() {
               <span>What are you looking for?</span>
               <br />
               <div>
-                <button className="tenant-btn">Tenant</button>
-                <button className="room-btn">Room</button>
+                <button >
+                <Link className="tenant-btn" to={`/findtenant`}>
+
+                  Tenant
+                </Link>
+
+                  </button>
+                <button >
+                <Link className="room-btn" to={`/findroom`}>
+                  
+                  Room
+                  </Link>
+                  
+                  </button>
               </div>
               <span>Sort By</span>
               <br />
@@ -167,11 +181,34 @@ function FindRoom() {
               <span>Location:</span>
               <br />
               <div>
-                <button className="kathmandu-btn selected-btn">
+                <button 
+                onClick={()=> {
+                  navigate(`/findroom/?location=Kathmandu`)
+                  window.location.reload()
+
+                }
+              }
+                
+                className="kathmandu-btn selected-btn">
                   Kathmandu
                 </button>
-                <button className="lalitpur-btn">Lalitpur</button>
-                <button className="bhaktapur-btn">Bhaktapur</button>
+                <button className="lalitpur-btn"
+          onClick={()=> {
+            navigate(`/findroom/?location=Lalitpur`)
+            window.location.reload()
+            
+          }}
+                
+                >Lalitpur</button>
+                <button className="bhaktapur-btn"
+          onClick={()=> {
+            navigate(`/findroom/?location=Bhaktapur`)
+            window.location.reload()
+
+          }
+        }
+                
+                >Bhaktapur</button>
               </div>
               <span>Room For:</span>
               <br />

@@ -23,7 +23,7 @@ const Profile = () => {
   return (
       <>
     <div
-    style={{display:"flex",width:"100%"}}
+    style={{display:"flex",width:"100%",height:"100vh"}}
     >
 
     <div

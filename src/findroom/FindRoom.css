@@ -110,6 +110,11 @@
 .filters .filter-content div button {
   flex-grow: 1;
 }
+.tenant-btn,.room-btn{
+  list-style: none;
+  text-decoration: none;
+  color: black;
+}
 .slider-div {
   width: 320px;
 }

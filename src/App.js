@@ -18,7 +18,6 @@ import FindRoom from './findroom/FindRoom';
 import FindTenant from './findtenant/findTenant'
 import Listing from './listing/Listing';
 import TenantProfile from './listing/TenantProfile';
-import Profile from './profile/Profile';
 import { useState } from 'react';
 
 //new
