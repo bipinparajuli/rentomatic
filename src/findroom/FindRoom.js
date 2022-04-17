@@ -31,7 +31,13 @@ function FindRoom() {
   const queryParams = new URLSearchParams(window.location.search)
   // const term = queryParams.get("term")
   const location = queryParams.get("location")
-  const api = "https://cors-anywhere.herokuapp.com/localhost:5000/api/v1/users/getphoto/623c5932f9ab201e74deb3dc"
+  let price = queryParams.get("price")
+  let preference = queryParams.get("preference")
+  let duration = queryParams.get("duration")
+
+
+
+  console.log(duration);
   
   const preloadProducts = async ()  => {
     if(location){
@@ -44,7 +50,42 @@ function FindRoom() {
           setProducts(data);
         }
       });
-    }else{
+    }
+    if(price){
+      await  searchRoom("price",price).then((data) => {
+        console.log(data);
+  
+        if (data.err) {
+          setError(data.err);
+        } else {
+          setProducts(data);
+        }
+      });
+    }
+    if(preference){
+      await  searchRoom("preference",preference).then((data) => {
+        console.log(data);
+  
+        if (data.err) {
+          setError(data.err);
+        } else {
+          setProducts(data);
+        }
+      });
+    }
+    //Duration
+    if(duration){
+      await  searchRoom("duration",duration).then((data) => {
+        console.log(data);
+  
+        if (data.err) {
+          setError(data.err);
+        } else {
+          setProducts(data);
+        }
+      });
+    }
+    if(!price && !location && !preference && !duration ){
       await  getAllRooms().then((data) => {
         console.log(data);
   
@@ -80,7 +121,7 @@ function FindRoom() {
         <div className="main-section-hero">
           <div className="example">
             {products.map((room)=>{
-              console.log(room);
+              console.log(room._id);
               return (
                 <>
                   <div key={room._id} className="example-card">
@@ -174,9 +215,25 @@ function FindRoom() {
               <span>Sort By</span>
               <br />
               <div>
-                <button className="recent-btn">Recent</button>
-                <button className="cheapest-btn">Cheapest</button>
-                <button className="expensive">Expensive</button>
+                <button 
+                
+                className="recent-btn">Recent</button>
+                <button 
+                 onClick={()=> {
+                  navigate(`/findroom/?price=cheapest`)
+                  window.location.reload()
+
+                }
+              }
+                className="cheapest-btn">Cheapest</button>
+                <button 
+                onClick={()=> {
+                  navigate(`/findroom/?price=expensive`)
+                  window.location.reload()
+
+                }
+              } 
+                className="expensive">Expensive</button>
               </div>
               <span>Location:</span>
               <br />
@@ -213,20 +270,46 @@ function FindRoom() {
               <span>Room For:</span>
               <br />
               <div>
-                <button className="male-btn">Male</button>
-                <button className="female-btn">Female</button>
-                <button className="family">Family</button>
+                <button
+                onClick={()=> {
+                  navigate(`/findroom/?preference=male`)
+                  window.location.reload()
+                }}
+                className="male-btn">Male</button>
+                
+                <button 
+                onClick={()=> {
+                  navigate(`/findroom/?preference=female`)
+                  window.location.reload()
+                }}
+                className="female-btn">Female</button>
+                <button
+                onClick={()=> {
+                  navigate(`/findroom/?preference=family`)
+                  window.location.reload()
+                }}
+                className="family">Family</button>
               </div>
               <span>Stay Duration:</span>
               <br />
               <div>
-                <button className="shortTerm-btn">Short Term</button>
-                <button className="longTerm-btn">Long Term</button>
+                <button 
+                  onClick={()=> {
+                    navigate(`/findroom/?duration=short`)
+                    window.location.reload()
+                  }}
+                className="shortTerm-btn">Short Term</button>
+                <button 
+                  onClick={()=> {
+                    navigate(`/findroom/?duration=long`)
+                    window.location.reload()
+                  }}
+                className="longTerm-btn">Long Term</button>
               </div>
-              <span>Rent for Month</span>
+              {/* <span>Rent for Month</span> */}
               <br />
             </div>
-            <div className="slider-div">
+            {/* <div className="slider-div">
               <div className="slider">
                 <div className="min">1</div>
                 <div className="slider-main">
@@ -243,7 +326,7 @@ function FindRoom() {
                 <div className="slider-mechanism">{value}</div>
                 <div className="slider-mechanism">500</div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -51,8 +51,10 @@ export const signup = (user) => {
       .catch((err) => console.log(err));
   };
 
-  export const searchRoom = (param) => {
-    return fetch(`${API}/searchrooms/?location=${param}`, {
+  export const searchRoom = (type,param) => {
+    console.log(type,param);
+
+    return fetch(`${API}/searchrooms/?${type}=${param}`, {
       method: "GET",
     })
       .then((response) => {
@@ -62,6 +64,7 @@ export const signup = (user) => {
   };
 
   export const searchTenant = (type,param) => {
+    console.log(type,param);
     return fetch(`${API}/searchtenant/?${type}=${param}`, {
       method: "GET",
     })
@@ -104,7 +107,73 @@ export const signup = (user) => {
       body: user,
     })
       .then((response) => {
+        console.log(response);
         return response.json();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  //reset password
+  export const resetpassword = (user,token) => {
+    return fetch(`${API}/reset-password/${token}`, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((user) => {
+        return user.json();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  //send reset token mail
+  export const sendresetokenmail = (user) => {
+    return fetch(`${API}/request-password-reset`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((user) => {
+        return user.json();
+      })
+      .catch((err) => console.log(err));
+  };
+
+   //delete room
+   export const deleteRoom = (id) => {
+    return fetch(`${API}/deleteroom/${id}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify(user),
+    })
+      .then((user) => {
+        return user.json();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  //delete tenant
+  //delete room
+  export const deleteTenant = (id) => {
+    return fetch(`${API}/delete-tenant/${id}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify(user),
+    })
+      .then((user) => {
+        return user.json();
       })
       .catch((err) => console.log(err));
   };

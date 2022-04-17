@@ -14,16 +14,25 @@ import image from './img/house.png';
 
 
 function CreateUserAccount() {
- 
+ const [activebtn,setActivebtn] = useState({
+   captcha:false,
+   accept:false
+ })
   const [state, setState] = useState({
     loading: false,
     err: "",
     getRedirect: "",
   });
   const notifications = useNotifications();
+  const {captcha,accept} = activebtn;
 
   function onChange(value) {
-    console.log("Captcha value:", value);
+    if(value == "accept"){
+      setActivebtn({...activebtn,accept:true})
+    }else{
+      setActivebtn({...activebtn,captcha:true})
+
+    }
   }
 
   const {loading,err} = state;
@@ -87,6 +96,7 @@ if(data.error){
               gender:"",
               email:"",
               password:"",
+              images:null,
               owner:{
                 roomDetails:{
                   roomType:"",
@@ -101,7 +111,6 @@ if(data.error){
                 },
                 title:'',
                 description:"",
-                images:null
 
               },
             }}
@@ -364,9 +373,12 @@ if(data.error){
           <h4>Add your room Images:</h4>
           <input 
           type="file"
-          value={formValues.owner.images}
+          // value={formValues.owner.images}
+          name="images"
+          accept='image/*'
              onChange={(e) =>
-                           renderProps.setFieldValue("owner.images", e.target.files[0])
+              renderProps.setFieldValue("images", e.currentTarget.files[0])
+
                        }
           />
         </div>
@@ -374,19 +386,37 @@ if(data.error){
       </div>
       <div>
         
-        <ReCAPTCHA className="re" sitekey="I'm not a robot" onChange={onChange} />
+        <ReCAPTCHA className="re" 
+        sitekey="6LeLC34fAAAAALwYaqseHZhN9VyclngMgBXDy0F_"
+        onChange={onChange} />
         <div className="terms">
           {" "}
-          <input type="checkbox" />
+          <input
+          onClick={()=>onChange("accept")}
+          type="checkbox" />
           <span>
             I have read and agree the Terms & Privacy Policy of Rentomatic
             Rooms.
           </span>
         </div>
-        <div className="create">
-            <button type="submit">Create Owner Account with Ads</button>
+        {
+          accept && captcha ? 
+          <div className="create">
+            <button
+            type="submit">Create Owner Account with Ads</button>
 
-        </div>
+        </div>:
+        <div
+        style={{opacity:"0.4"}}
+        className="create">
+        <button
+        disabled
+
+        type="submit">Create Owner Account with Ads</button>
+
+    </div>
+        }
+        
       </div>
       </Form>
     </>

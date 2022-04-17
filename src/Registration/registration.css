@@ -1,3 +1,6 @@
+.registration-form-container{
+  height: 100vh;
+}
 .registration-container {
   display: flex;
   justify-content: center;

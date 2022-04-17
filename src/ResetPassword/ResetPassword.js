@@ -1,22 +1,23 @@
 import React,{useState} from 'react';
-import ReCAPTCHA from "react-google-recaptcha";
 import { Link } from 'react-router-dom';
 import { useNotifications } from '@mantine/notifications';
 import { Loader } from '@mantine/core';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,useParams} from 'react-router-dom'
 
-import { signin } from '../helper/ApiHelper';
-import './login.css';
+import { resetpassword, } from '../helper/ApiHelper';
+import './resetpassword.css';
 import { persistSession } from '../helper/session';
  
 
 
-function Login() {
+function ResetPassword() {
   const [hidepassword, setHidepassword] = React.useState({
     password: "",
     showPassword: false,
   });
   let navigate = useNavigate();
+  let params = useParams();
+
   const notifications = useNotifications();
 
 
@@ -25,15 +26,15 @@ function Login() {
   }
 
   const [values, setValues] = useState({
-    email: "",
     password: "",
+    confirmPassword:"",
     err: "",
     didRedirect: false,
     loading: false,
   });
   const { showPassword } = hidepassword;
 
-  const { email, password, err, didRedirect, loading } = values;
+  const { confirmPassword, password, err, didRedirect, loading } = values;
   // const { user } = isAuthenticated();
 
   const handleChange = (name) => (event) => {
@@ -41,10 +42,9 @@ function Login() {
   };
 
   const onSubmit = (event) => {
-    console.log(email,password);
     event.preventDefault();
     setValues({ ...values, err: false, loading: true });
-    signin({ email, password })
+    resetpassword({password,confirmPassword },params.token)
       .then((data) => {
         console.log(data);
         if (data.error) {
@@ -55,17 +55,17 @@ function Login() {
             message: data.message,
           }) 
         } else {
+          setValues({ ...values, loading: false });
 
-          persistSession(data.data)
           notifications.showNotification({
             color:"green",
             title: 'Success',
-            message: "Successfully login",
+            message: "Successfully reset password",
           })
-          window.location.reload()
-          setTimeout(()=>{
-            navigate("/")
-          },1000)
+          // window.location.reload()
+          // setTimeout(()=>{
+          //   navigate("/")
+          // },1000)
 
 
           // authenticate(data, () => {
@@ -100,45 +100,38 @@ function Login() {
 <div id="form">
   
    <div className='form-title'> <h2>
-        Log In
+        Change Password
     </h2>
     <i className='x fa-solid fa-x'></i>
     </div>
-    <label for="email">Email</label><br/>
+    <label for="password">Password</label><br/>
  <input
-  type="email"
-  className='email'
-  name="email"
-  id="email"
-  value={email}
-  onChange={handleChange("email")}
+  type="password"
+  className='password'
+  name="password"
+  id="password"
+  value={password}
+  onChange={handleChange("password")}
   />
  <br/>
  <br />
- <label for="password" >Password</label><br/>
+ <label for="confirmPassword" >Confirm Password</label><br/>
  <div className='password-div'>
    <input 
    type={hidepassword.showPassword ? "text" : "password"}
    className='password'
    id="password"
-   value={password}
-   onChange={handleChange("password")}
+   value={confirmPassword}
+   onChange={handleChange("confirmPassword")}
     
  />
- <i onClick={()=>setHidepassword({...hidepassword,showPassword:!showPassword})} class="eye fa-solid fa-eye-slash"></i></div>
- <span><a href='/forget'>Reset password ?</a></span><br/>
- {/* <div className="recaptcha"> */}
+ </div>
 
- <ReCAPTCHA
-    sitekey="I'm not a robot"
-    onChange={onChange}
-  />
- {/* </div> */}
+ 
   
-   <button class="loginbtn" onClick={onSubmit} >{loading ? <Loader /> :"Log In"}</button><br/>
+   <button class="loginbtn" onClick={onSubmit} >{loading ? <Loader /> :"Reset Password"}</button><br/>
   
   
-  <div className='registerLink'>Don't have an account?<Link to={`/register`}>Register Now</Link></div>
  </div>
 
     </div>
@@ -148,4 +141,4 @@ function Login() {
   )
 }
 
-export default Login
+export default ResetPassword

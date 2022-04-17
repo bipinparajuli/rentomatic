@@ -4,7 +4,8 @@ import "./registration.css";
 
 function Registration() {
   return (
-    <>
+    <div className="registration-form-container">
+    
       <div className="registration-container">
         <div id="form">
           <div className="form-title">
@@ -35,7 +36,7 @@ function Registration() {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

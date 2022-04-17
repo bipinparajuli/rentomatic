@@ -17,6 +17,7 @@ function FindRoom() {
   let location = queryParams.get("location")
   let price = queryParams.get("price")
 
+  console.log(location);
 
   const api = "https://cors-anywhere.herokuapp.com/localhost:5000/api/v1/users/getphoto/623c5932f9ab201e74deb3dc"
   const preloadProducts = async ()  => {
@@ -83,7 +84,7 @@ function FindRoom() {
               return (<>
             <div className="example-card">
               <div className="image">
-                <ImageHelper />
+                <ImageHelper productId={product._id} />
               </div>
               <div className="image-description">
                 <span className="image-description-title">
@@ -231,9 +232,9 @@ function FindRoom() {
                 <button className="shortTerm-btn">Short Term</button>
                 <button className="longTerm-btn">Long Term</button>
               </div>
-              <span>Rent/month</span>
+              {/* <span>Rent/month</span> */}
               </div>
-              <div className="slider-div">
+              {/* <div className="slider-div">
               <div className="slider">
                 <div className="min">1</div>
                 <div className="slider-main">
@@ -250,7 +251,7 @@ function FindRoom() {
                 <div className="slider-mechanism">{value}</div>
                 <div className="slider-mechanism">500</div>
               </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

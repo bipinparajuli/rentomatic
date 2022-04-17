@@ -6,6 +6,8 @@ import * as Yup from "yup";
 import {Formik,Form,ErrorMessage} from 'formik'
 import { useNotifications } from '@mantine/notifications';
 import {updateOwner} from '../helper/ApiHelper'
+import {FaFacebookMessenger,FaCross} from 'react-icons/fa'
+import ChatBot from 'react-simple-chatbot'; //chat bot lib
 
 import { searchRoom } from "../helper/ApiHelper";
 import "./Hero.css";
@@ -19,6 +21,7 @@ import Kritipur from './img/kritipur.png'
 
 
 function Hero() {
+  const[showbot,setShowBot] = useState(false)
 
   const [search,setSearch] = useState();
   const [opened, setOpened] = useState(false);
@@ -35,6 +38,7 @@ navigate(`/findroom/?location=${search}`)
 
 function handleFormSubmit(values,{resetForm}){
   let formData = new FormData()
+  console.log(values);
   for (let value in values) {
     if(value == "owner" ){
       formData.append(value, JSON.stringify(values[value]));
@@ -141,6 +145,7 @@ resetForm()
         <Formik
             enableReinitialize
             initialValues={{
+              images:null,
               owner:{
                 roomDetails:{
                   roomType:"",
@@ -155,7 +160,7 @@ resetForm()
                 },
                 title:'',
                 description:"",
-                images:null
+                images:null,
 
               },
             }}
@@ -317,11 +322,15 @@ resetForm()
         <div className="title-and-description-image">
           <h4>Add your room Images:</h4>
           <input 
-          type="file"
-          value={formValues.owner.images}
-             onChange={(e) =>
-                           renderProps.setFieldValue("owner.images", e.target.value)
-                       }
+         id="images"
+         name="images"
+         accept='image/*'
+        type="file"
+        //  value={formValues.tenant.profileDescription.images}
+         onChange={(e) =>
+          // console.log(e.currentTarget.files[0])
+                       renderProps.setFieldValue("images", e.currentTarget.files[0])
+                   }
           />
         </div>
         </div>
@@ -471,6 +480,84 @@ resetForm()
         </div>
         </div>
       </div>
+      <div
+    style={{position:'fixed',bottom:"32px",right:"12px"}}
+    >
+
+    {
+      showbot ?
+      <>
+       <FaCross size={40}
+    style={{position:"relative",zIndex:"1"}}
+    onClick={()=>setShowBot(!showbot)}
+
+    />
+      <ChatBot
+      // onClick={{}}
+    onClick={()=>setShowBot(!showbot)}
+
+      style={{
+        position: "-webkit-sticky !important",
+        position: "fixed !important",
+        bottom: "95px !important",
+        right: "30px !important"
+      }}
+       steps={[
+        {
+          id: '1',
+          //chat bot messege
+          message: 'Hi, how can i help you?',
+          trigger: '2',
+        },
+        {
+          id: '2',
+          user: true,
+          trigger: '3',
+        },
+        {
+          id: '3',
+          message: 'messege',
+          trigger: '4',
+        },
+  
+  
+  
+        {
+          id: '4',
+          user: true,
+          trigger: '5',
+        },
+        {
+          id: '5',
+          message: 'helo',
+          trigger: '6',
+        },
+        {
+          id: '6',
+          user: true,
+          trigger: '7',
+        },
+        {
+          id: '7',
+          message: ',.......?',
+          end: true,
+        }]}
+    /> 
+   
+      </>
+    
+    : 
+    <FaFacebookMessenger
+cursor="pointer"
+onClick={()=>setShowBot(!showbot)}
+    size={40}
+
+
+    />
+    
+
+}
+</div>
     </>
   );
 }

@@ -1,17 +1,28 @@
-import React from "react";
+import React,{useState} from "react";
 import "./createTenantAccount.css";
 import {Formik,Form,ErrorMessage} from 'formik'
 import ReCAPTCHA from "react-google-recaptcha";
 import { useNotifications } from '@mantine/notifications';
 import {signup} from '../helper/ApiHelper'
 
+
 import image from  './img/house.png';
 
 function CreateTenantAccount() {
   const notifications = useNotifications();
+  const [activebtn,setActivebtn] = useState({
+    captcha:false,
+    accept:false
+  })
+  const {captcha,accept} = activebtn;
 
   function onChange(value) {
-    console.log("Captcha value:", value);
+    if(value == "accept"){
+      setActivebtn({...activebtn,accept:true})
+    }else{
+      setActivebtn({...activebtn,captcha:true})
+
+    }
   }
 
   function handleFormSubmit(values,{resetForm}){
@@ -313,19 +324,39 @@ if(data.error){
 
           </div>
           <div className="rec">
-          <ReCAPTCHA sitekey="I'm not a robot" onChange={onChange} />
+          <ReCAPTCHA 
+          sitekey="6LeLC34fAAAAALwYaqseHZhN9VyclngMgBXDy0F_"
+          
+          onChange={onChange} />
           </div>
           <div className="terms">
             {" "}
-            <input type="checkbox" />
+            <input 
+          onClick={()=>onChange("accept")}
+            
+            type="checkbox" />
             <span>
               I have read and agree the Terms & Privacy Policy of Rentomatic
               Rooms.
             </span>
           </div>
+          {
+          accept && captcha ? 
           <div className="create">
-            <button type="submit">Create Tenant Account</button>
-          </div>
+            <button
+            type="submit">Create Owner Account with Ads</button>
+
+        </div>:
+        <div
+        style={{opacity:"0.4"}}
+        className="create">
+        <button
+        disabled
+
+        type="submit">Create Owner Account with Ads</button>
+
+    </div>
+        }
         </div>
         </Form>
     </>

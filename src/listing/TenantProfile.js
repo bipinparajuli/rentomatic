@@ -64,7 +64,9 @@ const TenantProfile = () => {
       <div className="listing-container">
         <div className="listing-container-image">
           {/* <img src={image} /> */}
-          <ImageHelper />
+          <ImageHelper 
+          productId={values._id}
+          />
         </div>
         <div className="listing-container-content">
           <div className="content-title">
