@@ -82,6 +82,69 @@ if(data.error){
     // props.handleJobRequestAction(formData,user._id)
   }
 
+  const area = [
+
+  {name:"Tengal",lat: 27.71023679894223,lan: 85.30579194672158 },
+
+{name:"Naghal",lat: 27.710198805528908,lan: 85.30918225857671 },
+
+{name:"Jyatha" ,lat: 27.711832510352643,lan: 85.3121863323724 },
+
+{name:"Jamal", lat: 27.709514921826212,lan: 85.31514749082815 },
+
+{name:"Kamaladi",  lat: 27.709400940792275,lan: 85.31956777084181 },
+
+{name:"Kalikasthan", lat: 27.704005702295955,lan: 85.32536134173348 },
+
+{name:"Bhadrakali", lat: 27.697128286193333, lan: 85.31716451180526 },
+
+{name:"Tripureshowr", lat: 27.695266369718787,lan: 85.31523332150803 },
+
+{name:"Kupondole",lat: 27.686696674237105,lan: 85.31463365006898 },
+
+{name:"Thapathali", lat: 27.689679290708103,lan: 85.32300342739498 },
+
+{name:"Buddhanagar", lat: 27.686877441191,lan: 85.32994421834823 },
+
+{name:"Gairigaon", lat: 27.688142801488954,lan: 85.34882725255929 },
+
+{name:"New Baneshowr" ,lat: 27.691803225494645,lan: 85.34173335592325 },
+
+{name:"Koteshowr", lat: 27.675985697874747, lan: 85.34622445727618 },
+
+{name:"Balkumari", lat: 27.669929238134397, lan: 85.34061058224046 },
+
+{name:"Gwarko", lat: 27.666629682011138,lan: 85.33270012133903 },
+
+{name:"Kusinti", lat:27.6556907155722,lan: 85.31631781290697 },
+
+{name:"Ekantakuna", lat: 27.66757887941739,lan: 85.31044876165144 },
+
+{name:"Kalanki", lat: 27.693655985802092,lan: 85.28028693890967 },
+
+{name:"Jadibutti", lat: 27.675220340943337,lan:85.35349376695548 },
+
+{name:"Lokanthali", lat:27.673728845448956, lan:85.35910764199119 },
+
+{name:"Narephate",lat: 27.672282527342304,lan: 85.34987026579606 },
+
+{name:"Kaushaltar",lat: 27.675627108907886,lan: 85.36518083407529 },
+
+{name:"Sagbari",  lat:27.673819239694918,lan: 85.36768156022757 },
+
+{name:"Gatthaghar", lat: 27.676892599590417,lan: 85.37293818970305 },
+
+{name:"Madhyapur Thimi",lat: 27.678474442278116,lan: 85.38038933367886 },
+
+{name:"Sallaghari", lat: 27.671785350954636,lan: 85.40751455954009 },
+
+{name:"Katunje", lat: 27.66437263645023,lan: 85.40930079250602 },
+
+{name:"Balkot", lat: 27.663739820252644,lan: 85.37776102223424 },
+
+{name:"Bhaktapur",lat: 27.671016983049867,lan: 85.42951074577422 }
+
+  ]
   return (
     <>
 
@@ -107,7 +170,7 @@ if(data.error){
                 tenantPreference:"",
                 roomAddress:{
                   district:"",
-                  area:"",
+                  area:{},
                 },
                 title:'',
                 description:"",
@@ -119,7 +182,7 @@ if(data.error){
           >
             {(renderProps) => {
               const { values: formValues, touched, errors,setFieldValue } = renderProps;
-              // console.log(formValues);
+              console.log(formValues);
               return (
                 <>
                   <Form encType="multipart-formdata">
@@ -334,12 +397,11 @@ if(data.error){
                       renderProps.setFieldValue("owner.roomAddress.area", e.target.value)
                   }>
                       <option>Select</option>
-                      <option value="Bouddha">Bouddha</option>
-                      <option value="Patan">Patan</option>
-                      <option value="Kritipur">Kritipur</option>
-                      <option value="Bhaktapur">Bhaktapur</option>
-                      <option value="Baneshor">Baneshor</option>
-                      <option value="Pepsicola">Pepsicola</option>
+                      {
+                        area.map(area=>(
+                          <option value={JSON.stringify(area)}>{area.name}</option>
+                        ))
+                      }
 
                   </select>
         <br />

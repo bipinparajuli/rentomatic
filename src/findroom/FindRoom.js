@@ -121,7 +121,7 @@ function FindRoom() {
         <div className="main-section-hero">
           <div className="example">
             {products.map((room)=>{
-              console.log(room._id);
+              console.log(JSON.parse(room.owner.roomAddress.area));
               return (
                 <>
                   <div key={room._id} className="example-card">

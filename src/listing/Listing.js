@@ -50,43 +50,44 @@ const Listing = () => {
 
     if(values.roomAddress !== undefined){
 
-  
-      if(values.roomAddress.district == "Kathmandu"){
-        setState({...state,lat:27.7172,lng:85.3240})
-      }
-      if(values.roomAddress.district == "Bhaktapur"){
-        setState({...state,lat:27.6710,lng:85.4298})
+      setState({...state,lat:JSON.parse(values.roomAddress.area).lat,lng:JSON.parse(values.roomAddress.area).lan})
+      
+      // if(values.roomAddress.district == "Kathmandu"){
+      //   setState({...state,lat:27.7172,lng:85.3240})
+      // }
+      // if(values.roomAddress.district == "Bhaktapur"){
+      //   setState({...state,lat:27.6710,lng:85.4298})
         
-      }
-      if(values.roomAddress.district == "Lalitpur"){
-        setState({...state,lat:27.6588,lng:85.3247})
+      // }
+      // if(values.roomAddress.district == "Lalitpur"){
+      //   setState({...state,lat:27.6588,lng:85.3247})
         
-      }
+      // }
     }
   },[values])
-console.log(state);
+// console.log(JSON.parse(values.roomAddress.area));
   return (
     <div className="container">
       <div className="listing-container">
         <div className="listing-container-image">
           {/* <img src={image} /> */}
           <ImageHelper 
-          // productId={values._id}
+          productId={values._id}
            />
         </div>
         <div className="listing-container-content">
           <div className="content-title">
+          <h2>
+              {values.roomAddress !== undefined
+                ? values.title
+                : "wait . . . "}
+            </h2>
             <h2>
               {values.roomAddress !== undefined
                 ? values.description
                 : "wait . . . "}
             </h2>
-            <h4>
-              {" "}
-              {values.roomAddress !== undefined
-                ? values.roomAddress.district
-                : "wait . . . "}
-            </h4>
+           
             <hr />
             <div className="content-description">
               <div className="content-description-type">
@@ -94,27 +95,23 @@ console.log(state);
                   <li>Area:</li>
                   {/* <li>Bedrooms:</li> */}
                   <li>Rental Period:</li>
-                  <li>Verified by Rentomatic</li>
-                  <li>Property Type</li>
-                  <li>Case Number:</li>
+                 
                 </ul>
               </div>
               <div className="content-description-content">
                 <ul>
                   <li>
                     {values.roomAddress !== undefined
-                      ? values.roomAddress.area
+                      ? JSON.parse(values.roomAddress.area).name
                       : "wait . . . "}
-                    m<sup>2</sup>
+                    {/* m<sup>2</sup> */}
                   </li>
                   <li>
                     {values.roomAddress !== undefined
                       ? values.roomDetails.rentDuration
                       : "wait . . . "}
                   </li>
-                  <li>Studio</li>
-                  <li>Yes</li>
-                  <li>80202</li>
+                  
                 </ul>
               </div>
               </div>
@@ -140,12 +137,16 @@ console.log(state);
         dragging={false}
         doubleClickZoom={false}
         scrollWheelZoom={false}
-        center={[27.7172, 85.3240]} zoom={13}>
+        center={[27.7172, 85.3240]}
+        zoom={13}
+        // center={[JSON.parse(values.roomAddress.area).lat, JSON.parse(values.roomAddress.area).lng]} zoom={13}
+        
+        >
  <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
-  <Marker position={[27.7172, 85.3240]}>
+  <Marker position={[lat,lng]}>
     <Popup>
       A pretty CSS3 popup. <br /> Easily customizable.
     </Popup>
