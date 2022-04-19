@@ -1,8 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './footer.css';
 
+
+
 function Footer() {
-  return (
+  return (<>
+  <hr className='foot-line' ></hr>
     <footer class="footer">
        
         <ul class="footer-right">
@@ -14,22 +18,34 @@ function Footer() {
         </div>
             <li>
                 <h2>Links</h2>
+
                 <ul class="box">
-                <li><a href="#">ROOMS</a></li>
-                <li><a href="#">TENANT</a></li>
-                <li><a href="#">FEATURES</a></li>
+                <li>
+                    <Link to={'/findroom'}>ROOMS</Link>
+
+                </li>
+                <li>
+                    <Link to={'/findtenant'}>TENANT</Link>
+                </li>
+                <li>
+                    <Link to={'/privacy'} >FEATURES</Link>
+                </li>
             </ul>
             </li>
             <li class="info">
                 <h2>INFO</h2>
             <ul class="box">
-                <li><a href="#">FAQ's </a></li>
-                <li><a href="#">PRIVACY POLICY </a></li>
+                <li>
+                    <Link to={'/faq'}>FAQ's </Link>
+                    </li>
+                <li>
+                    <Link to={'/privacy'} >PRIVACY POLICY </Link>
+                    </li>
             </ul>
         </li>
         <li>
             <h2>CONTACT US</h2>
-            <ul class="box">
+            <ul class="box info">
             <li>Koteshwor,Kathmandu,Nepal</li>
             <li>01-5200033|+977 9849075353</li>
             <li>info@rentomaticrooms.com</li>
@@ -37,11 +53,13 @@ function Footer() {
         </li>
         </ul>
 
-        <hr />
+        <hr className='foot-line' />
         <p style={{textAlign:"center"}} >Rentomatic Room All right Reserved</p>
 
 
     </footer>
+  </>
+
   )
 }
 

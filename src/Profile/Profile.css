@@ -4,7 +4,7 @@
     background: rgba(255, 255, 255, 0.88);
     border: 2px solid #23656c;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 47px;
+    /* border-radius: 47px; */
     margin: 2rem 1rem;
   }
 
@@ -36,6 +36,6 @@
     position: relative;
   }
   .heart {
-    position: absolute;
-    right:2rem;
+    /* position: absolute; */
+    /* right:2rem; */
   }

@@ -70,13 +70,13 @@ function App() {
   
     </Routes>
     </NotificationsProvider>
+    <Footer />
 
     </BrowserRouter>
   
 
     
    
-    <Footer />
     </>
   );
 }

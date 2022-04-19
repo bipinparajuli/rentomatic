@@ -223,7 +223,7 @@ resetForm()
                 tenantPreference:"",
                 roomAddress:{
                   district:"",
-                  area:"",
+                  area:{},
                 },
                 title:'',
                 description:"",
@@ -360,7 +360,8 @@ resetForm()
           <option>Select</option>
                       {
                         area.map(area=>(
-                          <option value={area.name}>{area.name}</option>
+                          <option value={JSON.stringify(area)}>{area.name}</option>
+
                         ))
                       }
 

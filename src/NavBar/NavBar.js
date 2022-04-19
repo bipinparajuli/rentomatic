@@ -35,18 +35,18 @@ function NavBar() {
           <div className="line3"></div>
         </div>
         <ul className={screenSize}>
-          <li>
+          <li className="nav-item">
             <Link to={`/findTenant`}>Tenant</Link>
           </li>
-          <li>
+          <li className="nav-item">
             <Link to={`/findRoom`}>Rent</Link>
           </li>
           {hasToken()?
           <>
-          <li>
+          <li className="nav-item">
              <Link to={`/profile`}>Profile</Link>
            </li>
-           <li>
+           <li className="nav-item">
              <Link
              onClick={handleLogout}
              to={`/register`}>Logout</Link>
@@ -55,10 +55,10 @@ function NavBar() {
            
            :
            <>
-            <li>
+            <li className="nav-item">
             <Link to={`/login`}>Login</Link>
           </li>
-          <li>
+          <li className="nav-item">
             <Link to={`/register`}>Register</Link>
           </li>
           </>
