@@ -118,7 +118,7 @@ if(data.error){
           <div className="user-details">
           <div className="user-details-title">
           <span>My Account Details:</span>
-          <hr className="seperater right"></hr>
+          {/* <hr className="seperater right"></hr> */}
         </div >
         <div className="user-details-content">
           <div className="user-details-content-left">
@@ -200,9 +200,9 @@ if(data.error){
         </div>
         </div>
         <div className="profile">
-        <div className="user-details-title">
+        <div className="profile-details-title">
           <span>My Profile:</span>
-          <hr className="seperater right"></hr>
+          {/* <hr className="seperater right"></hr> */}
         </div >
           <div className="profile-content">
             <label>I am:</label>
@@ -246,7 +246,7 @@ if(data.error){
         <div className="preferences">
         <div className="preferences-title">
           <span>Preferred Rooms:</span>
-          <hr className="seperater right"></hr>
+          {/* <hr className="seperater right"></hr> */}
         </div >
         <div className="preferences-content">
           <div className="preferences-content-left">
