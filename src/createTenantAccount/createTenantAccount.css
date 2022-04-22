@@ -14,7 +14,7 @@
 .image-area img {
   position: absolute;
   width: 100vw;
-  max-height: 90vh;
+  max-height: 65vh;
   z-index: -1;
 }
 .tenant-account .image-area-text {
@@ -28,7 +28,6 @@
   margin-right:15rem;
 }
 .tenant-account .image-area-text h2 {
-  
   margin-top: -1rem;
 }
 
