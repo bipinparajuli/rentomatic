@@ -51,6 +51,9 @@ body {
   text-align: center;
   color: #183639;
 }
+.owner-account .user-details-title{
+  text-align: left;
+}
 .owner-account .user-details input,
 .owner-account .user-details select {
   /* all: unset; */
@@ -103,8 +106,8 @@ input[type="checkbox"] {
 .owner-account label {
   font-size: 20px;
 }
-.owner-account  .room-address > input,
-.owner-account  .room-address > select {
+.owner-account  .room-address  input,
+.owner-account  .room-address  select {
   width: 360px;
   height: 40px;
   background: rgba(255, 255, 255, 0.88);
@@ -115,6 +118,7 @@ input[type="checkbox"] {
 }
 .owner-account .title-and-description-content {
   display: flex;
+  margin-top: 1.5rem;
   flex-wrap: wrap;
   justify-content: space-around;
 }
@@ -153,9 +157,16 @@ input[type="checkbox"] {
   margin: 1rem;
   text-align: right;
 }
+.room-address-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .room-address input,
 .room-address select {
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   margin-right: 45%;
 }
 .owner-account .user-details input,
@@ -185,7 +196,7 @@ input[type="checkbox"] {
 }
 
 .room-details {
-  margin: 1rem 1rem 1rem 3rem;
+  margin: 1rem 1rem 3rem 3rem;
 }
 .user-details-title span {
   font-size: large;
@@ -199,6 +210,7 @@ input[type="checkbox"] {
 }
 .room-details-content__wrapper{
   width: 40%;
+  text-align: right;
 }
 
 
@@ -212,23 +224,28 @@ input[type="checkbox"] {
   text-align: left !important;
   margin-left: 10rem;
   margin-top: 2rem;
+
 }
+
 .rooms-checkbox input {
   margin-left: 3rem;
-  margin-right: 0.2rem;
-  margin-bottom: 2rem;
+  margin-right: 0.3rem;
+  margin-bottom: .75rem;
 }
 .room-address-title {
   margin-bottom: 2rem;
 }
 
 .re {
+  margin: 2rem 0;
   margin-left: 25rem;
-  margin-bottom: 2rem;
 }
 .owner-account .terms {
+  margin: 3rem 0;
   margin-left: 20rem;
-  margin-bottom: 2rem;
+}
+.owner-account .terms input{
+  margin-right: .6rem;
 }
 .owner-account .create{
   margin-left: 25rem;

@@ -39,7 +39,7 @@ function CreateUserAccount() {
 
   const RegisterValidationSchema = Yup.object().shape({
     fullName: Yup.string().required("Please enter fullname").max(50),
-    dateOfBirth: Yup.date().required("Please enter date").max(50),
+   // dateOfBirth: Yup.date().required("Please enter date").max(50),
     address: Yup.string().required("Please enter address").max(50),
     phoneNumber: Yup.string().required("Please enter address").max(50),
     gender: Yup.string().required("Please enter address").max(50),
@@ -198,7 +198,6 @@ if(data.error){
       <div className="user-details">
       <div className="user-details-title">
           <span>My Account Details:</span>
-          <hr className="seperater right"></hr>
         </div>
 
         <div className="user-details-description">
@@ -274,7 +273,7 @@ if(data.error){
       <div className="room-details">
       <div className="room-details-title">
           <span>Room Details:</span>
-          <hr className="seperater right"></hr>
+          {/* <hr className="seperater right"></hr> */}
         </div>
         <div className="room-details-content">
         <div className="room-details-content__wrapper">
@@ -386,9 +385,9 @@ if(data.error){
       <div className="room-address">
       <div className="room-address-title">
           <span>Room Address:</span>
-          <hr className="seperater right"></hr>
+          {/* <hr className="seperater right"></hr> */}
         </div>
-        <div style={{display:"flex",alignItems:"center",flexDirection:"column"}} >
+        <div className="room-address-content" >
           <div>
 
         <label for="district">District:</label>
@@ -431,7 +430,6 @@ if(data.error){
       <div className="title-and-description">
       <div className="title-description-title">
           <span>Title and Description:</span>
-          <hr className="seperater right"></hr>
         </div>
         <div className="title-and-description-content">
         <div className="title-and-description-text">

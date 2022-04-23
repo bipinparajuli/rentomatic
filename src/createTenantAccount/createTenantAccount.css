@@ -1,6 +1,19 @@
 .tenant-account {
   padding: 0;
 }
+
+.tenant-account .image-area {
+  background: url(./img/house.png);
+  background-repeat: "no-repeat" !important;
+   object-fit: cover;
+  width: 100hw;
+  height: 387px;
+  margin-top: -.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .image-area {
   width: 100vw;
   height: 387px;
@@ -32,7 +45,7 @@
 }
 
 .image-area-text div {
-  margin-left: 20rem;
+  /* margin-left: 20rem; */
   margin-right: 2rem;
   font-family: "Source Sans Pro";
   font-style: normal;
@@ -140,8 +153,8 @@
   margin:1rem 0;
   margin-left: 2rem;
 }
-.profile-details-title {
-  margin: 1rem 0;
+.profile-details-title , .room-details-title, .room-address-title, .title-and-description-title{
+  margin: 1.5rem 0;
   font-size: 20px;
   font-weight: bold;
   margin-left: 2rem;
@@ -175,20 +188,24 @@
 }
 
 .tenant-account .rec {
-  width: 85vw;
-  display: flex;
-  justify-content: center;
-  margin: 3rem 0 1rem 0;
-}
-.tenant-account .terms {
-  width: 80vw;
+  width: 65vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 3rem 0;
+}
+.tenant-account .terms {
+  width: 60vw;
+  display: flex;
+  justify-content: center;
   margin-bottom: 3rem;
 }
+.tenant-account .terms input{
+  margin-right: 1rem;
+}
 .tenant-account .create{
-  margin-left: 30vw;
+  width: 65vw;
+  margin-left: 20vw;
   margin-bottom: 4rem;
 }
 

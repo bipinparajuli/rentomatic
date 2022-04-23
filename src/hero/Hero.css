@@ -221,7 +221,7 @@
   position: relative;
   top: 13%;
 }
-.title-and-description{
+.hero .title-and-description{
   display: flex;
   flex-wrap: wrap;
 }
@@ -288,7 +288,7 @@
   border-radius: 5px;
 }
 
-.create{
+.hero .create{
   margin-left: 1rem;
   margin-top: 2rem ;
 }
@@ -314,7 +314,7 @@
   .room-address{
     text-align: left !important;
   }
-  .title-and-description-text{
+  .hero .title-and-description-text{
     text-align: left  !important;
   }
 }
