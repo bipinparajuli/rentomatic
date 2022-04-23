@@ -142,6 +142,8 @@ if(data.error){
     fontSize: "20px",
     fontWeight: "bold"}} >My Account Details:</span>
           <hr className="seperater right"></hr>
+          <span>My Account Details:</span>
+          {/* <hr className="seperater right"></hr> */}
         </div >
         <div className="user-details-content">
           <div className="user-details-content-left">
@@ -223,9 +225,9 @@ if(data.error){
         </div>
         </div>
         <div className="profile">
-        <div className="user-details-title">
+        <div className="profile-details-title">
           <span>My Profile:</span>
-          <hr className="seperater right"></hr>
+          {/* <hr className="seperater right"></hr> */}
         </div >
           <div className="profile-content">
             <label>I am:</label>
@@ -272,23 +274,37 @@ if(data.error){
           </div>
         </div>
         <div className="preferences">
-            <div className="preferences-title">
-              <span>Preferred Rooms:</span>
-              <hr className="seperater right"></hr>
-            </div >
-            <div className="preferences-content">
-              <div className="preferences-content-left">
-              <label>Room Location:</label>
-              <select
-                value={formValues.tenant.preferredRooms.roomLocation}
-                onChange={(e) =>
-                              renderProps.setFieldValue("tenant.preferredRooms.roomLocation", e.target.value)
-                          }
-              >
-              <option>Select</option>
-                <option value="Kathmandu">Kathmandu</option>
-                <option value="Bhaktapur">Bhaktapur</option>
-                <option value="Lalitpur">Lalitpur</option>
+        <div className="preferences-title">
+          <span>Preferred Rooms:</span>
+          {/* <hr className="seperater right"></hr> */}
+        </div >
+        <div className="preferences-content">
+          <div className="preferences-content-left">
+          <label>Room Location:</label>
+          <select
+            value={formValues.tenant.preferredRooms.roomLocation}
+            onChange={(e) =>
+                          renderProps.setFieldValue("tenant.preferredRooms.roomLocation", e.target.value)
+                      }
+          >
+          <option>Select</option>
+            <option value="Kathmandu">Kathmandu</option>
+            <option value="Bhaktapur">Bhaktapur</option>
+            <option value="Lalitpur">Lalitpur</option>
+
+          </select>
+          <br/>
+          <label>Rent Duration:</label>
+          <select
+        value={formValues.tenant.preferredRooms.rentDuration}
+             onChange={(e) =>
+                           renderProps.setFieldValue("tenant.preferredRooms.rentDuration", e.target.value)
+                       }
+                       >
+        <option>Select</option>
+            <option value="Under 6 months">Under 6 months</option>
+            <option value="More than 6 months">More than 6 months</option>
+            <option value="Unlimited">Unlimited</option>
 
               </select>
               <br/>
