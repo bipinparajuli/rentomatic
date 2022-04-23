@@ -12,7 +12,16 @@ body {
   width: 100hw;
   height: 387px;
   margin-top: -.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.image-area > span {
+  width: 500px;
+}
+
 .owner-account .image-area-text {
   width: 398px;
   height: 44px;
@@ -96,7 +105,7 @@ input[type="checkbox"] {
 .owner-account .room-details select {
   width: 233px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.88);
+  /* background: rgba(255, 255, 255, 0.88); */
   border: 1px solid #23656c;
   box-sizing: border-box;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
@@ -118,11 +127,12 @@ input[type="checkbox"] {
 .owner-account .title-and-description-content {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 .owner-account .title-and-description-text {
-  margin-left: 5rem;
+  /* margin-left: 5rem; */
   text-align: right;
-  margin-right: 10rem;
+  /* margin-right: 10rem; */
 }
 .owner-account .title-and-description-text input {
   width: 327px;
@@ -193,8 +203,16 @@ input[type="checkbox"] {
 }
 
 .room-details-content {
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
+.room-details-content__wrapper{
+  width: 40%;
+}
+
+
+
 .room-details-content > input,
 .room-details-content select {
   margin-right: 5rem;

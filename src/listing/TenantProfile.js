@@ -70,6 +70,7 @@ const TenantProfile = () => {
         </div>
         <div className="listing-container-content">
           <div className="content-title">
+            <h1>{}</h1>
             <h2>
             { values.roomAddress !== undefined? values.description : "wait . . . " }
             </h2>

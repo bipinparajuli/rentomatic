@@ -187,17 +187,13 @@ if(data.error){
                 <>
                   <Form encType="multipart-formdata">
       <div className="image-area">
-        <span className="image-area-text">
           <h2>Create an Owner Account</h2>
-          <div>
           <span>
             {" "}
             Rentomatic Rooms offers free advertisement of your rooms. Create
             your owner account and list rooms with proper details. Your rooms
             will be rented out to a good tenant in no time.
           </span>
-          </div>
-        </span>
       </div>
       <div className="user-details">
       <div className="user-details-title">
@@ -281,6 +277,8 @@ if(data.error){
           <hr className="seperater right"></hr>
         </div>
         <div className="room-details-content">
+        <div className="room-details-content__wrapper">
+
         <label for="room-types">Room types:</label>{" "}
         <select className="xyz"
         value={formValues.owner.roomDetails.roomType}
@@ -293,6 +291,10 @@ if(data.error){
           <option value="Single">Single</option>
           <option value="Double">Double</option>
         </select>
+
+        </div>
+
+        <div className="room-details-content__wrapper">
         <label for="available">Available From:</label> 
         <input
          type="date"
@@ -301,7 +303,9 @@ if(data.error){
         //                renderProps.setFieldValue("owner.roomDetails.roomType", e.target.value)
         //            }
          />
-        <br />
+        </div>
+        <div className="room-details-content__wrapper">
+
         <label for="rent-duration">Rent Duration:</label> 
 
         <select 
@@ -317,6 +321,10 @@ if(data.error){
           <option value="Unlimited">Unlimited</option>
 
         </select>
+        </div>
+
+        <div className="room-details-content__wrapper">
+
         <label for="rent-per-month">Rent per Month:</label>{" "}
         <input type="text"
         value={formValues.owner.roomDetails.rentPerMonth}
@@ -324,8 +332,10 @@ if(data.error){
                       renderProps.setFieldValue("owner.roomDetails.rentPerMonth", e.target.value)
                   }
         />
-        <br />
-        <label for="work-preference">Tenant preference:</label>{" "}
+        </div>
+        <div className="room-details-content__wrapper">
+        
+        <label for="work-preference">Tenant preference:</label>
         <select 
         className="xyz"
         value={formValues.owner.tenantPreference}
@@ -340,6 +350,9 @@ if(data.error){
           <option value="Couple">Couple</option>
           <option value="Others">Others</option>
         </select>
+        </div>
+
+        <div className="room-details-content__wrapper">
         <label for="work-preference">Work preference:</label>{" "}
         <select 
         className="xyz"
@@ -356,7 +369,9 @@ if(data.error){
           <option value="Other">Other</option>
 
         </select>
-        <br />
+        </div>
+      
+        </div>
         <div className="rooms-checkbox">
         <input type="checkbox" />
         <span>Internet</span>
@@ -367,13 +382,15 @@ if(data.error){
         <input type="checkbox" />
         <span>Attached Bathroom</span>
         </div>
-        </div>
       </div>
       <div className="room-address">
       <div className="room-address-title">
           <span>Room Address:</span>
           <hr className="seperater right"></hr>
         </div>
+        <div style={{display:"flex",alignItems:"center",flexDirection:"column"}} >
+          <div>
+
         <label for="district">District:</label>
         <select
         className="xyz"
@@ -388,7 +405,9 @@ if(data.error){
           <option value="Lalitpur">Lalitpur</option>
 
         </select>
-        <br />
+        </div>
+<div>
+
         <label for="area">Area:</label>
         <select
         className="xyz"
@@ -404,7 +423,10 @@ if(data.error){
                       }
 
                   </select>
-        <br />
+        </div>
+</div>
+
+
       </div>
       <div className="title-and-description">
       <div className="title-description-title">

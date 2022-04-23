@@ -14,6 +14,9 @@ function CreateTenantAccount() {
     captcha:false,
     accept:false
   })
+  const [checkedState, setCheckedState] = useState(
+    new Array(4).fill(false)
+  );
   const {captcha,accept} = activebtn;
 
   function onChange(value) {
@@ -24,6 +27,21 @@ function CreateTenantAccount() {
 
     }
   }
+
+  const facilities = [
+    "Internet","Pets Allowed","Parking","Attached Bathroom"
+  ]
+
+  const handleOnChange = (position) => {
+   
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+
+    setCheckedState(updatedCheckedState);
+  }
+
+  console.log(checkedState);
 
   function handleFormSubmit(values,{resetForm}){
     console.log(values);
@@ -87,7 +105,10 @@ if(data.error){
                 profileDescription:{
                   bio:"",
                 },
-               occupation:""
+               occupation:"",
+               iam:"",
+               age:"",
+               facilities:[]
 
               },
             }}
@@ -102,22 +123,24 @@ if(data.error){
                   <Form encType="multipart-formdata">
       <div className="image-area">
         <img src={image}></img>
-        <span className="image-area-text">
+        <span style={{position:"relative",top:"112px",left:"192px"}} className="image-area-text">
           <h2>Create an Tenant Account</h2>
           <div>
-          <span>
+          <p style={{width:"300px"}}>
             {" "}
             Rentomatic Rooms offers free advertisement of your rooms. Create
             your owner account and list rooms with proper details. Your rooms
             will be rented out to a good tenant in no time.
-          </span>
+          </p>
           </div>
         </span>
       </div>
         <div className="user-details-container">
           <div className="user-details">
           <div className="user-details-title">
-          <span>My Account Details:</span>
+          <span style={{marginLeft: "2rem",
+    fontSize: "20px",
+    fontWeight: "bold"}} >My Account Details:</span>
           <hr className="seperater right"></hr>
         </div >
         <div className="user-details-content">
@@ -207,18 +230,24 @@ if(data.error){
           <div className="profile-content">
             <label>I am:</label>
             <select
-            
+              value={formValues.tenant.iam}
+              onChange={(e) =>
+                            renderProps.setFieldValue("tenant.iam", e.target.value)
+                        }
             >
-              <option >Select</option>
-
-              <option value="Student">Student</option>
-              <option value="Employeed">Employeed</option>
-              <option value="Retired">Retired</option>
-              <option value="Other">Other</option>
+              <option defaultChecked value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Couple">Couple</option>
 
             </select>
             <label>Age:</label>
-            <input type="number" />
+            <input type="number"
+             value={formValues.tenant.age}
+             onChange={(e) =>
+                           renderProps.setFieldValue("tenant.age", e.target.value)
+                       }
+            
+            />
             <label>Occupation:</label>
             <select
               value={formValues.tenant.occupation}
@@ -226,8 +255,7 @@ if(data.error){
                             renderProps.setFieldValue("tenant.occupation", e.target.value)
                         }
             >
-              <option>Select</option>
-              <option value="Student">Student</option>
+              <option defaultChecked value="Student">Student</option>
               <option value="Employeed">Employeed</option>
               <option value="Retired">Retired</option>
               <option value="Other">Other</option>
@@ -244,84 +272,91 @@ if(data.error){
           </div>
         </div>
         <div className="preferences">
-        <div className="preferences-title">
-          <span>Preferred Rooms:</span>
-          <hr className="seperater right"></hr>
-        </div >
-        <div className="preferences-content">
-          <div className="preferences-content-left">
-          <label>Room Location:</label>
-          <select
-            value={formValues.tenant.preferredRooms.roomLocation}
-            onChange={(e) =>
-                          renderProps.setFieldValue("tenant.preferredRooms.roomLocation", e.target.value)
-                      }
-          >
-          <option>Select</option>
-            <option value="Kathmandu">Kathmandu</option>
-            <option value="Bhaktapur">Bhaktapur</option>
-            <option value="Lalitpur">Lalitpur</option>
+            <div className="preferences-title">
+              <span>Preferred Rooms:</span>
+              <hr className="seperater right"></hr>
+            </div >
+            <div className="preferences-content">
+              <div className="preferences-content-left">
+              <label>Room Location:</label>
+              <select
+                value={formValues.tenant.preferredRooms.roomLocation}
+                onChange={(e) =>
+                              renderProps.setFieldValue("tenant.preferredRooms.roomLocation", e.target.value)
+                          }
+              >
+              <option>Select</option>
+                <option value="Kathmandu">Kathmandu</option>
+                <option value="Bhaktapur">Bhaktapur</option>
+                <option value="Lalitpur">Lalitpur</option>
 
-          </select>
-          <br/>
-          <label>Rent Duration:</label>
-          <select
-        value={formValues.tenant.preferredRooms.rentDuration}
-             onChange={(e) =>
-                           renderProps.setFieldValue("tenant.preferredRooms.rentDuration", e.target.value)
-                       }
-                       >
-        <option>Select</option>
-            <option value="Under 6 months">Under 6 months</option>
-            <option value="More than 6 months">More than 6 months</option>
-            <option value="Unlimited">Unlimited</option>
-
-          </select>
-          <br />
-          <label>Available Within:</label>
-          <input type="date" 
-          value={formValues.tenant.preferredRooms.availableWithin}
-             onChange={(e) =>
-                           renderProps.setFieldValue("tenant.preferredRooms.availableWithin", e.target.value)
-                       }
-                       />
-          </div>
-          <div className="preferences-content-right">
-          <label>Room Type:</label>
-          <select
-             value={formValues.tenant.preferredRooms.roomType}
-             onChange={(e) =>
-                           renderProps.setFieldValue("tenant.preferredRooms.roomType", e.target.value)
-                       }
-          >
+              </select>
+              <br/>
+              <label>Rent Duration:</label>
+              <select
+            value={formValues.tenant.preferredRooms.rentDuration}
+                onChange={(e) =>
+                              renderProps.setFieldValue("tenant.preferredRooms.rentDuration", e.target.value)
+                          }
+                          >
             <option>Select</option>
-            <option value="Single">Single</option>
-            <option value="Double">Double</option>
-            
-          </select>
-          <br />
-          <label>Rent per Month:</label>
-            <input 
-              type="text"
-              value={formValues.tenant.preferredRooms.rentPerMonth}
-              onChange={(e) =>
-                            renderProps.setFieldValue("tenant.preferredRooms.rentPerMonth", e.target.value)
-                        }
-            />
-          </div>
-          </div>
+                <option value="Under 6 months">Under 6 months</option>
+                <option value="More than 6 months">More than 6 months</option>
+                <option value="Unlimited">Unlimited</option>
+
+              </select>
+              <br />
+              <label>Available Within:</label>
+              <input type="date" 
+              value={formValues.tenant.preferredRooms.availableWithin}
+                onChange={(e) =>
+                              renderProps.setFieldValue("tenant.preferredRooms.availableWithin", e.target.value)
+                          }
+                          />
+              </div>
+              <div className="preferences-content-right">
+              <label>Room Type:</label>
+              <select
+                value={formValues.tenant.preferredRooms.roomType}
+                onChange={(e) =>
+                              renderProps.setFieldValue("tenant.preferredRooms.roomType", e.target.value)
+                          }
+              >
+                <option>Select</option>
+                <option value="Single">Single</option>
+                <option value="Double">Double</option>
+                
+              </select>
+              <br />
+              <label>Rent per Month:</label>
+                <input 
+                  type="text"
+                  value={formValues.tenant.preferredRooms.rentPerMonth}
+                  onChange={(e) =>
+                                renderProps.setFieldValue("tenant.preferredRooms.rentPerMonth", e.target.value)
+                            }
+                />
+              </div>
+              </div>
           <br />
           <div className="selection-div">
-          <div><input type="checkbox" />
-          <label for="Internet">Internet</label></div>
-         <div> <input type="checkbox" />
-          <label for="Pets">Pets Allowed</label></div>
-         <div> <input type="checkbox" />
-          <label for="Parking">Parking</label></div>
-         <div> <input type="checkbox" />
-          <label for="bathroom">Attached Bathroom</label></div>
-          <br />
+          <div style={{display:"flex"}}>
+          {  
+          facilities.map((data,index)=>(
+             <>
+             <input 
+         checked={checkedState[index]}
+         onChange={() => handleOnChange(index)}
+          type="checkbox" />
+        <label for="Internet">{data}</label>
+        
+        <br />
+</>
 
+          ))
+          
+         
+}
           </div>
           <div className="rec">
           <ReCAPTCHA 
@@ -348,7 +383,7 @@ if(data.error){
 
         </div>:
         <div
-        style={{opacity:"0.4"}}
+        style={{opacity:"0.4",position:"relative",left:"300px"}}
         className="create">
         <button
         disabled
@@ -357,8 +392,12 @@ if(data.error){
 
     </div>
         }
+      
+      
         </div>
-        </Form>
+      </div>
+                   </Form>
+    
     </>
               )
             }

@@ -30,7 +30,7 @@
 .example {
   display: flex;
   flex-wrap: wrap;
-  width: 688px;
+  width: 60%;
   margin: 0rem 3rem;
 }
 .example-card {
