@@ -1,0 +1,18 @@
+.detail-container {
+  width: 95%;
+  margin-top: 50px;
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+.details {
+  font-size: 22px;
+}
+
+.title {
+  padding-bottom: 20px;
+  padding-top: 40px;
+  font-size: 30px;
+  font-weight: 600;
+  /* color: black; */
+}
