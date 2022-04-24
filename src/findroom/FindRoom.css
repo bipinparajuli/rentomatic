@@ -6,6 +6,9 @@
   /* width: 295px; */
   /* height: 218px; */
 }
+.active{
+  background-color: #c3d8d9 !important;
+}
 
 .title-main-section {
   margin: 2rem 0;
@@ -31,7 +34,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 60%;
-  margin: 0rem 3rem;
+  /* margin: 0rem 3rem; */
 }
 .example-card {
   width: 294px;
@@ -85,7 +88,7 @@
 
 .filters {
   width: 380px;
-  height: 687px;
+  height: 550px;
   margin-right: 2rem;
   margin-left: 5rem;
   margin-top: 2rem;
@@ -94,7 +97,7 @@
   border: 2px solid #23656c;
   box-sizing: border-box;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 47px;
+  border-radius: 10px;
 }
 .filters .filter-content div {
   width: 320px;

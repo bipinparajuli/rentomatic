@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo.png";
-import { deleteSession, hasToken } from "../helper/session";
+import { deleteSession, hasToken,getSession } from "../helper/session";
 
 
 
@@ -14,7 +14,7 @@ function NavBar() {
     deleteSession()
     window.location.reload()
   }
-
+const tenant = getSession()
   return (
     <>
       <nav>
@@ -39,13 +39,13 @@ function NavBar() {
             <Link to={`/findTenant`}>Tenant</Link>
           </li>
           <li className="nav-item">
-            <Link to={`/findRoom`}>Rent</Link>
+            <Link to={`/findRoom`}>Room</Link>
           </li>
-          {hasToken()?
+          {hasToken() ?
           <>
-          <li className="nav-item">
+         { JSON.parse(tenant).role == "tenant" ? <li className="nav-item">
              <Link to={`/profile`}>Profile</Link>
-           </li>
+           </li> : ""}
            <li className="nav-item">
              <Link
              onClick={handleLogout}

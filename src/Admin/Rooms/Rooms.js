@@ -114,10 +114,7 @@ const Rooms = () => {
           </tbody>
         </table>
       </div>
-      <div>
-        <div className="cards-wrapper"></div>
-        <div className="cards-wrapper1"></div>
-      </div>
+     
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // import { LoadScript, GoogleMap, Marker } from "@react-google-maps/api";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-
+import { Modal, Button, Group } from '@mantine/core';
 import { getRoomById } from "../helper/ApiHelper";
 import ImageHelper from "../helper/ImageHelper";
 import image from "./img/en.jpg";
@@ -14,7 +14,7 @@ const Listing = () => {
   const [values, setValues] = useState({
    
   });
-
+  const [opened, setOpened] = useState(false);
   const {lat,lng} = state;
 
   
@@ -40,7 +40,6 @@ const Listing = () => {
       }
     });
   };
-  console.log(values);
   useEffect(() => {
     preloadProduct();
     // setState("hello")
@@ -65,6 +64,8 @@ const Listing = () => {
       // }
     }
   },[values])
+  console.log(values);
+
 // console.log(JSON.parse(values.roomAddress.area));
   return (
     <div className="container">
@@ -72,7 +73,7 @@ const Listing = () => {
         <div className="listing-container-image">
           {/* <img src={image} /> */}
           <ImageHelper 
-          productId={values._id}
+          productId={id}
            />
         </div>
         <div className="listing-container-content">
@@ -95,6 +96,10 @@ const Listing = () => {
                   <li>Area:</li>
                   {/* <li>Bedrooms:</li> */}
                   <li>Rental Period:</li>
+                  <li>Tenant Preference:</li>
+                  <li>Rent Per Months:</li>
+
+                  <li>Room Type:</li>
                  
                 </ul>
               </div>
@@ -111,7 +116,21 @@ const Listing = () => {
                       ? values.roomDetails.rentDuration
                       : "wait . . . "}
                   </li>
-                  
+                  <li>
+                    {values.roomAddress !== undefined
+                      ? values.tenantPreference
+                      : "wait . . . "}
+                  </li>
+                  <li>
+                    {values.roomAddress !== undefined
+                      ? values.roomDetails.rentPerMonth
+                      : "wait . . . "}
+                  </li>
+                   <li>
+                    {values.roomAddress !== undefined
+                      ? values.roomDetails.roomType
+                      : "wait . . . "}
+                  </li>
                 </ul>
               </div>
               </div>
@@ -164,7 +183,15 @@ const Listing = () => {
           <i class="fa-2x fa-solid fa-envelope"></i>
           <input type="text"></input>
         </div>
-        <button>Contact Landlord</button>
+        <Modal
+        opened={opened}
+        onClose={() => setOpened(false)}
+        title="Contact Info"
+      >
+        <h3>{values.name}</h3>
+        <h6>{values.owneremail}</h6>
+      </Modal>
+        <button onClick={() => setOpened(true)} >Contact Landlord</button>
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
 import React,{useState,useEffect} from "react";
 import {useParams} from 'react-router-dom'
+import { Modal, Button, Group } from '@mantine/core';
+
 // import GoogleMapReact from 'google-map-react';
 
 import { getTenantById } from "../helper/ApiHelper";
@@ -12,6 +14,7 @@ import "./Listing.css";
 const TenantProfile = () => {
   let { id } = useParams();
 
+  const [opened, setOpened] = useState(false);
 
   const [values, setValues] = useState({
     // name: "",
@@ -55,7 +58,7 @@ const TenantProfile = () => {
       }
     });
   };
-  console.log(values);
+  console.log(values.profileDescription);
   useEffect(() => {
     preloadProduct();
   }, []);
@@ -72,9 +75,9 @@ const TenantProfile = () => {
           <div className="content-title">
             <h1>{}</h1>
             <h2>
-            { values.roomAddress !== undefined? values.description : "wait . . . " }
+            { values._id !== undefined? values.profileDescription.bio : "wait . . . " }
             </h2>
-            <h4> { values.roomAddress !== undefined? values.roomAddress.district : "wait . . . " }</h4>
+            <h4> { values._id !== undefined? `Max rent: Rs ${values.preferredRooms.rentPerMonth} `: "wait . . . " }</h4>
             <hr />
             <div className="content-description">
               <div className="content-description-type">
@@ -82,23 +85,30 @@ const TenantProfile = () => {
                   <li>Area:</li>
                   {/* <li>Bedrooms:</li> */}
                   <li>Rental Period:</li>
-                  <li>Verified by Rentomatic</li>
-                  <li>Location:</li>
+                  <li>Internet:</li>
+                  <li>Pets Allowed:</li>
+                  <li>Parking:</li>
+                  <li>Attached Bathroom:</li>
+
                 </ul>
               </div>
               <div className="content-description-content">
                 <ul>
                   <li>
-                    { values.roomAddress !== undefined? values.roomAddress.area : "wait . . . " }m<sup>2</sup>
+                    { values._id !== undefined? values.preferredRooms.roomLocation : "wait . . . " }
                   </li>
                   <li>
-                  { values.roomAddress !== undefined? values.roomDetails.rentDuration : "wait . . . " }
+                  { values._id !== undefined? values.preferredRooms.rentDuration : "wait . . . " }
                   </li>
-                  <li>Studio</li>
-                  <li>Yes</li>
-                  <li>
-                  { values.roomAddress !== undefined? values.roomDetails.rentDuration : "wait . . . " }
-                  </li>
+                  {
+                    values._id !== undefined? values.facilities.map(data=>{
+                      
+                      return(<>
+                        {data == true ? <li>Yes</li>:<li>No</li>}
+                      </>)
+                    }):null
+                  }
+                 
                 </ul>
                
               </div>
@@ -123,7 +133,15 @@ const TenantProfile = () => {
       </div>
       <div className="input">
          <div><i class="fa-2x fa-solid fa-envelope"></i><input type="text"></input></div>
-          <button>Contact Landlord</button>
+         <Modal
+        opened={opened}
+        onClose={() => setOpened(false)}
+        title="Contact Info"
+      >
+        <h3>{values.name}</h3>
+        <h6>{values.owneremail}</h6>
+      </Modal>
+        <button onClick={() => setOpened(true)} >Contact Landlord</button>
         </div>
     </div>
   );

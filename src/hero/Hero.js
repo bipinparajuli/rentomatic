@@ -17,7 +17,7 @@ import Bhaktapur from './img/bhaktapur.png'
 import Baneshor from './img/baneshor.png'
 import Pepsicola from './img/pepsicola.png'
 import Kritipur from './img/kritipur.png'
-
+import { getSession } from "../helper/session";
 
 
 function Hero() {
@@ -30,6 +30,8 @@ function Hero() {
 let params = useParams();
 
 const notifications = useNotifications();
+
+const owner = getSession()
 
   function handleSearch(){
 
@@ -435,7 +437,20 @@ resetForm()
           <div className="card-bottom">
             <div className="btndiv">
               <button
-              onClick={() => setOpened(true)}
+              onClick={() => {
+                if(JSON.parse(owner).role == "owner"){
+                setOpened(true)
+
+
+                }
+                else{
+                  notifications.showNotification({
+                    color:"red",
+                    title: 'Error',
+                    message: "Please sign in",
+                  })
+                }
+              }}
               className="btns">List Your Rooms</button>
               <span className="btnplus fa-solid fa-plus"></span>
             </div>

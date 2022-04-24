@@ -1,11 +1,17 @@
 import React,{useState,useEffect} from 'react'
+import { getProfile } from '../helper/ApiHelper';
 import { getAllCartItems, removeItemFromCart } from '../helper/CartHelper';
 import ImageHelper from '../helper/ImageHelper';
+import { getSession } from '../helper/session';
+import { Card, Image, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
 
 import './Profile.css'
 
+let tenant = getSession()
+
 const Profile = () => {
     const [products, setProducts] = useState([]);
+    const [profile, setProfile] = useState();
     const [reload, setReload] = useState(true);
   
     const loadAllCartProducts = () => {
@@ -20,26 +26,86 @@ const Profile = () => {
         loadAllCartProducts();
       }, [reload]);
 
+      useEffect(()=>{
+        getProfile(JSON.parse(tenant).id).then(data=>{
+          console.log(data);  
+          setProfile(data)
+        }).catch(err=>{
+          console.log(err);
+        })
+      },[])
+
+      console.log(profile);
   return (
       <>
     <div
-    style={{display:"flex",width:"100%",height:"100vh"}}
+    style={{display:"flex",width:"100%",minHeight:"100vh"}}
     >
 
     <div
-    style={{width:"70%"}}
-    >Profile</div>
+    style={{width:"70%",display:"flex"}}
+    >
+       <div style={{ width: "20%", margin: '20px 60px' }}>
+      <Card shadow="sm" p="lg">
+        <Card.Section>
+          <Image src="https://images.pexels.com/photos/3577561/pexels-photo-3577561.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" height={160} alt="Norway" />
+        </Card.Section>
+
+        <Group position="apart" style={{ marginBottom: 5, }}>
+          <Text weight={500}>Name: {profile !== undefined? profile[0].fullName : "" }</Text>
+          <Badge color="pink" variant="light">
+            {profile !== undefined?profile[0].gender:""}
+          </Badge>
+        </Group>
+
+        <Text size="sm" style={{ color: "", lineHeight: 1.5 }}>
+          Date of Birth {profile !== undefined?profile[0].dateOfBirth:""}
+        </Text>
+
+        <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }}>
+          Book classic tour now
+        </Button>
+      </Card>
+    </div>
+
+    <div style={{ width: "40%", margin: '20px 60px' }}>
+      <Card shadow="sm" p="lg">
+        <Card.Section>
+          {/* <Image src="./image.png" height={160} alt="Norway" /> */}
+        </Card.Section>
+
+        <Group position="apart" style={{ marginBottom: 5, }}>
+          <Text weight={500}>Address: {profile !== undefined?profile[0].address:""}</Text>
+          <Badge color="pink" variant="light">
+            On Sale
+          </Badge>
+        </Group>
+
+        <Text size="sm" style={{ color: "", lineHeight: 1.5 }}>
+         Email: {profile !== undefined?profile[0].email:""}
+        </Text>
+        <Text size="sm" style={{ color: "", lineHeight: 1.5 }}>
+         Phone: {profile !== undefined?profile[0].phoneNumber:""}
+        </Text>
+
+        <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }}>
+          Book classic tour now
+        </Button>
+      </Card>
+    </div>
+
+      </div>
     
     <div
-    style={{width:"30%"}}
+    style={{width:"30%",margin:"20px 60px"}}
     
     >
-        <h1>Book marked</h1>
+        <h1 style={{margin:"10px 0"}} >Book marked</h1>
     {products.map((room)=>{
               console.log(room);
               return (
                 <>
-                  <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                  <div style={{margin:"20px 0 "}} class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
     <a href="#">
         <ImageHelper productId={room._id} className="rounded-t-lg" />
 

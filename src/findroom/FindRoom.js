@@ -12,6 +12,19 @@ function FindRoom() {
   let navigate = useNavigate();
 
   const [value, onChange] = useState(1);
+  const [active, setActive] = useState({
+    recent:false,
+    cheapest:false,
+    expensive:false,
+    kathmandu:false,
+    lalitpur:false,
+    bhaktapur:false,
+    male:false,
+    female:false,
+    family:false,
+    short:false,
+    long:false
+  });
   const [products, setProducts] = useState([
     // {
     //   owner:{
@@ -35,12 +48,23 @@ function FindRoom() {
   let preference = queryParams.get("preference")
   let duration = queryParams.get("duration")
 
-
+const {bhaktapur,cheapest,expensive,family,female,kathmandu,lalitpur,long,male,recent,short} = active
 
   console.log(duration);
   
   const preloadProducts = async ()  => {
     if(location){
+ 
+      if(location == "Kathmandu"){
+        setActive({kathmandu:true})
+      }
+      if(location == "Lalitpur"){
+        setActive({lalitpur:true})
+      }
+      if(location == "Bhaktapur"){
+        setActive({bhaktapur:true})
+      }
+      
       await  searchRoom("location",location).then((data) => {
         console.log(data);
   
@@ -52,6 +76,12 @@ function FindRoom() {
       });
     }
     if(price){
+      if(price == "cheapest"){
+        setActive({cheapest:true})
+      }
+      if(price == "expensive"){
+        setActive({expensive:true})
+      }
       await  searchRoom("price",price).then((data) => {
         console.log(data);
   
@@ -63,6 +93,17 @@ function FindRoom() {
       });
     }
     if(preference){
+
+      if(preference == "male"){
+        setActive({male:true})
+      }
+      if(preference == "female"){
+        setActive({female:true})
+      }
+      if(preference == "family"){
+        setActive({family:true})
+      }
+
       await  searchRoom("preference",preference).then((data) => {
         console.log(data);
   
@@ -75,6 +116,13 @@ function FindRoom() {
     }
     //Duration
     if(duration){
+      if(duration == "short"){
+        setActive({short:true})
+      }
+      if(duration == "long"){
+        setActive({long:true})
+      }
+
       await  searchRoom("duration",duration).then((data) => {
         console.log(data);
   
@@ -112,11 +160,12 @@ function FindRoom() {
       ele.style.left = `${Number(value)}px`;
     }
   });
+  console.log(active);
   return (
     <>
       <div className="findroom-main-section">
         <div className="title-main-section">
-          <h2>Find Your Preferred Room</h2>
+          <h2 style={{padding:"32px 0",color:"#183639",fontSize:"40px"}}>Find Your Preferred Room</h2>
         </div>
         <div className="main-section-hero">
           <div className="example">
@@ -124,11 +173,11 @@ function FindRoom() {
               console.log(JSON.parse(room.owner.roomAddress.area));
               return (
                 <>
-                <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-    <a href="#">
-        <ImageHelper productId={room._id} className="rounded-t-lg" />
+                <div style={{margin:"10px 20px"}} class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    {/* <a href="#"> */}
+        <ImageHelper  productId={room._id} className="rounded-t-lg" />
 
-    </a>
+    {/* </a> */}
     <div class="p-5">
         <a href="#">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -199,20 +248,20 @@ function FindRoom() {
           </div>
           <div className="filters">
             <div className="filters-title">
-              <h3>Filters</h3>
+              <h3 style={{fontWeight:"bold",fontSize:"30px"}}>Filters</h3>
             </div>
             <div className="filter-content">
               <span>What are you looking for?</span>
               <br />
               <div>
-                <button >
+                <button onClick={()=>setActive(true)} className={active?"active":""} >
                 <Link className="tenant-btn" to={`/findtenant`}>
 
                   Tenant
                 </Link>
 
                   </button>
-                <button >
+                <button onClick={()=>setActive(true)} className={active?"active":""} >
                 <Link className="room-btn" to={`/findroom`}>
                   
                   Room
@@ -224,24 +273,32 @@ function FindRoom() {
               <br />
               <div>
                 <button 
+                onClick={()=>setActive({recent:true})} 
+                className={`recent-btn ${recent?"active":""}`}
                 
-                className="recent-btn">Recent</button>
+                >Recent</button>
                 <button 
                  onClick={()=> {
                   navigate(`/findroom/?price=cheapest`)
                   window.location.reload()
+                  setActive({cheapest:true})
+
 
                 }
               }
-                className="cheapest-btn">Cheapest</button>
+                className={`cheapest-btn ${cheapest?"active":""}`}
+                >Cheapest</button>
                 <button 
                 onClick={()=> {
                   navigate(`/findroom/?price=expensive`)
                   window.location.reload()
+                  setActive({expensive:true})
 
                 }
               } 
-                className="expensive">Expensive</button>
+                className={`expensive ${expensive?"active":""}`}
+                
+                >Expensive</button>
               </div>
               <span>Location:</span>
               <br />
@@ -254,10 +311,10 @@ function FindRoom() {
                 }
               }
                 
-                className="kathmandu-btn selected-btn">
+                className={`kathmandu-btn selected-btn ${kathmandu?"active":""}`}>
                   Kathmandu
                 </button>
-                <button className="lalitpur-btn"
+                <button className={`lalitpur-btn ${lalitpur?"active":""}`}
           onClick={()=> {
             navigate(`/findroom/?location=Lalitpur`)
             window.location.reload()
@@ -265,7 +322,7 @@ function FindRoom() {
           }}
                 
                 >Lalitpur</button>
-                <button className="bhaktapur-btn"
+                <button className={`bhaktapur-btn ${bhaktapur?"active":""}`}
           onClick={()=> {
             navigate(`/findroom/?location=Bhaktapur`)
             window.location.reload()
@@ -283,20 +340,20 @@ function FindRoom() {
                   navigate(`/findroom/?preference=male`)
                   window.location.reload()
                 }}
-                className="male-btn">Male</button>
+                className={`male-btn ${male?"active":""}`}>Male</button>
                 
                 <button 
                 onClick={()=> {
                   navigate(`/findroom/?preference=female`)
                   window.location.reload()
                 }}
-                className="female-btn">Female</button>
+                className={`female-btn ${female?"active":""}`}>Female</button>
                 <button
                 onClick={()=> {
                   navigate(`/findroom/?preference=family`)
                   window.location.reload()
                 }}
-                className="family">Family</button>
+                className={`family ${family?"active":""}`}>Family</button>
               </div>
               <span>Stay Duration:</span>
               <br />
@@ -306,13 +363,13 @@ function FindRoom() {
                     navigate(`/findroom/?duration=short`)
                     window.location.reload()
                   }}
-                className="shortTerm-btn">Short Term</button>
+                className={`shortTerm-btn ${short?"active":""}`}>Short Term</button>
                 <button 
                   onClick={()=> {
                     navigate(`/findroom/?duration=long`)
                     window.location.reload()
                   }}
-                className="longTerm-btn">Long Term</button>
+                className={`longTerm-btn ${long?"active":""}`}>Long Term</button>
               </div>
               {/* <span>Rent for Month</span> */}
               <br />

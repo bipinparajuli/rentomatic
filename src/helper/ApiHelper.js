@@ -81,6 +81,7 @@ export const signup = (user) => {
       method: "GET",
     })
       .then((response) => {
+        // console.log(response.json());
         return response.json();
       })
       .catch((err) => console.log(err));
@@ -174,6 +175,17 @@ export const signup = (user) => {
     })
       .then((user) => {
         return user.json();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  //get tenant profile
+  export const getProfile = (ids) => {
+    return fetch(`${API}/profile/${ids}`, {
+      method: "GET",
+    })
+      .then((response) => {
+        return response.json();
       })
       .catch((err) => console.log(err));
   };

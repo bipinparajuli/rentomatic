@@ -5,6 +5,10 @@ body {
   padding: 0;
   margin: 0;
 }
+
+.form_filed{
+  margin-left:20px
+}
 .owner-account .image-area {
   background: url(./img/house.png);
   background-repeat: "no-repeat" !important;
@@ -14,7 +18,7 @@ body {
   margin-top: -.1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 

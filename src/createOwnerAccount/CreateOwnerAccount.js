@@ -23,6 +23,24 @@ function CreateUserAccount() {
     err: "",
     getRedirect: "",
   });
+  const [checkedState, setCheckedState] = useState(new Array(4).fill(false));
+
+  const facilities = [
+    "Internet",
+    "Pets Allowed",
+    "Parking",
+    "Attached Bathroom",
+  ];
+
+  const handleOnChange = (position) => {
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+
+    setCheckedState(updatedCheckedState);
+  };
+
+
   const notifications = useNotifications();
   const {captcha,accept} = activebtn;
 
@@ -49,7 +67,9 @@ function CreateUserAccount() {
   });
 
   function handleFormSubmit(values,{resetForm}){
-    console.log(values);
+    setState({loading:true})
+    values.owner.facilities = checkedState;
+
     let formData = new FormData()
     for (let value in values) {
       if(value == "owner" ){
@@ -61,9 +81,11 @@ function CreateUserAccount() {
       formData.append(value, values[value]);
       }
     }
-    console.log(formData.getAll("gender"));
+    console.log(values,checkedState);
+
     signup(formData).then(data=>{
 console.log(data);
+setState({loading:false})
 if(data.error){
   notifications.showNotification({
     color:"red",
@@ -145,6 +167,8 @@ if(data.error){
 {name:"Bhaktapur",lat: 27.671016983049867,lan: 85.42951074577422 }
 
   ]
+
+  console.log(checkedState)
   return (
     <>
 
@@ -160,6 +184,7 @@ if(data.error){
               email:"",
               password:"",
               images:null,
+              role:"owner",
               owner:{
                 roomDetails:{
                   roomType:"",
@@ -173,7 +198,11 @@ if(data.error){
                   area:{},
                 },
                 title:'',
+                name:'',
+                owneremail:"",
                 description:"",
+                facilities: [],
+
 
               },
             }}
@@ -182,13 +211,12 @@ if(data.error){
           >
             {(renderProps) => {
               const { values: formValues, touched, errors,setFieldValue } = renderProps;
-              console.log(formValues);
               return (
                 <>
                   <Form encType="multipart-formdata">
       <div className="image-area">
-          <h2>Create an Owner Account</h2>
-          <span>
+          <h2 style={{padding:"19px 0",color:"#183639",fontSize:"40px"}}>Create an Owner Account</h2>
+          <span style={{fontSize:"22px"}}>
             {" "}
             Rentomatic Rooms offers free advertisement of your rooms. Create
             your owner account and list rooms with proper details. Your rooms
@@ -203,15 +231,22 @@ if(data.error){
         <div className="user-details-description">
       <label for="full-name">Full name:</label> 
       <input 
+      className="form_filed"
         type="text"
         value={formValues.fullName}
-              onChange={(e) =>
-                            renderProps.setFieldValue("fullName", e.target.value)
+              onChange={(e) =>{
+                renderProps.setFieldValue("fullName", e.target.value)
+                renderProps.setFieldValue("owner.name", e.target.value)
+              }
+                          
+
                         }
         />
         <br />
         <label for="dob">Date of Birth:</label>
          <input 
+      className="form_filed"
+
          type="date"
          value={formValues.dateOfBirth}
               onChange={(e) =>
@@ -221,6 +256,8 @@ if(data.error){
         <br />
         <label for="address">Address:</label>
          <input 
+      className="form_filed"
+
          type="text"
          value={formValues.address}
               onChange={(e) =>
@@ -230,6 +267,8 @@ if(data.error){
         <br />
         <label for="phone">Phone number:</label>
          <input 
+      className="form_filed"
+
          type="text"
          value={formValues.phoneNumber}
               onChange={(e) =>
@@ -239,6 +278,8 @@ if(data.error){
         <br />
         <label for="gender">Gender:</label>{" "}
         <select
+      className="form_filed"
+
          value={formValues.gender}
          onChange={(e) =>
                        renderProps.setFieldValue("gender", e.target.value)
@@ -252,15 +293,22 @@ if(data.error){
         <br />
         <label for="email">Email:</label>
         <input 
+      className="form_filed"
+
         type="email"
         value={formValues.email}
-        onChange={(e) =>
-                      renderProps.setFieldValue("email", e.target.value)
+        onChange={(e) =>{
+          renderProps.setFieldValue("email", e.target.value)
+          renderProps.setFieldValue("owner.owneremail", e.target.value)
+
+        }
                   }
         />
         <br />
         <label for="password">Password:</label>
         <input 
+      className="form_filed"
+
         type="password"
         value={formValues.password}
         onChange={(e) =>
@@ -279,7 +327,9 @@ if(data.error){
         <div className="room-details-content__wrapper">
 
         <label for="room-types">Room types:</label>{" "}
-        <select className="xyz"
+        <select
+      className="xyz form_filed"
+        
         value={formValues.owner.roomDetails.roomType}
         onChange={(e) =>
                       renderProps.setFieldValue("owner.roomDetails.roomType", e.target.value)
@@ -296,6 +346,8 @@ if(data.error){
         <div className="room-details-content__wrapper">
         <label for="available">Available From:</label> 
         <input
+      className="form_filed"
+
          type="date"
         //  value={formValues.owner.roomDetails.roomType}
         //  onChange={(e) =>
@@ -308,7 +360,7 @@ if(data.error){
         <label for="rent-duration">Rent Duration:</label> 
 
         <select 
-        className="xyz"
+        className="xyz form_filed"
         value={formValues.owner.roomDetails.rentDuration}
         onChange={(e) =>
                       renderProps.setFieldValue("owner.roomDetails.rentDuration", e.target.value)
@@ -326,6 +378,8 @@ if(data.error){
 
         <label for="rent-per-month">Rent per Month:</label>{" "}
         <input type="text"
+      className="form_filed"
+
         value={formValues.owner.roomDetails.rentPerMonth}
         onChange={(e) =>
                       renderProps.setFieldValue("owner.roomDetails.rentPerMonth", e.target.value)
@@ -336,7 +390,7 @@ if(data.error){
         
         <label for="work-preference">Tenant preference:</label>
         <select 
-        className="xyz"
+        className="xyz form_filed"
         value={formValues.owner.tenantPreference}
         onChange={(e) =>
                       renderProps.setFieldValue("owner.tenantPreference", e.target.value)
@@ -354,7 +408,7 @@ if(data.error){
         <div className="room-details-content__wrapper">
         <label for="work-preference">Work preference:</label>{" "}
         <select 
-        className="xyz"
+        className="xyz form_filed"
         value={formValues.owner.workPreference}
         onChange={(e) =>
                       renderProps.setFieldValue("owner.workPreference", e.target.value)
@@ -372,14 +426,22 @@ if(data.error){
       
         </div>
         <div className="rooms-checkbox">
-        <input type="checkbox" />
-        <span>Internet</span>
-        <input type="checkbox" />
-        <span>Pets Allowed</span>
-        <input type="checkbox" />
-        <span>Parking</span>
-        <input type="checkbox" />
-        <span>Attached Bathroom</span>
+        <div style={{ display: "flex" }}>
+                        {facilities.map((data, index) => (
+                          <>
+                            <input
+                              checked={checkedState[index]}
+                              onChange={() => {
+                                handleOnChange(index)
+                              }}
+                              type="checkbox"
+                            />
+                            <label for="Internet">{data}</label>
+
+                            <br />
+                          </>
+                        ))}
+                      </div>
         </div>
       </div>
       <div className="room-address">
@@ -392,7 +454,7 @@ if(data.error){
 
         <label for="district">District:</label>
         <select
-        className="xyz"
+        className="xyz form_filed"
           value={formValues.owner.roomAddress.district}
           onChange={(e) =>
                         renderProps.setFieldValue("owner.roomAddress.district", e.target.value)
@@ -409,7 +471,7 @@ if(data.error){
 
         <label for="area">Area:</label>
         <select
-        className="xyz"
+        className="xyz form_filed"
         value={formValues.owner.roomAddress.area}
         onChange={(e) =>
                       renderProps.setFieldValue("owner.roomAddress.area", e.target.value)
@@ -435,6 +497,8 @@ if(data.error){
         <div className="title-and-description-text">
           <label for="ad-title">Ad Title:</label>
           <input 
+        className="form_filed"
+
               type="text"
              value={formValues.owner.title}
              onChange={(e) =>
@@ -442,13 +506,18 @@ if(data.error){
                        }
           />
           <br />
+          <div style={{display:"flex"}}>
+
           <label for="ad-description">Ad Description:</label>
           <textarea
+          className="form_filed"
              value={formValues.owner.description}
              onChange={(e) =>
                            renderProps.setFieldValue("owner.description", e.target.value)
                        }
           />
+          </div>
+
           <br />
         </div>
         <div className="title-and-description-image">
@@ -483,11 +552,23 @@ if(data.error){
         </div>
         {
           accept && captcha ? 
-          <div className="create">
+                 !loading? <div className="create">
             <button
             type="submit">Create Owner Account with Ads</button>
 
-        </div>:
+        </div>
+      :
+      <div className="create">
+      <button disabled type="button" class="py-2.5 px-5 mr-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center">
+    <svg role="status" class="inline w-4 h-4 mr-2 text-gray-200 animate-spin dark:text-gray-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="#1C64F2"/>
+    </svg>
+    Loading...
+</button>
+      </div>
+        
+        :
         <div
         style={{opacity:"0.4"}}
         className="create">
