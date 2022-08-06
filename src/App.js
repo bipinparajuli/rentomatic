@@ -23,13 +23,14 @@ import Dashboard from "./Admin/Dashboard/Dashboard";
 import Rooms from "./Admin/Rooms/Rooms";
 import Tenant from "./Admin/Tenant/Tenant";
 import Privacy from "./privacy/Privacy";
+import Private from "./PrivateRoute/Private";
+import AdminRoute from "./AdminRoute/AdminRoute";
 //new
 function App() {
   //  let e=document.getElementsByClassName("rsc-header")
   //  console.log(e);
 
   //  e.style.color = "red"
-
   return (
     <>
       <BrowserRouter>
@@ -49,7 +50,7 @@ function App() {
               element={<CreateTenantAccount />}
             />
             <Route path="/findRoom" element={<FindRoom />} />
-            <Route path="/profile" element={<Profile />} />
+            {/* <Route path="/profile" element={<Profile />} /> */}
             <Route path="/findTenant" element={<FindTenant />} />
             <Route path="/room/:id" element={<Listing />} />
             <Route path="/tenantprofile/:id" element={<TenantProfile />} />
@@ -59,13 +60,23 @@ function App() {
               element={<ResetPassword />}
             />
 
-            <Route path="/profile" element={<Profile />} />
+            {/* <Route path="/profile" element={<Profile />} /> */}
+            <Route
+          path="/profile"
+          element={
+            <Private>
+              <Profile />
+            </Private>
+          }
+        />
 
             <Route path="/faq" element={<Faq />} />
             <Route path="/privacy" element={<Privacy />} />
 
             {/* <Admin> */}
-            <Route path="/admin" element={<Admin />}>
+            <Route path="/admin" element={<AdminRoute>
+              <Admin />
+            </AdminRoute> }>
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="rooms" element={<Rooms />} />
               <Route path="tenant" element={<Tenant />} />

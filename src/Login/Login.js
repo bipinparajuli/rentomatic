@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom'
 
 import { signin } from '../helper/ApiHelper';
 import './login.css';
-import { persistSession } from '../helper/session';
+import { persistSession,getSession } from '../helper/session';
  
 
 
@@ -62,10 +62,19 @@ function Login() {
             title: 'Success',
             message: "Successfully login",
           })
-          window.location.reload()
-          setTimeout(()=>{
-            navigate("/")
-          },1000)
+          console.log(JSON.parse(getSession()).role);
+          if(JSON.parse(getSession()).role == "admin"){
+            // window.location.reload()
+            setTimeout(()=>{
+              navigate("/admin/rooms")
+            },1000)
+          }else{
+            window.location.reload()
+            setTimeout(()=>{
+              navigate("/")
+            },1000)
+          }
+          
 
 
           // authenticate(data, () => {

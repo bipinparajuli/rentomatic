@@ -29,11 +29,15 @@ function FindRoom() {
   const queryParams = new URLSearchParams(window.location.search)
   let location = queryParams.get("location")
   let price = queryParams.get("price")
+  let preference = queryParams.get("preference")
+  let duration = queryParams.get("duration")
+
+
   const {bhaktapur,cheapest,expensive,family,female,kathmandu,lalitpur,long,male,recent,short} = active
 
   console.log(location);
 
-  const api = "https://cors-anywhere.herokuapp.com/localhost:5000/api/v1/users/getphoto/623c5932f9ab201e74deb3dc"
+  // const api = "https://cors-anywhere.herokuapp.com/localhost:5000/api/v1/users/getphoto/623c5932f9ab201e74deb3dc"
   const preloadProducts = async ()  => {
 
     if(location){
@@ -55,6 +59,7 @@ function FindRoom() {
           setProducts(data);
         }
       });}
+
       if(price){
         if(price == "cheapest"){
           setActive({cheapest:true})
@@ -71,7 +76,50 @@ function FindRoom() {
             setProducts(data);
           }
         });}
-      else{
+
+        if(preference){
+
+          if(preference == "male"){
+            setActive({male:true})
+          }
+          if(preference == "female"){
+            setActive({female:true})
+          }
+          if(preference == "family"){
+            setActive({family:true})
+          }
+    
+          await  searchTenant("preference",preference).then((data) => {
+            console.log(data);
+      
+            if (data.err) {
+              setError(data.err);
+            } else {
+              setProducts(data);
+            }
+          });
+        }
+         //Duration
+    if(duration){
+      if(duration == "short"){
+        setActive({short:true})
+      }
+      if(duration == "long"){
+        setActive({long:true})
+      }
+
+      await  searchTenant("duration",duration).then((data) => {
+        console.log(data);
+  
+        if (data.err) {
+          setError(data.err);
+        } else {
+          setProducts(data);
+        }
+      });
+    }
+
+      if(!price && !location && !preference && !duration){
         await  getAllTenant().then((data) => {
           console.log(data);
     
@@ -256,14 +304,39 @@ function FindRoom() {
               </div>
               <span>Room for</span>
               <div>
-                <button className={`male-btn ${male?"active":""}`}>Male</button>
-                <button className={`female-btn ${female?"active":""}`}>Female</button>
-                <button className={`family ${family?"active":""}`}>Family</button>
+                <button className={`male-btn ${male?"active":""}`}
+                onClick={()=> {
+                  navigate(`/findtenant/?preference=male`)
+                  window.location.reload()
+                }}
+                >Male</button>
+                <button className={`female-btn ${female?"active":""}`}
+                onClick={()=> {
+                  navigate(`/findtenant/?preference=female`)
+                  window.location.reload()
+                }}
+                >Female</button>
+                <button className={`family ${family?"active":""}`}
+                 onClick={()=> {
+                  navigate(`/findtenant/?preference=family`)
+                  window.location.reload()
+                }}
+                >Family</button>
               </div>
               <span>Stay Duration:</span>
               <div>
-                <button className={`shortTerm-btn ${short?"active":""}`}>Short Term</button>
-                <button className={`longTerm-btn ${long?"active":""}`}>Long Term</button>
+                <button
+                 onClick={()=> {
+                  navigate(`/findtenant/?duration=short`)
+                  window.location.reload()
+                }}
+                className={`shortTerm-btn ${short?"active":""}`}>Short Term</button>
+                <button
+                 onClick={()=> {
+                  navigate(`/findtenant/?duration=long`)
+                  window.location.reload()
+                }}
+                className={`longTerm-btn ${long?"active":""}`}>Long Term</button>
               </div>
               {/* <span>Rent/month</span> */}
               </div>

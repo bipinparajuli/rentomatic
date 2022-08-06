@@ -436,7 +436,7 @@ resetForm()
           </div>
           <div className="card-bottom">
             <div className="btndiv">
-              <button
+              <button style={{cursor:"pointer"}}
               onClick={() => {
                 if(JSON.parse(owner).role == "owner"){
                 setOpened(true)
@@ -447,7 +447,7 @@ resetForm()
                   notifications.showNotification({
                     color:"red",
                     title: 'Error',
-                    message: "Please sign in",
+                    message: "Only owner can add room",
                   })
                 }
               }}
