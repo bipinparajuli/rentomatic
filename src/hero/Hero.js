@@ -578,11 +578,17 @@ resetForm()
     {
       showbot ?
       <>
-       <FaCross size={40}
+      <button
+      style={{position:"relative",zIndex:"1",color:"white"}}
+      onClick={()=>setShowBot(!showbot)}
+      >
+        Close
+      </button>
+       {/* <FaCross size={40}
     style={{position:"relative",zIndex:"1"}}
     onClick={()=>setShowBot(!showbot)}
 
-    />
+    /> */}
       <ChatBot
       // onClick={{}}
     onClick={()=>setShowBot(!showbot)}

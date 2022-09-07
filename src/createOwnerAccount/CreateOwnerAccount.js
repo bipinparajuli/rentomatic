@@ -59,7 +59,7 @@ function CreateUserAccount() {
     fullName: Yup.string().required("Please enter fullname").max(50),
    // dateOfBirth: Yup.date().required("Please enter date").max(50),
     address: Yup.string().required("Please enter address").max(50),
-    phoneNumber: Yup.string().required("Please enter address").max(50),
+    phoneNumber: Yup.number().required("Please enter address").max(50),
     gender: Yup.string().required("Please enter address").max(50),
     email: Yup.string().required("Please enter email").email().max(255),
     password: Yup.string().required("Please enter a password").min(8).max(255),
@@ -269,7 +269,7 @@ if(data.error){
          <input 
       className="form_filed"
 
-         type="text"
+         type="number"
          value={formValues.phoneNumber}
               onChange={(e) =>
                             renderProps.setFieldValue("phoneNumber", e.target.value)

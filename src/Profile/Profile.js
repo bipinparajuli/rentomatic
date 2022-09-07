@@ -63,7 +63,7 @@ const Profile = () => {
         </Text>
 
         <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }}>
-          Book classic tour now
+          Your Profile
         </Button>
       </Card>
     </div>
@@ -77,7 +77,7 @@ const Profile = () => {
         <Group position="apart" style={{ marginBottom: 5, }}>
           <Text weight={500}>Address: {profile !== undefined?profile[0].address:""}</Text>
           <Badge color="pink" variant="light">
-            On Sale
+            {/* On Sale */}
           </Badge>
         </Group>
 
@@ -89,7 +89,7 @@ const Profile = () => {
         </Text>
 
         <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }}>
-          Book classic tour now
+          Your Information
         </Button>
       </Card>
     </div>
@@ -107,7 +107,8 @@ const Profile = () => {
                 <>
                   <div style={{margin:"20px 0 "}} class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
     <a href="#">
-        <ImageHelper productId={room._id} className="rounded-t-lg" />
+        {/* <ImageHelper productId={room._id} className="rounded-t-lg" /> */}
+        <img src={room.owner !== undefined? room.owner.images:""} />
 
     </a>
     <div class="p-5">
