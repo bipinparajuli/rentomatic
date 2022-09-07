@@ -160,7 +160,8 @@ function FindRoom() {
               console.log(product);
               return (<>
                             <div style={{margin:"10px 20px"}} class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                <ImageHelper productId={product._id} />
+                {/* <ImageHelper productId={product._id} /> */}
+                <img src={product.tenant.profileDescription.images} />
                 <div class="p-5">
         <a href="#">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">

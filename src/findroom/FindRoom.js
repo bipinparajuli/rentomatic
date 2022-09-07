@@ -170,12 +170,13 @@ const {bhaktapur,cheapest,expensive,family,female,kathmandu,lalitpur,long,male,r
         <div className="main-section-hero">
           <div className="example">
             {products.map((room)=>{
-              console.log(JSON.parse(room.owner.roomAddress.area));
+              console.log(room.owner.images);
               return (
                 <>
                 <div style={{margin:"10px 20px"}} class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
     {/* <a href="#"> */}
-        <ImageHelper  productId={room._id} className="rounded-t-lg" />
+        {/* <ImageHelper  productId={room._id} className="rounded-t-lg" /> */}
+        <img src={room.owner.images} />
 
     {/* </a> */}
     <div class="p-5">

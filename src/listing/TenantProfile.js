@@ -66,10 +66,10 @@ const TenantProfile = () => {
     <div className="container">
       <div className="listing-container">
         <div className="listing-container-image">
-          {/* <img src={image} /> */}
-          <ImageHelper 
+          <img src={values.profileDescription !== undefined? values.profileDescription.images :""} />
+          {/* <ImageHelper 
           productId={values._id}
-          />
+          /> */}
         </div>
         <div className="listing-container-content">
           <div className="content-title">
@@ -101,7 +101,8 @@ const TenantProfile = () => {
                   { values._id !== undefined? values.preferredRooms.rentDuration : "wait . . . " }
                   </li>
                   {
-                    values._id !== undefined? values.facilities.map(data=>{
+                  // console.log(values)
+                    values._id !== undefined && values.facilities ? values.facilities.map(data=>{
                       
                       return(<>
                         {data == true ? <li>Yes</li>:<li>No</li>}

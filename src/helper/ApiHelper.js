@@ -1,4 +1,4 @@
-const API = 'http://localhost:5000/api/v1/users'
+const API = 'http://localhost:4000/api/v1/users'
 export const signup = (user) => {
     return fetch(`${API}/signup`, {
       method: "POST",

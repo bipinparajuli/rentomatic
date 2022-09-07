@@ -71,10 +71,10 @@ const Listing = () => {
     <div className="container">
       <div className="listing-container">
         <div className="listing-container-image">
-          {/* <img src={image} /> */}
-          <ImageHelper 
+          <img src={values.images} />
+          {/* <ImageHelper 
           productId={id}
-           />
+           /> */}
         </div>
         <div className="listing-container-content">
           <div className="content-title">
